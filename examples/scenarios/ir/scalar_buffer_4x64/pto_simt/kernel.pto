@@ -1,0 +1,102 @@
+module attributes {pto.target_arch = "a5"} {
+  module attributes {pto.backend = "vpto", pto.kernel_kind = #pto.kernel_kind<vector>, pto.target_arch = "a5"} {
+    func.func @main_kernel(%arg0: !pto.ptr<f32, gm>, %arg1: !pto.ptr<f32, gm>, %arg2: !pto.ptr<f32, gm>) attributes {pto.entry, pto.kernel_kind = #pto.kernel_kind<vector>} {
+      call @init_core__ptodsl_a2c1d9a41e() : () -> ()
+      %0 = pto.get_block_idx
+      %1 = pto.trunci %0 : i64 -> i32
+      %2 = pto.constant 0 : i64
+      %3 = pto.castptr %2 : i64 -> !pto.ptr<ui8, ub>
+      %4 = pto.castptr %arg0 : !pto.ptr<f32, gm> -> !pto.ptr<ui8, gm>
+      %5 = pto.castptr %3 : !pto.ptr<ui8, ub> -> !pto.ptr<f32, ub>
+      %6 = pto.castptr %5 : !pto.ptr<f32, ub> -> !pto.ptr<ui8, ub>
+      %7 = pto.constant 1 : i64
+      %8 = pto.constant 1024 : i64
+      %9 = pto.constant 1024 : i64
+      %10 = pto.constant 0 : i64
+      %11 = pto.constant 1024 : i64
+      pto.mte_gm_ub %4, %6, %10, %11 nburst(%7, %8, %9) {operandSegmentSizes = array<i32: 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0>} : !pto.ptr<ui8, gm>, !pto.ptr<ui8, ub>, i64, i64, i64, i64, i64
+      %12 = pto.castptr %arg1 : !pto.ptr<f32, gm> -> !pto.ptr<ui8, gm>
+      %13 = pto.castptr %3 : !pto.ptr<ui8, ub> -> !pto.ptr<f32, ub>
+      %14 = pto.constant 512 : index
+      %15 = pto.addptr %13, %14 : <f32, ub> -> <f32, ub>
+      %16 = pto.castptr %15 : !pto.ptr<f32, ub> -> !pto.ptr<ui8, ub>
+      %17 = pto.constant 1 : i64
+      %18 = pto.constant 4 : i64
+      %19 = pto.constant 4 : i64
+      %20 = pto.constant 0 : i64
+      %21 = pto.constant 4 : i64
+      pto.mte_gm_ub %12, %16, %20, %21 nburst(%17, %18, %19) {operandSegmentSizes = array<i32: 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0>} : !pto.ptr<ui8, gm>, !pto.ptr<ui8, ub>, i64, i64, i64, i64, i64
+      pto.set_flag[<PIPE_MTE2>, <PIPE_V>, <EVENT_ID0>]
+      pto.wait_flag[<PIPE_MTE2>, <PIPE_V>, <EVENT_ID0>]
+      pto.section.simt<<<128, 1, 1>>> {
+        %30 = pto.get_tid_x : i32
+        %31 = pto.get_tid_y : i32
+        %32 = pto.get_tid_z : i32
+        %33 = pto.castptr %3 : !pto.ptr<ui8, ub> -> !pto.ptr<f32, ub>
+        %34 = pto.constant 2 : i32
+        %35 = pto.muli %30, %34 : i32
+        %36 = pto.index_cast %35 signed : i32 -> index
+        %37 = pto.castptr %33 : !pto.ptr<f32, ub> -> i64
+        %38 = pto.constant 4 : index
+        %39 = pto.muli %36, %38 : index
+        %40 = pto.index_cast %39 signed : index -> i64
+        %41 = pto.addi %37, %40 : i64
+        %42 = pto.castptr %41 : i64 -> !pto.ptr<vector<2xf32>, ub>
+        %43 = pto.constant 0 : index
+        %44 = pto.load %42[%43] : !pto.ptr<vector<2xf32>, ub> -> vector<2xf32>
+        %45 = pto.castptr %3 : !pto.ptr<ui8, ub> -> !pto.ptr<f32, ub>
+        %46 = pto.constant 512 : index
+        %47 = pto.load %45[%46] : !pto.ptr<f32, ub> -> f32
+        %48 = llvm.mlir.undef : vector<2xf32>
+        %49 = pto.constant 0 : i32
+        %50 = llvm.insertelement %47, %48[%49 : i32] : vector<2xf32>
+        %51 = pto.constant 1 : i32
+        %52 = llvm.insertelement %47, %50[%51 : i32] : vector<2xf32>
+        %53 = pto.addf %44, %52 : vector<2xf32>
+        %54 = pto.castptr %3 : !pto.ptr<ui8, ub> -> !pto.ptr<f32, ub>
+        %55 = pto.constant 2 : i32
+        %56 = pto.muli %30, %55 : i32
+        %57 = pto.constant 256 : i32
+        %58 = pto.addi %56, %57 : i32
+        %59 = pto.index_cast %58 signed : i32 -> index
+        %60 = pto.castptr %54 : !pto.ptr<f32, ub> -> i64
+        %61 = pto.constant 4 : index
+        %62 = pto.muli %59, %61 : index
+        %63 = pto.index_cast %62 signed : index -> i64
+        %64 = pto.addi %60, %63 : i64
+        %65 = pto.castptr %64 : i64 -> !pto.ptr<vector<2xf32>, ub>
+        %66 = pto.constant 0 : index
+        pto.store %53, %65[%66] : !pto.ptr<vector<2xf32>, ub>, vector<2xf32>
+      }
+      pto.set_flag[<PIPE_V>, <PIPE_MTE3>, <EVENT_ID0>]
+      pto.wait_flag[<PIPE_V>, <PIPE_MTE3>, <EVENT_ID0>]
+      %22 = pto.castptr %3 : !pto.ptr<ui8, ub> -> !pto.ptr<f32, ub>
+      %23 = pto.constant 256 : index
+      %24 = pto.addptr %22, %23 : <f32, ub> -> <f32, ub>
+      %25 = pto.constant 1 : i64
+      %26 = pto.constant 1024 : i64
+      %27 = pto.constant 1024 : i64
+      %28 = pto.constant 1024 : i64
+      %29 = pto.constant 4 : i64
+      pto.mte_ub_gm %24, %arg2, %28 nburst(%25, %26, %27) l2_cache_ctl(%29) {operandSegmentSizes = array<i32: 1, 1, 1, 1, 1, 1, 1, 0, 0, 0>} : !pto.ptr<f32, ub>, !pto.ptr<f32, gm>, i64, i64, i64, i64, i64
+      return
+    }
+    func.func private @init_core__ptodsl_a2c1d9a41e() attributes {pto.ptodsl.callable_kind = "func", pto.ptodsl.logical_name = "init_core"} {
+      %0 = pto.get_ctrl : i64
+      %1 = pto.constant 281474976710656 : i64
+      %2 = pto.and %0, %1 : i64
+      %3 = pto.constant 1152921504606846984 : i64
+      %4 = pto.or %2, %3 : i64
+      pto.set_ctrl %4 : i64
+      %5 = pto.constant 1 : i64
+      %6 = pto.constant 1 : i64
+      pto.set_loop_size_ubtoout %5, %6 : i64, i64
+      %7 = pto.constant 1 : i64
+      %8 = pto.constant 1 : i64
+      pto.set_loop_size_outtoub %7, %8 : i64, i64
+      %9 = pto.constant 36 : i64
+      pto.set_store_atomic_cfg %9 : i64
+      return
+    }
+  }
+}

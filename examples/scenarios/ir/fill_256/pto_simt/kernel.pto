@@ -1,0 +1,54 @@
+module attributes {pto.target_arch = "a5"} {
+  module attributes {pto.backend = "vpto", pto.kernel_kind = #pto.kernel_kind<vector>, pto.target_arch = "a5"} {
+    func.func @main_kernel(%arg0: !pto.ptr<f32, gm>) attributes {pto.entry, pto.kernel_kind = #pto.kernel_kind<vector>} {
+      call @init_core__ptodsl_a2c1d9a41e() : () -> ()
+      %0 = pto.get_block_idx
+      %1 = pto.trunci %0 : i64 -> i32
+      %2 = pto.constant 0 : i64
+      %3 = pto.castptr %2 : i64 -> !pto.ptr<f32, ub>
+      pto.section.simt<<<128, 1, 1>>> {
+        %9 = pto.get_tid_x : i32
+        %10 = pto.get_tid_y : i32
+        %11 = pto.get_tid_z : i32
+        %12 = pto.constant dense<1.250000e+00> : vector<2xf32>
+        %13 = pto.constant 2 : i32
+        %14 = pto.muli %9, %13 : i32
+        %15 = pto.index_cast %14 signed : i32 -> index
+        %16 = pto.castptr %3 : !pto.ptr<f32, ub> -> i64
+        %17 = pto.constant 4 : index
+        %18 = pto.muli %15, %17 : index
+        %19 = pto.index_cast %18 signed : index -> i64
+        %20 = pto.addi %16, %19 : i64
+        %21 = pto.castptr %20 : i64 -> !pto.ptr<vector<2xf32>, ub>
+        %22 = pto.constant 0 : index
+        pto.store %12, %21[%22] : !pto.ptr<vector<2xf32>, ub>, vector<2xf32>
+      }
+      pto.set_flag[<PIPE_V>, <PIPE_MTE3>, <EVENT_ID0>]
+      pto.wait_flag[<PIPE_V>, <PIPE_MTE3>, <EVENT_ID0>]
+      %4 = pto.constant 1 : i64
+      %5 = pto.constant 1024 : i64
+      %6 = pto.constant 1024 : i64
+      %7 = pto.constant 1024 : i64
+      %8 = pto.constant 4 : i64
+      pto.mte_ub_gm %3, %arg0, %7 nburst(%4, %5, %6) l2_cache_ctl(%8) {operandSegmentSizes = array<i32: 1, 1, 1, 1, 1, 1, 1, 0, 0, 0>} : !pto.ptr<f32, ub>, !pto.ptr<f32, gm>, i64, i64, i64, i64, i64
+      return
+    }
+    func.func private @init_core__ptodsl_a2c1d9a41e() attributes {pto.ptodsl.callable_kind = "func", pto.ptodsl.logical_name = "init_core"} {
+      %0 = pto.get_ctrl : i64
+      %1 = pto.constant 281474976710656 : i64
+      %2 = pto.and %0, %1 : i64
+      %3 = pto.constant 1152921504606846984 : i64
+      %4 = pto.or %2, %3 : i64
+      pto.set_ctrl %4 : i64
+      %5 = pto.constant 1 : i64
+      %6 = pto.constant 1 : i64
+      pto.set_loop_size_ubtoout %5, %6 : i64, i64
+      %7 = pto.constant 1 : i64
+      %8 = pto.constant 1 : i64
+      pto.set_loop_size_outtoub %7, %8 : i64, i64
+      %9 = pto.constant 36 : i64
+      pto.set_store_atomic_cfg %9 : i64
+      return
+    }
+  }
+}

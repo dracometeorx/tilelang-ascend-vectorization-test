@@ -31,3 +31,18 @@
 - `environment/*.freeze.txt` 是实测依赖清单，不是跨平台锁文件；安装脚本固定关键工具链/前端版本，其他依赖仍按主仓库 requirements 解析。
 - 没有真实 A5 硬件性能数据；没有验证其他 shape、dtype、多 block、跨核同步或复杂算子。
 - NPU-IR 旧前端的 A5 架构识别限制及 PTO helper 兼容处理见 README，不能将本次小加法结果外推为完整后端兼容性。
+
+## Parallel 扩展（2026-10-04）
+
+新增 14 个场景：常量/内存标量加法的 1D/2D、行/列广播、copy/fill 的 1D/2D、flatten、1D 全量求和、2D 行/列求和。
+
+- 14 个 CPU 基线通过逐元素精确校验。
+- 70 个设备路径编译尝试：61 个完成 ELF 编译并通过 CAModel 精确数值、输出保护区及 Profiling 校验；9 个归约组合保留明确失败证据（3 个 AscendC SIMD、3 个 PTO SIMD、3 个 PTO SIMT）。
+- 61 个成功组合引用 48 份不同的成功模拟归档；相同 ELF/ABI/符号/fixture/runner 的复用明确标记。最终再次校验全部成功记录、唯一内核报告及 658 份导出证据的 SHA256。
+- 在 `/workspace/a5-lab-package-check` 重新展开脚本，复用已安装依赖，再次运行全部 84 个 CPU/设备组合，得到相同状态；238 个生成源码与前端 IR 文件逐字节一致。
+- 场景脚本 Python/shell 语法检查通过；84 份生成 Python 程序通过语法检查。fixture 长度及 FP32 精确可表示性检查通过，runner 在启动 runtime 前拒绝空、截断和零长度 fixture。
+- ABI 从设备 TIR 和 ELF 参数字节数核对，覆盖 1/2/3 指针及 NPU-IR 232 字节描述符。输出包含 64 个 FP32 canary，不能仅凭进程返回码认定数值通过。
+
+实际 CAModel 状态、唯一执行与严格哈希复用、周期/指令数均记录在 [扩展矩阵](examples/scenarios/README.md) 与 `examples/scenarios/metrics.json`。初期 runner ABI 适配与沙箱 Profiling 问题不计为后端失败；最终证据只接受修正后完整通过的记录。
+
+上述重新展开验证仍不是空白机器完整安装。归约使用 Parallel/serial 嵌套循环，未测试显式 `T.reduce_sum`；NPU-IR 的路径名称不代表每个场景都完成了自动向量化。

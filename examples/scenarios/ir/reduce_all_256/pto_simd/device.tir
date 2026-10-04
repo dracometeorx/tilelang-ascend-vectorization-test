@@ -1,0 +1,29 @@
+# from tvm.script import ir as I
+# from tvm.script import tirx as T
+
+@I.ir_module
+class Module:
+    @T.prim_func
+    def main_kernel(A: T.handle("float32", "global"), O: T.handle("float32", "global")):
+        T.func_attr({"calling_conv": 2, "dyn_shared_memory_buf": T.int64(1056), "target": T.target({"arch": "dav-3510", "keys": ["pto", "ascend"], "kind": "ascend", "launch_grid_only": True, "max_vector_bits": 64, "supports_kernel_status_return": False, "supports_vector_predicate": True, "tag": ""}), "thread_extent": {"blockIdx.x": 1}, "tirx.is_global_func": T.bool(True), "tirx.kernel_launch_params": ["blockIdx.x", "tirx.use_dyn_shared_memory"], "tirx.noalias": True, "tl.non_restrict_params": [], "tl.readonly_param_indices": [0]})
+        bx = T.launch_thread("blockIdx.x", 1)
+        buf_dyn_shmem = T.alloc_buffer((T.int64(1056),), "uint8", scope="shared.dyn")
+        a = T.decl_buffer((256,), data=buf_dyn_shmem.data, scope="shared.dyn")
+        o = T.decl_buffer((1,), data=buf_dyn_shmem.data, scope="shared.dyn")
+        with T.sblock("VECTOR", no_realize=True):
+            T.reads()
+            T.writes()
+            T.ascend_copy_gm_to_ubuf(T.tvm_access_ptr(T.type_annotation("float32"), buf_dyn_shmem.data, 0, 256, 2), T.tvm_access_ptr(T.type_annotation("float32"), A, 0, 256, 1), 0, 1, 1024, 0, 0, 0, 0, 1024, 1024)
+            T.ascend_set_flag("MTE2_V", 0)
+            T.ascend_wait_flag("MTE2_V", 0)
+            with T.sblock("SIMD_VF", no_realize=True):
+                T.reads()
+                T.writes()
+                T.sblock_attr({"tl.vf_source_index": T.int64(0)})
+                T.attr("simdvf", "tl.simdvf_scope", 1)
+                o[256] = T.float32(0.0)
+                for k in range(256):
+                    o[256] = o[256] + a[k]
+            T.ascend_set_flag("V_MTE3", 0)
+            T.ascend_wait_flag("V_MTE3", 0)
+            T.ascend_copy_ubuf_to_gm(T.tvm_access_ptr(T.type_annotation("float32"), O, 0, 1, 2), T.tvm_access_ptr(T.type_annotation("float32"), buf_dyn_shmem.data, 256, 1, 1), 0, 1, 4, 4, 4, 4)

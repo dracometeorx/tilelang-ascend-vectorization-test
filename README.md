@@ -1,6 +1,6 @@
 # TileLang Ascend A5 CPU lowering lab
 
-在没有 NPU 的 x86_64 Linux 机器上，对比小型 `T.Parallel` FP32 加法的 **AscendC、PTO SIMT/SIMD、NPU-IR 自动 SIMD** lowering，并通过厂商 A5 CAModel 获取数值校验与模拟 Profiling。
+在没有 NPU 的 x86_64 Linux 机器上，对比小型 `T.Parallel` FP32 算子的 **AscendC、PTO SIMT/SIMD、NPU-IR 自动 SIMD** lowering，并通过厂商 A5 CAModel 获取数值校验与模拟 Profiling。
 
 本仓库收录测试代码、环境配置、版本/校验值和精简 IR 样例。CANN 安装包、虚拟环境、编译产物和大型模拟轨迹由安装/运行脚本生成，不存入 Git。
 
@@ -17,6 +17,12 @@
 | NPU-IR 自动 SIMD | 2799 | 2747 | 135 |
 
 这 10 个用例均在原云环境通过数值校验和 Profiling。原始指标摘录在 [examples/metrics.json](examples/metrics.json)。周期是 CAModel 模拟结果，不是 CPU 墙钟时间，也不是物理 NPU 实测；同一后端的 1D/2D 最终二进制相同，小幅周期差异来自运行间波动。
+
+## 扩展 Parallel 场景
+
+新增 vector + scalar、行/列广播、copy/fill、flatten 和 reduction 共 14 个场景，分别对照 CPU、AscendC SIMT/SIMD、PTO SIMT/SIMD 和 NPU-IR 自动向量化路径。
+测试语义与运行方式见 [场景说明](setup/scenarios/README.md)，实测状态、模拟周期/指令数和 IR 证据见 [扩展矩阵](examples/scenarios/README.md)，机制差异见 [lowering 解读](examples/scenarios/ANALYSIS.md)。
+归约采用输出轴 Parallel、归约轴 serial；不能将其失败外推到显式 `T.reduce_sum`。NPU-IR 路径名称也不保证所有程序成功向量化。
 
 ## 安装
 

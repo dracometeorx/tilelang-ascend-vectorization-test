@@ -1,0 +1,2191 @@
+{
+  "date": "2026-10-04",
+  "reused_installed_dependencies": true,
+  "clean_machine_install": false,
+  "staged_files": 33,
+  "matching_source_artifacts": 238,
+  "records": [
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "72611a5579a38ebdf3ec29fa01f97c966e55bd48c11123c13835a860f9787c1c",
+        "input.tir": "7ae7d154be181f4128dedb2eb584377878115a59fc036ad7053fe415945b15c1",
+        "kernel.asc": "146fd4a3a9aa788c0091e4f23ed09e8c9f54672847c141e73f81e7eea63d6156"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "bd4c090be26b6a27679cc8933df98bf9c4b6d85afcf85ab4e24dbf797abbe405",
+        "input.tir": "22f869fb767fafa1f65bbac693049eb79b89d3ea2d2b44ca4f34fff5dff6a463",
+        "kernel.asc": "38d56c3dce354cf73572f3485dd933f9e6e92239a8ab4db336d47585c13e6d85"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "4947a5f4450b67c8ba9680b7057391f512402f214ef4c440e4c506d0aa8345da",
+        "input.tir": "491ade255a5377e1c498d49258b0280716f01e085c174984bb44629455bc044b"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "3e9e7ef25cfa415044c04fef81923eb139d81c103eabbb9e4df348647bd4a2de",
+        "input.tir": "c121d89b04bd78290200da3a7be7a6db9b87aa4b9c5cf9fb99a11418bb6b7e52",
+        "kernel.mlir": "0029cda3bcc2172337410bd33450a2cd1f2bc4c7e85f690d358c60090756aca5"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "72611a5579a38ebdf3ec29fa01f97c966e55bd48c11123c13835a860f9787c1c",
+        "input.tir": "7ae7d154be181f4128dedb2eb584377878115a59fc036ad7053fe415945b15c1",
+        "kernel.ptodsl.py": "53c1cb5c0ad6c13fcb16c22c08b70076bbee37615818d0fb2cda2a32a57c5ff0"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "bd4c090be26b6a27679cc8933df98bf9c4b6d85afcf85ab4e24dbf797abbe405",
+        "input.tir": "22f869fb767fafa1f65bbac693049eb79b89d3ea2d2b44ca4f34fff5dff6a463",
+        "kernel.ptodsl.py": "6aa5db00db214d47acaf91cbc2b0f0c936f3164117f6cfaac846ad44e975e00f"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "501dac3fbeeaec822d4d4f6634ca4359d5459b784f9de707daeef546fc17555d",
+        "input.tir": "4f03b78dd24ae48be2649345f898d5b428ec292c31638d680b2714ee27d992dd",
+        "kernel.asc": "fdec6488bcb0d4ebe88fb3af249ca7dcbe117597bcb1ba07be2d1b803f5fb584"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "1d2bcb4e0cd3aa3f85b9bf1f58e4d9db07e4f19042367df571804b04419b7eb1",
+        "input.tir": "bb0ce3541cbb54785401f9ef5e93f94e51234b08fc279f904589fe76585f73f5",
+        "kernel.asc": "6732b7c746e8d3a936a2fb0875a907020ed72fc3e97dba9ee5a08d0ad9f23da5"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "64371a4cfcb255915aaee9e1016a23e10227a3fbfc5675b908392bc49d4e9126",
+        "input.tir": "f997fb565106a4c1622c115c7aabb3fef29d07d40400760790a7734e6776e128"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "7da9837379ed4dfcdcb6cc260a8f67b658fedb05d966a508f4290313168a3e62",
+        "input.tir": "dba4f7cccc75ea359402f9d54e6da74aa30638701bd9c66064e89c3c520a4515",
+        "kernel.mlir": "b4da3825491dde89ab5e980109bc2caa1dd12bfde8190ff2d0d801743ee74790"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "501dac3fbeeaec822d4d4f6634ca4359d5459b784f9de707daeef546fc17555d",
+        "input.tir": "4f03b78dd24ae48be2649345f898d5b428ec292c31638d680b2714ee27d992dd",
+        "kernel.ptodsl.py": "b93e2000a34f5399de922df0ef6c125428647c0bf7e51d210ad3d365c7280c6b"
+      }
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "1d2bcb4e0cd3aa3f85b9bf1f58e4d9db07e4f19042367df571804b04419b7eb1",
+        "input.tir": "bb0ce3541cbb54785401f9ef5e93f94e51234b08fc279f904589fe76585f73f5",
+        "kernel.ptodsl.py": "ca4e4b506c0233ab2ad5c60cdc1dd56de3396cbcb9eb9cea93977d9d9441295f"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "00c6ec1a6cb6226a4fa9a6d5c9c2716f89be5094938940df5ebb875ce45d316a",
+        "input.tir": "fe74e83ef844a76170859b78af4ee71024678aab8245bd061ccb33c6e01caf0f",
+        "kernel.asc": "173faef51f2afca7e7281928ae279fefe613f6245bbb36a0b2b2dea559f9eeff"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "40531f1aa05c0cc05c6ff99b45433aad621ee0937d1f21cf56b5252c365c8057",
+        "input.tir": "0ae7158e0cae2ddf8479c1c73949dd385986a2455a6eddbd5c31791624b1c0bf",
+        "kernel.asc": "981a901e9592227f8ce06bd9883be06370a0ba3590fe6fd021a895e9fbb65540"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "f556d5c2db170ffae45103d14e475816e4fe1fa88fe9c6249e6f0034076ae553",
+        "input.tir": "2c8709d90e590bfae8c8f5fed529014643208832575e84ced958a1d747c9e234"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "a1e7168df140c2ad072971b1e58beb7f7538169c8f1820d00304dffef212269a",
+        "input.tir": "c2e84935e82edae9324b0db78fea0fd59e71f70fbd192c9205c295791d8fb73d",
+        "kernel.mlir": "3b6b49187610f9541e5e64ba5fbc3f2831ecfe40dcef096d5272b51bc072133a"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "00c6ec1a6cb6226a4fa9a6d5c9c2716f89be5094938940df5ebb875ce45d316a",
+        "input.tir": "fe74e83ef844a76170859b78af4ee71024678aab8245bd061ccb33c6e01caf0f",
+        "kernel.ptodsl.py": "208f812883d6361c03149b3e1fcc9bb2981eac441d1cf1938673457d9ea598c9"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "40531f1aa05c0cc05c6ff99b45433aad621ee0937d1f21cf56b5252c365c8057",
+        "input.tir": "0ae7158e0cae2ddf8479c1c73949dd385986a2455a6eddbd5c31791624b1c0bf",
+        "kernel.ptodsl.py": "8158e4673b84c2c9b80df88e603eba332adbdce0d43e9cfeb699ded779954dc2"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "383688c3b132f6d1e1047f7df6d41d0d978037dca7738505b5717f6dc60aac52",
+        "input.tir": "8e777a5e3f7ce4dd945dc3ae8047009bc28e0bdfd77b02ba671acc18538c4ce4",
+        "kernel.asc": "0ba70283c86f0a84007db1715d60102d1265ddf2dcab77cfa233ca9ef8088a53"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "e0f4d4f93ab57bae9f668a76af468bfce7bd64f568a064d106637cb4f6ea195a",
+        "input.tir": "070fa76878f75ce77e05b57d4b6ac156fdd4535dc9907b7e45da1208968e4278",
+        "kernel.asc": "981a901e9592227f8ce06bd9883be06370a0ba3590fe6fd021a895e9fbb65540"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "8d18bbda3f565633aa8bc3aaf2514aee334a4ef8e5acb177f2b0bc4c780a2bbd",
+        "input.tir": "b8f21117310981fd7daf7c9a61671f928f5d516d28f9e9999504fdf0d07b8925"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "5c92437b900cc69ffc74fa706df520a2bc1c487bcca767b598c372b171689ac8",
+        "input.tir": "4681d468b08f690da7e4b77d181025aa5c0bdc04c7d72eabf7be04514498367a",
+        "kernel.mlir": "179566af3e18e5f61748c63c5a385cb2a93ad2978983314b2c6565f6cc340e2d"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "383688c3b132f6d1e1047f7df6d41d0d978037dca7738505b5717f6dc60aac52",
+        "input.tir": "8e777a5e3f7ce4dd945dc3ae8047009bc28e0bdfd77b02ba671acc18538c4ce4",
+        "kernel.ptodsl.py": "be68cedf82f0d41715f19e7605c1fc06e134ec7f116dd734364825746a296cae"
+      }
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "e0f4d4f93ab57bae9f668a76af468bfce7bd64f568a064d106637cb4f6ea195a",
+        "input.tir": "070fa76878f75ce77e05b57d4b6ac156fdd4535dc9907b7e45da1208968e4278",
+        "kernel.ptodsl.py": "8158e4673b84c2c9b80df88e603eba332adbdce0d43e9cfeb699ded779954dc2"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "a7b440a1ab7111839cf2b68441d1962d77c06d834dd8f3abfbc14662708e8163",
+        "input.tir": "5c8d456d68cc9c030a0812966320a1734738d970a9c093cfc7352b8b8cc54ae8",
+        "kernel.asc": "e276b636f634552b3e2c6a44edb8a8ea45740ee33f0a7a5825bb683db5bd8b37"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "70a4956215be695c174c6b73345d21c5372bc312971bac776261a2f25ce170a0",
+        "input.tir": "0dfaa07e7368b30986dad2d960e670d4d75be3e3b93f412dcf75697ad9430d89",
+        "kernel.asc": "e73918192b8d5ce9d0b7e4527b5dccde59427db52c80356ac92e7f74b284e1d4"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "05dcc32a1b0b20bea801cce6d55db1a2262b772faa2d9decd5647be9e45a2c85",
+        "input.tir": "737d91b62362b22bec22b94534a8b10916f7dac4e06d4007cd4fc639badc164f"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "cd8c8698b08b2232a48e3c077f99938c98475976cc60a42d303c5450f51cb900",
+        "input.tir": "5acc737725a1c10e9de8f02f84d8b921b0b44a9a92236ef0324e4b5d01458bcb",
+        "kernel.mlir": "c1ae4fbbd2b2930846740964ae2e610dc0c0326b15d9a84506964e484c99f992"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "a7b440a1ab7111839cf2b68441d1962d77c06d834dd8f3abfbc14662708e8163",
+        "input.tir": "5c8d456d68cc9c030a0812966320a1734738d970a9c093cfc7352b8b8cc54ae8",
+        "kernel.ptodsl.py": "848f498fa8139603054300324c726ce45f0f1cb96a5b565edb2c6598c3f66243"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "70a4956215be695c174c6b73345d21c5372bc312971bac776261a2f25ce170a0",
+        "input.tir": "0dfaa07e7368b30986dad2d960e670d4d75be3e3b93f412dcf75697ad9430d89",
+        "kernel.ptodsl.py": "deaec211dd0255e068e792c86bd018c48195c683200d8009566e04eb6f0d0e78"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "538030a6e52d4fd80bec6a6e25bf2232505bc9c069ba03ba2530e34571e2a925",
+        "input.tir": "dfe402f0166f011cc8de034977bf106f9111c1403e3ea80341d68fbae84de0eb",
+        "kernel.asc": "c74ef54bda924cda009511e8bfee972c7099960e93efc4dd7ac435415d34b21f"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "1fc966c45fcfe2ea976a0f1ce8edc79973c7985880e338b33cb84e3d6d6a2a93",
+        "input.tir": "3ec3045240a9c3c5516742f9df52e5a0e53c536e688101ba6c15f224d46d92c8",
+        "kernel.asc": "e73918192b8d5ce9d0b7e4527b5dccde59427db52c80356ac92e7f74b284e1d4"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "4004bc6ff45d31ab0b953afebe68f0422b69f9536870c5e3da6530a6bed83222",
+        "input.tir": "85eea3280bbbdc03e0320dbacb0f2dd4740e89e3337cb06cdd530587b796b8fd"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "ac0afb8062ff9529b3cfa22b989672496ae7f89e7d1ee3d14ce0f26e73fe1063",
+        "input.tir": "a65fa5c476dc487b228be79cf829157d8e3c055f7629d724ef5d6ada107a7ee7",
+        "kernel.mlir": "7fa2ba2f05ed2fc68673f9acd55a8caa5fec50bdafa4b29dc51241b105dba56f"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "538030a6e52d4fd80bec6a6e25bf2232505bc9c069ba03ba2530e34571e2a925",
+        "input.tir": "dfe402f0166f011cc8de034977bf106f9111c1403e3ea80341d68fbae84de0eb",
+        "kernel.ptodsl.py": "e704ff37461286399a849de3f87c1366ca9dc0fc7c0300856d53c4e282a17667"
+      }
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "1fc966c45fcfe2ea976a0f1ce8edc79973c7985880e338b33cb84e3d6d6a2a93",
+        "input.tir": "3ec3045240a9c3c5516742f9df52e5a0e53c536e688101ba6c15f224d46d92c8",
+        "kernel.ptodsl.py": "deaec211dd0255e068e792c86bd018c48195c683200d8009566e04eb6f0d0e78"
+      }
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "5cda2931b625600dc6d8b4ec84953e3627160c3eecb0e51b1164c1de2229659d",
+        "input.tir": "7b1242d73f685a98c99c71854811d5de0a8b69760f08006fe8d93dc09127c7d7",
+        "kernel.asc": "173faef51f2afca7e7281928ae279fefe613f6245bbb36a0b2b2dea559f9eeff"
+      }
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "a36e97e8f06cfcb4cbeb483c8910e5ac5b0ae779773a37777d65c4b9c4db2786",
+        "input.tir": "b63bf4043769cd7a5e81b4236307e2963958a91725b16759c05208da621816a0",
+        "kernel.asc": "981a901e9592227f8ce06bd9883be06370a0ba3590fe6fd021a895e9fbb65540"
+      }
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "e675a303b9aafcd900eb0af3639d1c627109c3f091ded44cf9675fbf8088a340",
+        "input.tir": "949cd735efa961c6d1ade5bf4d2148a018a70f5102663dc3b8991117a6218240"
+      }
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "ed714c1ff8a1b21deca404b2bfb188db373de1029c26f1d73a0f1de5534a1dfb",
+        "input.tir": "fb6d6c227446bdb962d7977aba8b1d151c2c9b58ac9db80989edb0a8989b5d11",
+        "kernel.mlir": "04ca9293080b2b7e622bbeff6618453a38055f37d8513237282d3b6d79c8c636"
+      }
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "5cda2931b625600dc6d8b4ec84953e3627160c3eecb0e51b1164c1de2229659d",
+        "input.tir": "7b1242d73f685a98c99c71854811d5de0a8b69760f08006fe8d93dc09127c7d7",
+        "kernel.ptodsl.py": "208f812883d6361c03149b3e1fcc9bb2981eac441d1cf1938673457d9ea598c9"
+      }
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "a36e97e8f06cfcb4cbeb483c8910e5ac5b0ae779773a37777d65c4b9c4db2786",
+        "input.tir": "b63bf4043769cd7a5e81b4236307e2963958a91725b16759c05208da621816a0",
+        "kernel.ptodsl.py": "8158e4673b84c2c9b80df88e603eba332adbdce0d43e9cfeb699ded779954dc2"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "0ccdb8afe58c1ac7f5e735d45058c8772a6b653e594fadd5d71b2440ea96ed4f",
+        "input.tir": "72130b3086ec051f8fe15d793493f9fcbc21a9859c2b39361452d917b6209f70",
+        "kernel.asc": "5b6b4ce09bf43b21db59e4ff42baa63a36dfef6a343063620f2b90c534812100"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "7d491227c14388735d47d42dd312f9a2e8f0c4308f69c8d735670e535dc6460e",
+        "input.tir": "f4f0a5ae5804791f2d4795722ebc4db5fcb082d9c0d9350e99790945ac19e825",
+        "kernel.asc": "b48b83a4626a7c45dfcd44023a9012dcf286f68043fb60c01c9fbccdb733e5bc"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "02d96688e9ec61d94c860b6bfbeb515ec4c378391a5a0bf411642059908f7430",
+        "input.tir": "db905d5ee196923929cf2c30e5b03542af167904a047ba4a49bde105f1df66fb"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "356a545526039c650a24248060cf1aa0f3c51f5f7dc288879738d12379a3a678",
+        "input.tir": "e23bc56873560797938ed05b10d70b5f83006fe94201601f75232d3c388dfaea",
+        "kernel.mlir": "cba325063ce8335ed1c8505a93c3a987c4e108902d77af518f98d8b6d00da626"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "0ccdb8afe58c1ac7f5e735d45058c8772a6b653e594fadd5d71b2440ea96ed4f",
+        "input.tir": "72130b3086ec051f8fe15d793493f9fcbc21a9859c2b39361452d917b6209f70",
+        "kernel.ptodsl.py": "d8537386e86c1c454cbb2a71765d2c0ef24f43c2d849b8b09c2bf0e88d3a1e74"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "7d491227c14388735d47d42dd312f9a2e8f0c4308f69c8d735670e535dc6460e",
+        "input.tir": "f4f0a5ae5804791f2d4795722ebc4db5fcb082d9c0d9350e99790945ac19e825",
+        "kernel.ptodsl.py": "33cc9318967cdf958579dce4f1d8aca3ebc65cd088635a3c95ede22a2c37ce43"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "b0250a66ff30789667c780cb6ccafe4550a18a0a2358fc0933fbdd4b664d9c0d",
+        "input.tir": "840aef37f7a732d22dc450c4f276100a959069261fe9b595de4175a4f514de3d",
+        "kernel.asc": "f1af95f5c4d0c1f0c182be8047a64ed87cce7849bd89975caa6a04f2e2d06fe8"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "15575eb3bf26648b617fdcf6b2c1c1c76855c050311095996c6af3cc426c14a1",
+        "input.tir": "7eba8c8ad84c679194409d5d1b0597b845c50cb818f80b423a764b3e919fce17",
+        "kernel.asc": "5c15f3dc253f2ed5cfe6e9672d4f14949d531010882146a7b00ec055bbd8bafc"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "3471d31b3e5fe295593ed4daf8b8c202b27d540d559d500e65786245618a9aa4",
+        "input.tir": "6c9bf42e18c9904f17da57569d96d27642d5b270944cc8af4607fbcf4f261b0a"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "0f43167b3267e935ceae1d3836ccd24c885d62879c4fb82e5b60210007312752",
+        "input.tir": "325b40d1ab44a2ddfcf9db84043c7aa547efdb6964544c56f9dc13f985ec78cf",
+        "kernel.mlir": "50feb16d9c908fcedeb4f52bed144be7b84e91ea15de8e5ad2f21b8e64707f8c"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "b0250a66ff30789667c780cb6ccafe4550a18a0a2358fc0933fbdd4b664d9c0d",
+        "input.tir": "840aef37f7a732d22dc450c4f276100a959069261fe9b595de4175a4f514de3d",
+        "kernel.ptodsl.py": "3f2d3cb4b118eaa108041e10308027b0d3ed5d08f063dc55fec8f71e68c4f56a"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "15575eb3bf26648b617fdcf6b2c1c1c76855c050311095996c6af3cc426c14a1",
+        "input.tir": "7eba8c8ad84c679194409d5d1b0597b845c50cb818f80b423a764b3e919fce17",
+        "kernel.ptodsl.py": "ce3e0992fdf2793d1e3bc75e1ff50a17db35cee456a07735fb370829fe2ccfd8"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "5ee99713fadf8fc9594882f663fac68dd8bdf613e3f4b1441e32af077d78fb5d",
+        "input.tir": "66c5bcfb50e139455056392aa1207f5cd2e39c92d5b463192fd81e000f2e8d03",
+        "kernel.asc": "cfc83df3df18698c482c13065d6ad91c573ff67221e98980e11f3c01106211ce"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "47483a99d1b9463c619a183c5799825b499249dcdfb4b3fa25c93aa374744194",
+        "input.tir": "1dd27c0795bfa9b9fe5fb76f7c72676f66a1374bbd53cbd60c176d48820b3378",
+        "kernel.asc": "02273addd75b7c164b6236b379b50ec35dee75534f7a50a7e673e8ee3e01b315"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "6ab155f912dc72d3ba87599da136ab893f54082c98e32b80e8317a5c560c3102",
+        "input.tir": "38b86bed4068326634f29626e781431f2c5ec9765b52a06979295cb8d1099fcc"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "35c86b993af9f4bd1ce4cb475b25047c65c1aa72179992a23d747f450d3414d2",
+        "input.tir": "3a55711168ece7369d8020713e2bf707493fa63a4de523a498bdfe858bcfc5e5",
+        "kernel.mlir": "6674e767f709f499a33a177d843792f0a75d576063b294cb6db6508015e3c055"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "5ee99713fadf8fc9594882f663fac68dd8bdf613e3f4b1441e32af077d78fb5d",
+        "input.tir": "66c5bcfb50e139455056392aa1207f5cd2e39c92d5b463192fd81e000f2e8d03",
+        "kernel.ptodsl.py": "1e517bc8bec0572e00bdbdbcebfa6a5c964cfc0c39ebd0aa58c2e101a88ff20a"
+      }
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "failed",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "47483a99d1b9463c619a183c5799825b499249dcdfb4b3fa25c93aa374744194",
+        "input.tir": "1dd27c0795bfa9b9fe5fb76f7c72676f66a1374bbd53cbd60c176d48820b3378",
+        "kernel.ptodsl.py": "114fbfb7275f92d7698286c265e8e8a5dec1f9e1ec7e27e4dc4fe289761e4257"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "3fe3385ca4406b4ec2a5fe1f0c8f4e4ecfedcd39ab0df3b55580708b28b4f371",
+        "input.tir": "cbdfe288c69943cc0dd725f9eb65233235925a6bd4a9f87d718db7640a9e54e8",
+        "kernel.asc": "d97a7bbc3fcce2a8ad5dc19b38aa29b02860c975dada84f1b19f2a18ad1303b2"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "fe692315128204fab97c190d4462af0f486811ac48ec1d00eb3c76c8ea4e7147",
+        "input.tir": "552e9c525b8aa5afcb9067d07a933300801fe4e673db9b6e5ddc6896ce6e0e04",
+        "kernel.asc": "3c1a5750ebf5bbcafc2ee4172f16d6380c6b9d228768cb2ac2052515324dbeb3"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "fbaa5cbb5b4491f7e06ee7a9a1e9f2a7e34f9b783dd666507c9b09e267b50ebf",
+        "input.tir": "155a73ba15822a0da82be1ee58c3b56b3db359c9fafccd1efe8038d74d8f6833"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "61cb147078fa5c0cbfd2771a6d2bd44be0c672352390315f63ad9fa81de0f584",
+        "input.tir": "397f89af06daf190dc4ed0991b9e6135a7e12df73b83e402e138ebac08fbe2ef",
+        "kernel.mlir": "7443b19a8cdfaa4695386d151adf75985d5d13a1b5006e99ed29febe7bf9efa0"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "3fe3385ca4406b4ec2a5fe1f0c8f4e4ecfedcd39ab0df3b55580708b28b4f371",
+        "input.tir": "cbdfe288c69943cc0dd725f9eb65233235925a6bd4a9f87d718db7640a9e54e8",
+        "kernel.ptodsl.py": "25617e44bab2cfb1699a471fbac7816fad679dfb0200d7f28b06f400083ffe81"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "fe692315128204fab97c190d4462af0f486811ac48ec1d00eb3c76c8ea4e7147",
+        "input.tir": "552e9c525b8aa5afcb9067d07a933300801fe4e673db9b6e5ddc6896ce6e0e04",
+        "kernel.ptodsl.py": "086057ea21cb6833f39a2535544bb8b361dd299019a1d1ab11d6f463bc13d645"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "d0c633b03cd058e457287cd798d6fbcbd68a3cff96ca7665254e33d6289ac0ea",
+        "input.tir": "5b84cd4e91caef79bb98bda14ad6e28ce18a793aba9a469830c23cb3004223cb",
+        "kernel.asc": "3545b429040d669575ffb136f10ad3259891824da5473341f083a24139150d76"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "57a3298e7ea11ff66d25e3fafb1703bf7df2206df25f9ba087123842cbd99d2f",
+        "input.tir": "609445bf297861a9a77e56dcb39bde1f0627e73655498bc8fd0790d1bfa3dfc0",
+        "kernel.asc": "3c1a5750ebf5bbcafc2ee4172f16d6380c6b9d228768cb2ac2052515324dbeb3"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "416aca7b8d0ad97ae065da7d81439b1e39f15407e18e73d597b2610b482d3abd",
+        "input.tir": "47f85eaf5d1b3bebfd1803095204e0c120fcfee5675677a282c83282574e29c1"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "6ee3c878925f186ab0d595e08feebb78111aa877b8252875e1fffb30e7106d50",
+        "input.tir": "bf46165858db6e4607768a7d64a9c0dcf7cbffa50ddd861d185b853ff2cc2825",
+        "kernel.mlir": "3065d987dbc0643eae2f60b0f087696a7b4de87ca7aba84d5f64007a6cdbd719"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "d0c633b03cd058e457287cd798d6fbcbd68a3cff96ca7665254e33d6289ac0ea",
+        "input.tir": "5b84cd4e91caef79bb98bda14ad6e28ce18a793aba9a469830c23cb3004223cb",
+        "kernel.ptodsl.py": "7bd692a1307367a12cf4632d4d6b784da18a1943f67b8508942ef3124adb80ff"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "57a3298e7ea11ff66d25e3fafb1703bf7df2206df25f9ba087123842cbd99d2f",
+        "input.tir": "609445bf297861a9a77e56dcb39bde1f0627e73655498bc8fd0790d1bfa3dfc0",
+        "kernel.ptodsl.py": "086057ea21cb6833f39a2535544bb8b361dd299019a1d1ab11d6f463bc13d645"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "4468fa8e7d9e37e4407cab88e2db51d658357d9a3724d0c4f491893af25d9c71",
+        "input.tir": "2b8365179888552065f47367204ca6c5636883011a1f734d6711d32da3b22b1b",
+        "kernel.asc": "8f5b6a8e7e282dd3dc08bd62df10073d380eaac9b5f90afbcc8ddd6e6a8c86c5"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "6de753c8c3d344d8729815dbc9363aab6828351d52e6fd892e10c38099760657",
+        "input.tir": "f5c5b415ef02195a4306f9c799f832dccf3bf82959dc3440d8eba890a158b49f",
+        "kernel.asc": "078f09f53ce8963c7ae66f51894def89cdefb1d562f51fe4366eec9458efca23"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "910798f6de2a43246dcc0123fb3aa91888f6d852fd03a3ba1b927dde11b87c94",
+        "input.tir": "edec0268fa9a9dfdc7988a2e1502a15099e55b76854bd43fa231b006604fff0d"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "72784d7257d7c168e32b52cbfe12feef017833dd5d6731812cb9b2423f279a0e",
+        "input.tir": "164733efb784805d48b8a0084088ff63c246e44daacb0fd63eb37dafb8b74303",
+        "kernel.mlir": "5b9366fae563348224243a7b0a6076067978edb6fe4ba703e6cbbd1fe55c44d2"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "4468fa8e7d9e37e4407cab88e2db51d658357d9a3724d0c4f491893af25d9c71",
+        "input.tir": "2b8365179888552065f47367204ca6c5636883011a1f734d6711d32da3b22b1b",
+        "kernel.ptodsl.py": "203a29afc6a05f9d9aa33b718fe96a10e8646d6100faf7e4ad6785a565ea7d5b"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "6de753c8c3d344d8729815dbc9363aab6828351d52e6fd892e10c38099760657",
+        "input.tir": "f5c5b415ef02195a4306f9c799f832dccf3bf82959dc3440d8eba890a158b49f",
+        "kernel.ptodsl.py": "37cb96b3691e557739001edde918ae7e93ef3314b0318200ce4f5415054a8879"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "6c22de93b56e045e2afc7f6d9ebdff7161b790f8c6e9f14cbec67cd4498d468c",
+        "input.tir": "b5153b50f2594742394ca412aef4a3d96f20894b52ddbfa8587c085b35219044",
+        "kernel.asc": "87049e6ef3796d52c3ab64a20db771f950ba522d613c25f702f271809ebaef85"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "ascendc",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "07e4c8c0c2a92c21c70ba125109d8713273402f8170f2d6393158d633fe56552",
+        "input.tir": "51bc1bb8f31e4f64c49f8ebc662a2367cbadabd2e6d8c0ce7a7ba67c0a36db6c",
+        "kernel.asc": "078f09f53ce8963c7ae66f51894def89cdefb1d562f51fe4366eec9458efca23"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "cpu",
+      "mode": "native",
+      "status": "passed",
+      "stage": "cpu_correctness",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "f869e15935d040c6a6e5b5a38490cfea5d188cbe348600e32dda64d8ad5409ae",
+        "input.tir": "0cecde787e331cdb0d8aa27d37ecd27c930afa39a7c4b63ed08b5ee8affa29ae"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "npuir",
+      "mode": "auto_simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+      "matching_sources": {
+        "workload.py": "9e91939f170f9aff514bc9206bd0a69f0b25e8351b6fa63e1a9e8a1cc364beb9",
+        "input.tir": "9e91f0e30ac96aac2e033afe5f2aadcf505c9ac5f5ff58aae1a1d92a9d775ff2",
+        "kernel.mlir": "a63304a4b7c131aac28ccb1bb9c69c1166738c34b74ce41dd0cceab7469bfef0"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simd",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "6c22de93b56e045e2afc7f6d9ebdff7161b790f8c6e9f14cbec67cd4498d468c",
+        "input.tir": "b5153b50f2594742394ca412aef4a3d96f20894b52ddbfa8587c085b35219044",
+        "kernel.ptodsl.py": "f7dc89db3df586baa9a40e5ab2ae8096cd148ad76e00dc2723f7d9cb5cab539e"
+      }
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "backend": "pto",
+      "mode": "simt",
+      "status": "compiled",
+      "stage": "device_compile",
+      "frontend_version": "0.1.15+cuda.git994b44ec",
+      "matching_sources": {
+        "workload.py": "07e4c8c0c2a92c21c70ba125109d8713273402f8170f2d6393158d633fe56552",
+        "input.tir": "51bc1bb8f31e4f64c49f8ebc662a2367cbadabd2e6d8c0ce7a7ba67c0a36db6c",
+        "kernel.ptodsl.py": "37cb96b3691e557739001edde918ae7e93ef3314b0318200ce4f5415054a8879"
+      }
+    }
+  ]
+}

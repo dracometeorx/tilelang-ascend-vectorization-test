@@ -1,0 +1,18 @@
+# from tvm.script import tirx as T
+
+@T.prim_func
+def main(A_handle: T.handle, B_handle: T.handle, O_handle: T.handle):
+    A = T.match_buffer(A_handle, (4, 64), strides=(64, 1))
+    B = T.match_buffer(B_handle, (1,), strides=(1,))
+    O = T.match_buffer(O_handle, (4, 64), strides=(64, 1))
+    # with T.sblock("root"):
+    for bx in T.thread_binding(1, thread="blockIdx.x"):
+        tx: T.int32 = T.launch_thread_idx(0)
+        ty: T.int32 = T.launch_thread_idx(1)
+        tz: T.int32 = T.launch_thread_idx(2)
+        with T.sblock("tilelang_root"):
+            T.reads()
+            T.writes()
+            for i in T.parallel(4):
+                for j in T.parallel(64):
+                    O[i, j] = T.float32(1.25)

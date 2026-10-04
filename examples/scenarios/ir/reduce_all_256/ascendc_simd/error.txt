@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/workspace/setup/scenarios/worker.py", line 135, in main
+    compile_device(args.backend,p,result)
+  File "/workspace/setup/scenarios/worker.py", line 24, in compile_device
+    (p/'kernel.aibin').write_bytes(compile_ascend((p/'kernel.asc').read_text(), target_format='aibin', npu_arch='dav-3510',
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/tilelang/tilelang/contrib/bisheng.py", line 200, in compile_ascend
+    _run_command(compile_command, code, verbose, "device compilation")
+  File "/workspace/tilelang/tilelang/contrib/bisheng.py", line 129, in _run_command
+    raise RuntimeError(f"Ascend {stage} failed.\nCommand: {shlex.join(command)}\nCompiler output:\n{output}\nSource:\n{code}")
+RuntimeError: Ascend device compilation failed.
+Command: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin/bisheng -O2 -fPIC -std=c++20 -mllvm -cce-aicore-dcpreload-args=false --npu-arch=dav-3510 -I/workspace/tilelang/src -g --sysroot=/workspace/setup/cann/sysroot --gcc-toolchain=/workspace/setup/cann/sysroot/usr --cce-aicore-only /tmp/tmp9fpyfb05/tl_kernel.asc -o /tmp/tmp9fpyfb05/tl_kernel.rel.o
+Compiler output:
+fatal error: error in backend: /tmp/tmp9fpyfb05/tl_kernel.asc:17:3: Unsupported scalar instruction in AIV loop.
+bisheng: error: clang frontend command failed with exit code 70 (use -v to see invocation)
+2026-08-18T19:12:48+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin
+
+Source:
+#include <tl_templates/ascend/common.h>
+#include <tl_templates/ascend/debug.h>
+#include <tl_templates/ascend/simd_inst.h>
+__simd_vf__ inline void main_kernel_simd_vf_0(__ubuf__ uint8_t* buf_dyn_shmem) {
+  ((__ubuf__ float*)buf_dyn_shmem)[256] = float(0x0p+0f/*0.000000e+00*/);
+  for (int32_t k = 0; k < 256; ++k) {
+    ((__ubuf__ float*)buf_dyn_shmem)[256] = (((__ubuf__ float*)buf_dyn_shmem)[256] + ((__ubuf__ float*)buf_dyn_shmem)[k]);
+  }
+}
+
+extern "C" __global__ __vector__ void main_kernel(__gm__ float* A, __gm__ float* O) {
+  asc_init();
+  __ubuf__ uint8_t *buf_dyn_shmem = (__ubuf__ uint8_t *)0;
+  asc_copy_gm2ub_align((__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[0]))), (__gm__ uint8_t*)((&(A[0]))), 1, 1024, 0, 0, 0, static_cast<asc_load_l2_cache_mode>(0), 1024, 1024);
+  asc_sync_notify(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));
+  asc_sync_wait(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));
+  main_kernel_simd_vf_0(buf_dyn_shmem);
+  asc_sync_notify(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));
+  asc_sync_wait(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));
+  asc_copy_ub2gm_align((__gm__ uint8_t*)((&(O[0]))), (__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[256]))), 1, 4, static_cast<asc_store_l2_cache_mode>(4), 4, 4);
+}
+
+

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/setup/scenarios/worker.py", line 141, in main
+    compile_device(args.backend,p,result)
+  File "/workspace/setup/scenarios/worker.py", line 33, in compile_device
+    import tilelang.contrib.ptodsl
+  File "/workspace/tilelang/tilelang/contrib/ptodsl/__init__.py", line 21, in <module>
+    from .simt import (
+  File "/workspace/tilelang/tilelang/contrib/ptodsl/simt.py", line 5, in <module>
+    import ptodsl._allreduce as _allreduce
+ModuleNotFoundError: No module named 'ptodsl._allreduce'
+

@@ -1,0 +1,14 @@
+Loading tilelang libs from dev root: /workspace/tilelang/build
+[18:13:54] /workspace/tilelang/src/ascend/transform/thread_storage_sync.cc:1083: Warning: [ThreadSync] Hoisting sync out of an if whose condition is not safe for an in-if sync. This is not a fix: both ends of the conflict are inside the branch, so the hoisted barrier no longer separates them and the race remains. Constraining the condition -- a T.assume on the parameters it reads -- keeps the barrier in place instead. Condition: simtvf_tx < 4
+Traceback (most recent call last):
+  File "/workspace/setup/scenarios/worker.py", line 141, in main
+    compile_device(args.backend,p,result)
+  File "/workspace/setup/scenarios/worker.py", line 33, in compile_device
+    import tilelang.contrib.ptodsl
+  File "/workspace/tilelang/tilelang/contrib/ptodsl/__init__.py", line 21, in <module>
+    from .simt import (
+  File "/workspace/tilelang/tilelang/contrib/ptodsl/simt.py", line 5, in <module>
+    import ptodsl._allreduce as _allreduce
+ModuleNotFoundError: No module named 'ptodsl._allreduce'
+
+reduce_rows pto simt failed device_compile

@@ -1,0 +1,22 @@
+Warning: Bisheng scheduler auto: on compilation failed; retrying off.
+Error: Bisheng scheduler auto: both on and off compilation failed.
+Bisheng off compilation diagnostics:
+Error: device LLVM compilation failed
+Command: /workspace/Ascend/cann-9.2.0-beta.2/bin/bisheng --cce-aicore-arch=dav-c310-vec --cce-aicore-only -O2 --cce-generic-addrspace=off -cce-bitcode-is-aicore -Wno-override-module -dc --cce-long-scbz=true -mllvm -cce-dyn-kernel-stack-size=true -mllvm --cce-simt-fpmath-combine=false -mllvm --cce-aicore-vec-misched=0 -c -x ir - -o /tmp/ptoas-bisheng-off-16b823.o
+fatal error: error in backend: Unsupported scalar instruction in AIV loop.
+bisheng: error: clang frontend command failed with exit code 70 (use -v to see invocation)
+2026-08-18T19:12:48+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /workspace/Ascend/cann-9.2.0-beta.2/bin
+
+Bisheng on compilation diagnostics:
+Error: device LLVM compilation failed
+Command: /workspace/Ascend/cann-9.2.0-beta.2/bin/bisheng --cce-aicore-arch=dav-c310-vec --cce-aicore-only -O2 --cce-generic-addrspace=off -cce-bitcode-is-aicore -Wno-override-module -dc --cce-long-scbz=true -mllvm -cce-dyn-kernel-stack-size=true -mllvm --cce-simt-fpmath-combine=false -c -x ir - -o /tmp/ptoas-device-vector-raw-120d97..o
+fatal error: error in backend: Unsupported scalar instruction in AIV loop.
+bisheng: error: clang frontend command failed with exit code 70 (use -v to see invocation)
+2026-08-18T19:12:48+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /workspace/Ascend/cann-9.2.0-beta.2/bin
+

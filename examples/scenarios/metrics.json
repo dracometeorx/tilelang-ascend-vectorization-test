@@ -1,0 +1,3918 @@
+[
+  {
+    "case": {
+      "name": "scalar_const_256",
+      "op": "scalar_const",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "scalar_const_256/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "1b27ec0d87c1bfe6d7f23709149a63df5bd293c3f50e6588d81b961a7684578a",
+      "workload.py": "910798f6de2a43246dcc0123fb3aa91888f6d852fd03a3ba1b927dde11b87c94",
+      "input.tir": "edec0268fa9a9dfdc7988a2e1502a15099e55b76854bd43fa231b006604fff0d"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_256",
+      "op": "scalar_const",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "a605fe6a1e5e41f245f7c085b7ed991a46aaea24ecd2eaadcf77d7f6d0b14933",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2648,
+    "instructions": 124,
+    "archive": "scalar_const_256/ascendc_simt/simulation/attempt__uwy0zh1/npusim_20261004175908_sim_runner",
+    "reused_from": "scalar_const_256/ascendc_simt",
+    "evidence": "scalar_const_256/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "689eaef7549a17a4591e250e5fc71aa32f2ef99394fc880a4f868f7de3c429c7",
+      "kernel.asc": "078f09f53ce8963c7ae66f51894def89cdefb1d562f51fe4366eec9458efca23",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "a0dfd7b981b1f1cb9776509f320e2d964f613cd196ad36b3fc107f4d18d36cf6",
+      "workload.py": "6de753c8c3d344d8729815dbc9363aab6828351d52e6fd892e10c38099760657",
+      "input.tir": "f5c5b415ef02195a4306f9c799f832dccf3bf82959dc3440d8eba890a158b49f",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_256",
+      "op": "scalar_const",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "158bed3fa6a3fbf7d0d3c1c81f53f2488b8b564c9e278b5742117a95756159bf",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2137,
+    "instructions": 98,
+    "archive": "scalar_const_256/ascendc_simd/simulation/attempt_rfnt7mys/npusim_20261004175506_sim_runner",
+    "reused_from": "scalar_const_256/ascendc_simd",
+    "evidence": "scalar_const_256/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "3a391c227d382cf3c78c97408ab6f3292cc95182ec7a42d1883ccc92e34b4f75",
+      "kernel.asc": "8f5b6a8e7e282dd3dc08bd62df10073d380eaac9b5f90afbcc8ddd6e6a8c86c5",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "2c4aba4614c47f15f6f686f62357ff6b374aa6ae36a9db25dc8eb5d3bc0771ff",
+      "workload.py": "4468fa8e7d9e37e4407cab88e2db51d658357d9a3724d0c4f491893af25d9c71",
+      "input.tir": "2b8365179888552065f47367204ca6c5636883011a1f734d6711d32da3b22b1b",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_256",
+      "op": "scalar_const",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "6242e40b9956f90bf799f5b333f985143ba601abeea11195de02b9a1645b05b2",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2618,
+    "instructions": 144,
+    "archive": "scalar_const_256/pto_simt/simulation/attempt_3iwqtyl0/npusim_20261004175549_sim_runner",
+    "reused_from": "scalar_const_256/pto_simt",
+    "evidence": "scalar_const_256/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "d4e0fc72405abdebbd6e8187cf6f6f43e6900c38504a052ecfda963d677bf4bf",
+      "kernel.vpto.mlir": "955a8e7f7c15e22ea4a6e03df09bf5f05f17bbe04943da6d605013aa170f3a14",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "9559e16fa5a30275ce93be46a2fde089eeb8b419c7c7f9d42454f31a93e45900",
+      "kernel.ptodsl.py": "37cb96b3691e557739001edde918ae7e93ef3314b0318200ce4f5415054a8879",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "a65c6a96c4d41e0fbec893549504d545e78f64ceb616fcb1f365c6ad25c18284",
+      "kernel.ll": "468db4b84d9cd1fddecb63c61a1b3dda4f1187bfaf1be6b9eb52b1f54ee85b5c",
+      "workload.py": "6de753c8c3d344d8729815dbc9363aab6828351d52e6fd892e10c38099760657",
+      "input.tir": "f5c5b415ef02195a4306f9c799f832dccf3bf82959dc3440d8eba890a158b49f",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_256",
+      "op": "scalar_const",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "74ed055225f8bae56b60079d7c6f79e103e7eade5e92bdda6d329ad64f3a2ecf",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2111,
+    "instructions": 93,
+    "archive": "scalar_const_256/pto_simd/simulation/attempt_k6yr71gz/npusim_20261004175636_sim_runner",
+    "reused_from": "scalar_const_256/pto_simd",
+    "evidence": "scalar_const_256/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "ee0276168bd915653aeb70f3335e86117bde2b1b22e349c34f2bca9ffc05aea4",
+      "kernel.vpto.mlir": "a6b132e6cf9bc50d54e07464bb042b92e04664688acb2bcdd158a4f46ef6bbea",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "f8c2def3f49ab1120f35538192ac7200e69f6291705fbdc2dbd63547207abd8d",
+      "kernel.ptodsl.py": "203a29afc6a05f9d9aa33b718fe96a10e8646d6100faf7e4ad6785a565ea7d5b",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "c459ce373bfa3f9f26ad5e65eaadf0b741bdfa7e95dd2c165dfe114a4f6e17ed",
+      "kernel.ll": "19af1ee85266f0b260ca4c8db330e797e410377a048e08af7b41f9ba08cf36c6",
+      "workload.py": "4468fa8e7d9e37e4407cab88e2db51d658357d9a3724d0c4f491893af25d9c71",
+      "input.tir": "2b8365179888552065f47367204ca6c5636883011a1f734d6711d32da3b22b1b",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_256",
+      "op": "scalar_const",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3c9faaced68af861a9953b4a59c59aa7863374e7d812081cfdfbee9d1946901e",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2229,
+    "instructions": 106,
+    "archive": "scalar_const_256/npuir_auto_simd/simulation/attempt_weytlvk2/npusim_20261004175717_sim_runner",
+    "reused_from": "scalar_const_256/npuir_auto_simd",
+    "evidence": "scalar_const_256/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "fd48dbd3d6f98620f2fc094ddcc2af2df6cedd7e30c1c4a643ae2a2d7347bb5b",
+      "kernel.mlir": "5b9366fae563348224243a7b0a6076067978edb6fe4ba703e6cbbd1fe55c44d2",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "e75f561e7fc8a1ba7cce103b40984d5822abb4fc2d8dcd948e5e946318ab84d5",
+      "workload.py": "72784d7257d7c168e32b52cbfe12feef017833dd5d6731812cb9b2423f279a0e",
+      "input.tir": "164733efb784805d48b8a0084088ff63c246e44daacb0fd63eb37dafb8b74303",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "219ecbd2010e4a46e6633170a05bf070535dac3a45aa72e7f4eaf90cb0660130"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_4x64",
+      "op": "scalar_const",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "scalar_const_4x64/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "1b27ec0d87c1bfe6d7f23709149a63df5bd293c3f50e6588d81b961a7684578a",
+      "workload.py": "f869e15935d040c6a6e5b5a38490cfea5d188cbe348600e32dda64d8ad5409ae",
+      "input.tir": "0cecde787e331cdb0d8aa27d37ecd27c930afa39a7c4b63ed08b5ee8affa29ae"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_4x64",
+      "op": "scalar_const",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "f5715c513b8f473cde6ac40e76697fae13542a81b7eb4857b31ad9cd57b006b2",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2606,
+    "instructions": 124,
+    "archive": "scalar_const_4x64/ascendc_simt/simulation/attempt_nv9yx2x0/npusim_20261004175954_sim_runner",
+    "reused_from": "scalar_const_4x64/ascendc_simt",
+    "evidence": "scalar_const_4x64/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "689eaef7549a17a4591e250e5fc71aa32f2ef99394fc880a4f868f7de3c429c7",
+      "kernel.asc": "078f09f53ce8963c7ae66f51894def89cdefb1d562f51fe4366eec9458efca23",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "0d17ab07025aff607995780e5f79813c4647fc70cc8c1f4b739fa0b443bbcfed",
+      "workload.py": "07e4c8c0c2a92c21c70ba125109d8713273402f8170f2d6393158d633fe56552",
+      "input.tir": "51bc1bb8f31e4f64c49f8ebc662a2367cbadabd2e6d8c0ce7a7ba67c0a36db6c",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_4x64",
+      "op": "scalar_const",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "54c318ac84583213fccbaae317884e6b80b9682ed340863c5c5a1ab2db4b7661",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2128,
+    "instructions": 98,
+    "archive": "scalar_const_4x64/ascendc_simd/simulation/attempt_8hb_jugw/npusim_20261004180038_sim_runner",
+    "reused_from": "scalar_const_4x64/ascendc_simd",
+    "evidence": "scalar_const_4x64/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "ef0d8395dcf49fe01a194ab0fe176d041fe5b43905386289d00757f8577a014d",
+      "kernel.asc": "87049e6ef3796d52c3ab64a20db771f950ba522d613c25f702f271809ebaef85",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "68e346de133a76ed8a373ca3910b588c0602a8a662f2c9ce711daada58ce6373",
+      "workload.py": "6c22de93b56e045e2afc7f6d9ebdff7161b790f8c6e9f14cbec67cd4498d468c",
+      "input.tir": "b5153b50f2594742394ca412aef4a3d96f20894b52ddbfa8587c085b35219044",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_4x64",
+      "op": "scalar_const",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "6242e40b9956f90bf799f5b333f985143ba601abeea11195de02b9a1645b05b2",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2618,
+    "instructions": 144,
+    "archive": "scalar_const_256/pto_simt/simulation/attempt_3iwqtyl0/npusim_20261004175549_sim_runner",
+    "reused_from": "scalar_const_256/pto_simt",
+    "evidence": "scalar_const_4x64/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "d4e0fc72405abdebbd6e8187cf6f6f43e6900c38504a052ecfda963d677bf4bf",
+      "kernel.vpto.mlir": "955a8e7f7c15e22ea4a6e03df09bf5f05f17bbe04943da6d605013aa170f3a14",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "9559e16fa5a30275ce93be46a2fde089eeb8b419c7c7f9d42454f31a93e45900",
+      "kernel.ptodsl.py": "37cb96b3691e557739001edde918ae7e93ef3314b0318200ce4f5415054a8879",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "a65c6a96c4d41e0fbec893549504d545e78f64ceb616fcb1f365c6ad25c18284",
+      "kernel.ll": "468db4b84d9cd1fddecb63c61a1b3dda4f1187bfaf1be6b9eb52b1f54ee85b5c",
+      "workload.py": "07e4c8c0c2a92c21c70ba125109d8713273402f8170f2d6393158d633fe56552",
+      "input.tir": "51bc1bb8f31e4f64c49f8ebc662a2367cbadabd2e6d8c0ce7a7ba67c0a36db6c",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_4x64",
+      "op": "scalar_const",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "74ed055225f8bae56b60079d7c6f79e103e7eade5e92bdda6d329ad64f3a2ecf",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2111,
+    "instructions": 93,
+    "archive": "scalar_const_256/pto_simd/simulation/attempt_k6yr71gz/npusim_20261004175636_sim_runner",
+    "reused_from": "scalar_const_256/pto_simd",
+    "evidence": "scalar_const_4x64/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "0ab4eedf01a59273b658c393720cba8ab3e7672813745be2943ff2cc816e2823",
+      "kernel.vpto.mlir": "a6b132e6cf9bc50d54e07464bb042b92e04664688acb2bcdd158a4f46ef6bbea",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "f8c2def3f49ab1120f35538192ac7200e69f6291705fbdc2dbd63547207abd8d",
+      "kernel.ptodsl.py": "f7dc89db3df586baa9a40e5ab2ae8096cd148ad76e00dc2723f7d9cb5cab539e",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "c459ce373bfa3f9f26ad5e65eaadf0b741bdfa7e95dd2c165dfe114a4f6e17ed",
+      "kernel.ll": "19af1ee85266f0b260ca4c8db330e797e410377a048e08af7b41f9ba08cf36c6",
+      "workload.py": "6c22de93b56e045e2afc7f6d9ebdff7161b790f8c6e9f14cbec67cd4498d468c",
+      "input.tir": "b5153b50f2594742394ca412aef4a3d96f20894b52ddbfa8587c085b35219044",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_const_4x64",
+      "op": "scalar_const",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3d83b50e89e06ab7680ea18c5924d7a5d074a6ebd0fea6fd550c83e500260d92",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+    "cycles": 2238,
+    "instructions": 106,
+    "archive": "scalar_const_4x64/npuir_auto_simd/simulation/attempt_98_u9o3k/npusim_20261004180122_sim_runner",
+    "reused_from": "scalar_const_4x64/npuir_auto_simd",
+    "evidence": "scalar_const_4x64/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "72cd3125bb7c255b1c1274927c54b6d70e84e52a460bfb9aab5a4a3327020e9b",
+      "kernel.mlir": "a63304a4b7c131aac28ccb1bb9c69c1166738c34b74ce41dd0cceab7469bfef0",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "6c8055aee8d015896da172dbcaeb198aedd113634177916053b9d8d4380bd4da",
+      "workload.py": "9e91939f170f9aff514bc9206bd0a69f0b25e8351b6fa63e1a9e8a1cc364beb9",
+      "input.tir": "9e91f0e30ac96aac2e033afe5f2aadcf505c9ac5f5ff58aae1a1d92a9d775ff2",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "ed5ab470ff287ecd89b2957333375ab410b40d1a6b22e50e6f7630f5de408e13"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_256",
+      "op": "scalar_buffer",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "scalar_buffer_256/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "576b03626370855896931d4592311f660327b169f05cdc682b6059f4fc246a79",
+      "workload.py": "fbaa5cbb5b4491f7e06ee7a9a1e9f2a7e34f9b783dd666507c9b09e267b50ebf",
+      "input.tir": "155a73ba15822a0da82be1ee58c3b56b3db359c9fafccd1efe8038d74d8f6833"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_256",
+      "op": "scalar_buffer",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "5ecce516beeb22bf95e226fb92bbdfb5e99bd8416150663d48b3778b409e09e7",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2627,
+    "instructions": 139,
+    "archive": "scalar_buffer_256/ascendc_simt/simulation/attempt_waawal8c/npusim_20261004180207_sim_runner",
+    "reused_from": "scalar_buffer_256/ascendc_simt",
+    "evidence": "scalar_buffer_256/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "c6cc9b575f995988f2a896ac509e8eb28f830e2320ba0336fdfdbcf34e1598be",
+      "kernel.asc": "3c1a5750ebf5bbcafc2ee4172f16d6380c6b9d228768cb2ac2052515324dbeb3",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "1e66ed7902a9eb44020ded1faf5660b1baf002124eb2af83f22b2f130f1192c5",
+      "workload.py": "fe692315128204fab97c190d4462af0f486811ac48ec1d00eb3c76c8ea4e7147",
+      "input.tir": "552e9c525b8aa5afcb9067d07a933300801fe4e673db9b6e5ddc6896ce6e0e04",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_256",
+      "op": "scalar_buffer",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "5bd4399f1713719378f820a2e75ad8a6bb4d608fff10b74410ca2fafd09117d4",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2119,
+    "instructions": 103,
+    "archive": "scalar_buffer_256/ascendc_simd/simulation/attempt_25nqz5yn/npusim_20261004180257_sim_runner",
+    "reused_from": "scalar_buffer_256/ascendc_simd",
+    "evidence": "scalar_buffer_256/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "1c4034144b50202af2693b10ee1494371552b314ce7d71ea0608502f05bcbfde",
+      "kernel.asc": "d97a7bbc3fcce2a8ad5dc19b38aa29b02860c975dada84f1b19f2a18ad1303b2",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "643275b27b083be234506ebe40c51431a5f6fbae228dfa1f0523c4dfd7868f37",
+      "workload.py": "3fe3385ca4406b4ec2a5fe1f0c8f4e4ecfedcd39ab0df3b55580708b28b4f371",
+      "input.tir": "cbdfe288c69943cc0dd725f9eb65233235925a6bd4a9f87d718db7640a9e54e8",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_256",
+      "op": "scalar_buffer",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "46ad783a85d7dbf7cce1398d06a12a359bf3be6284a75dcf8ee29e24b4061d7a",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2597,
+    "instructions": 159,
+    "archive": "scalar_buffer_256/pto_simt/simulation/attempt_vj2d0ljs/npusim_20261004180341_sim_runner",
+    "reused_from": "scalar_buffer_256/pto_simt",
+    "evidence": "scalar_buffer_256/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "83d27e1aa08c53020c490002a1f480381f77dbcb65b2cd8e3a4df544a044a011",
+      "kernel.vpto.mlir": "d1ee707e13f9aaecc8d45bcb9c1780839cf47f6579f230d46ba0a0e6291e7b69",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "076dcebc382cfb25ab01d05a8a66389b58f72757b620de5b8a8343e9f75a9ab7",
+      "kernel.ptodsl.py": "086057ea21cb6833f39a2535544bb8b361dd299019a1d1ab11d6f463bc13d645",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "9ae060697faafd6276a2c88aca9cbb1cbee1962b833f31fcff8872e8bd9c5960",
+      "kernel.ll": "11aabc4ad5ade88d6524b10e2debf8c0dc073c44dfd10ff0a5ed84a591f2df56",
+      "workload.py": "fe692315128204fab97c190d4462af0f486811ac48ec1d00eb3c76c8ea4e7147",
+      "input.tir": "552e9c525b8aa5afcb9067d07a933300801fe4e673db9b6e5ddc6896ce6e0e04",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_256",
+      "op": "scalar_buffer",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3c25b6f4f889dc295be5ff344b8529cbbd5ddcf179909d91183f1ff15bc2fbc8",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2135,
+    "instructions": 100,
+    "archive": "scalar_buffer_256/pto_simd/simulation/attempt_sn3rkfxh/npusim_20261004180431_sim_runner",
+    "reused_from": "scalar_buffer_256/pto_simd",
+    "evidence": "scalar_buffer_256/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "47900b7782f0e89c8c5c287d75ca143831ab7e1c3f2dd22b4ed95e858fb65f5c",
+      "kernel.vpto.mlir": "3da77c3669bfacc53715d6f180d065d515662b8eeb2661f5d4aeada0f38eb932",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "404564abf01533fc71445a628c2df9264610d0f3975363822c9ff6f6962b01d5",
+      "kernel.ptodsl.py": "25617e44bab2cfb1699a471fbac7816fad679dfb0200d7f28b06f400083ffe81",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "1a14f7efe7ca232feb3bef8e097321aa2a2efa11983cdb4bad4ebfc96f60f13b",
+      "kernel.ll": "de439ca994127c9d8c4af1c55d0f59aca1e083286c9e2dc71ec9604f6d92d501",
+      "workload.py": "3fe3385ca4406b4ec2a5fe1f0c8f4e4ecfedcd39ab0df3b55580708b28b4f371",
+      "input.tir": "cbdfe288c69943cc0dd725f9eb65233235925a6bd4a9f87d718db7640a9e54e8",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_256",
+      "op": "scalar_buffer",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "c9e1d8cc8812f1faf066c0212deaaf5c03c85b20866e778ab6b14f3fae448ae7",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2767,
+    "instructions": 153,
+    "archive": "scalar_buffer_256/npuir_auto_simd/simulation/attempt_5xp4t20r/npusim_20261004180524_sim_runner",
+    "reused_from": "scalar_buffer_256/npuir_auto_simd",
+    "evidence": "scalar_buffer_256/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "a774682873b33dcf5c0bd410545ec8650fbca5fb0ea93967f177f9e42b12b583",
+      "kernel.mlir": "7443b19a8cdfaa4695386d151adf75985d5d13a1b5006e99ed29febe7bf9efa0",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "0cf1d5d13f31d5ee84e0d04f31fedad1ead7f7518084a83271dc0315c733c646",
+      "workload.py": "61cb147078fa5c0cbfd2771a6d2bd44be0c672352390315f63ad9fa81de0f584",
+      "input.tir": "397f89af06daf190dc4ed0991b9e6135a7e12df73b83e402e138ebac08fbe2ef",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "9c1b099efc9a3cef9377f0083c92b560c7e6ac0d64a14e2a9f505630900e187e"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_4x64",
+      "op": "scalar_buffer",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "scalar_buffer_4x64/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "576b03626370855896931d4592311f660327b169f05cdc682b6059f4fc246a79",
+      "workload.py": "416aca7b8d0ad97ae065da7d81439b1e39f15407e18e73d597b2610b482d3abd",
+      "input.tir": "47f85eaf5d1b3bebfd1803095204e0c120fcfee5675677a282c83282574e29c1"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_4x64",
+      "op": "scalar_buffer",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "d7311699f2dea97ac678ec0204cb08015302403eddc16d4fba34d14219f0a01b",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2628,
+    "instructions": 139,
+    "archive": "scalar_buffer_4x64/ascendc_simt/simulation/attempt_tgh85_vb/npusim_20261004180610_sim_runner",
+    "reused_from": "scalar_buffer_4x64/ascendc_simt",
+    "evidence": "scalar_buffer_4x64/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "c6cc9b575f995988f2a896ac509e8eb28f830e2320ba0336fdfdbcf34e1598be",
+      "kernel.asc": "3c1a5750ebf5bbcafc2ee4172f16d6380c6b9d228768cb2ac2052515324dbeb3",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "e072d4193af89a744a74a9c2b41313b354561438e730d0ee4a0a12d7505b7c34",
+      "workload.py": "57a3298e7ea11ff66d25e3fafb1703bf7df2206df25f9ba087123842cbd99d2f",
+      "input.tir": "609445bf297861a9a77e56dcb39bde1f0627e73655498bc8fd0790d1bfa3dfc0",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_4x64",
+      "op": "scalar_buffer",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "73c5477e07027832728f8cf8ec8f6199c53d9058e5d52e8a9403b422eb926b5e",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2131,
+    "instructions": 103,
+    "archive": "scalar_buffer_4x64/ascendc_simd/simulation/attempt_x3hfwva_/npusim_20261004180658_sim_runner",
+    "reused_from": "scalar_buffer_4x64/ascendc_simd",
+    "evidence": "scalar_buffer_4x64/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "f32275e536dfd358f4ff823d6a9ce61ea95d3688fe0371df6631a06dd8d5a35e",
+      "kernel.asc": "3545b429040d669575ffb136f10ad3259891824da5473341f083a24139150d76",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "821c5b41d8cea18886ab4a3107218bf5b04523cb6c55754dda86e88aaabbf81f",
+      "workload.py": "d0c633b03cd058e457287cd798d6fbcbd68a3cff96ca7665254e33d6289ac0ea",
+      "input.tir": "5b84cd4e91caef79bb98bda14ad6e28ce18a793aba9a469830c23cb3004223cb",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_4x64",
+      "op": "scalar_buffer",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "46ad783a85d7dbf7cce1398d06a12a359bf3be6284a75dcf8ee29e24b4061d7a",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2597,
+    "instructions": 159,
+    "archive": "scalar_buffer_256/pto_simt/simulation/attempt_vj2d0ljs/npusim_20261004180341_sim_runner",
+    "reused_from": "scalar_buffer_256/pto_simt",
+    "evidence": "scalar_buffer_4x64/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "83d27e1aa08c53020c490002a1f480381f77dbcb65b2cd8e3a4df544a044a011",
+      "kernel.vpto.mlir": "d1ee707e13f9aaecc8d45bcb9c1780839cf47f6579f230d46ba0a0e6291e7b69",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "076dcebc382cfb25ab01d05a8a66389b58f72757b620de5b8a8343e9f75a9ab7",
+      "kernel.ptodsl.py": "086057ea21cb6833f39a2535544bb8b361dd299019a1d1ab11d6f463bc13d645",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "9ae060697faafd6276a2c88aca9cbb1cbee1962b833f31fcff8872e8bd9c5960",
+      "kernel.ll": "11aabc4ad5ade88d6524b10e2debf8c0dc073c44dfd10ff0a5ed84a591f2df56",
+      "workload.py": "57a3298e7ea11ff66d25e3fafb1703bf7df2206df25f9ba087123842cbd99d2f",
+      "input.tir": "609445bf297861a9a77e56dcb39bde1f0627e73655498bc8fd0790d1bfa3dfc0",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_4x64",
+      "op": "scalar_buffer",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3c25b6f4f889dc295be5ff344b8529cbbd5ddcf179909d91183f1ff15bc2fbc8",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2135,
+    "instructions": 100,
+    "archive": "scalar_buffer_256/pto_simd/simulation/attempt_sn3rkfxh/npusim_20261004180431_sim_runner",
+    "reused_from": "scalar_buffer_256/pto_simd",
+    "evidence": "scalar_buffer_4x64/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "652af6e3bfa856ee8e360600f1a1c3f56fc7aca21b15e60684596818be8957fe",
+      "kernel.vpto.mlir": "451a93f29d3ace3c0c2099c85ceedb3d50465220e8b31bad34ab105944d9e2ca",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "f9f68a2731b47b1845feb886976008fc8d10ace449e068017b47462b634ace94",
+      "kernel.ptodsl.py": "7bd692a1307367a12cf4632d4d6b784da18a1943f67b8508942ef3124adb80ff",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "1a14f7efe7ca232feb3bef8e097321aa2a2efa11983cdb4bad4ebfc96f60f13b",
+      "kernel.ll": "104617de301429f96c11d440dd7d017e16d88770ae9f08bee5244a8c2aa5e037",
+      "workload.py": "d0c633b03cd058e457287cd798d6fbcbd68a3cff96ca7665254e33d6289ac0ea",
+      "input.tir": "5b84cd4e91caef79bb98bda14ad6e28ce18a793aba9a469830c23cb3004223cb",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "scalar_buffer_4x64",
+      "op": "scalar_buffer",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "c9e1d8cc8812f1faf066c0212deaaf5c03c85b20866e778ab6b14f3fae448ae7",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+    "cycles": 2767,
+    "instructions": 153,
+    "archive": "scalar_buffer_256/npuir_auto_simd/simulation/attempt_5xp4t20r/npusim_20261004180524_sim_runner",
+    "reused_from": "scalar_buffer_256/npuir_auto_simd",
+    "evidence": "scalar_buffer_4x64/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "1066c17678e0a4af2419215da12b0b319bcb42d71b4c198479dde4f6995f5e0b",
+      "kernel.mlir": "3065d987dbc0643eae2f60b0f087696a7b4de87ca7aba84d5f64007a6cdbd719",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "0cf1d5d13f31d5ee84e0d04f31fedad1ead7f7518084a83271dc0315c733c646",
+      "workload.py": "6ee3c878925f186ab0d595e08feebb78111aa877b8252875e1fffb30e7106d50",
+      "input.tir": "bf46165858db6e4607768a7d64a9c0dcf7cbffa50ddd861d185b853ff2cc2825",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "58788636c1ce092463d82eef6928d4f9e587008a267add69081df111552e8414"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_256",
+      "op": "copy",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "copy_256/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "c6cbda89053e0f402d1042991c4181f18daaa637e1115a6437f64fcf624e664f",
+      "workload.py": "f556d5c2db170ffae45103d14e475816e4fe1fa88fe9c6249e6f0034076ae553",
+      "input.tir": "2c8709d90e590bfae8c8f5fed529014643208832575e84ced958a1d747c9e234"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_256",
+      "op": "copy",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "6fb126401856de063da5365602d33719ff9629f03f199830b2acb915966e8f91",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2627,
+    "instructions": 116,
+    "archive": "copy_256/ascendc_simt/simulation/attempt_547sadl2/npusim_20261004180746_sim_runner",
+    "reused_from": "copy_256/ascendc_simt",
+    "evidence": "copy_256/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "656cbade7f979e37a5276a23e2e711407c5b4f5c494099921664832ca42e8624",
+      "kernel.asc": "981a901e9592227f8ce06bd9883be06370a0ba3590fe6fd021a895e9fbb65540",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "b7aed99e07da3e1ef8a49664617035a27eb4db9b6649fc438d0436073a38778f",
+      "workload.py": "40531f1aa05c0cc05c6ff99b45433aad621ee0937d1f21cf56b5252c365c8057",
+      "input.tir": "0ae7158e0cae2ddf8479c1c73949dd385986a2455a6eddbd5c31791624b1c0bf",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_256",
+      "op": "copy",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "6e0f11e052633452c3bf277c096651ac2dc86c15be6e9db47e88dc18145f405f",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2138,
+    "instructions": 91,
+    "archive": "copy_256/ascendc_simd/simulation/attempt_rz51qmzc/npusim_20261004180841_sim_runner",
+    "reused_from": "copy_256/ascendc_simd",
+    "evidence": "copy_256/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "1c055ba4d2b0919c1a1938a88f1c3585bd14ae705e207837ff066ef823460d22",
+      "kernel.asc": "173faef51f2afca7e7281928ae279fefe613f6245bbb36a0b2b2dea559f9eeff",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "9bd28ca1b21e3932bc18d4544f0b578c4c72d14584ceb4aef5cfb233a06730d1",
+      "workload.py": "00c6ec1a6cb6226a4fa9a6d5c9c2716f89be5094938940df5ebb875ce45d316a",
+      "input.tir": "fe74e83ef844a76170859b78af4ee71024678aab8245bd061ccb33c6e01caf0f",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_256",
+      "op": "copy",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "8d18925300351c51f461f6cc9024fbfcacd3722588c85c9cf9b7c1a4f7393532",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2599,
+    "instructions": 136,
+    "archive": "copy_256/pto_simt/simulation/attempt_mquvv6e4/npusim_20261004180924_sim_runner",
+    "reused_from": "copy_256/pto_simt",
+    "evidence": "copy_256/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "539d176f3d35202b2b77741e426c2c5b93484b0e8f93c638347d74b4591b4778",
+      "kernel.vpto.mlir": "2c0f0e4987e28ab65ce9867d1acac6f5562a56292fe4005174f2c3a9b24d40a8",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "6a0f85c0b73ded91c2fa126ee318e4b35b0aca8274ff802edf6aa901786f1f9c",
+      "kernel.ptodsl.py": "8158e4673b84c2c9b80df88e603eba332adbdce0d43e9cfeb699ded779954dc2",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "3f91b969c95932d4b8cc744275093cb5ad736180ae3621e6aab42ef8776c21ce",
+      "kernel.ll": "a4d1cff958cc839f66025d7895890f9d1a321ead16c8f297761ce4cc690c474c",
+      "workload.py": "40531f1aa05c0cc05c6ff99b45433aad621ee0937d1f21cf56b5252c365c8057",
+      "input.tir": "0ae7158e0cae2ddf8479c1c73949dd385986a2455a6eddbd5c31791624b1c0bf",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_256",
+      "op": "copy",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "097812c17572b93557e1ea40630fde766849cfb9e8389de7277044098265e8c8",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2135,
+    "instructions": 83,
+    "archive": "copy_256/pto_simd/simulation/attempt_cpivhza0/npusim_20261004181014_sim_runner",
+    "reused_from": "copy_256/pto_simd",
+    "evidence": "copy_256/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "30f2d224e7770547ce6b76df805162039cf9f91f076628b33ab732d79eee227d",
+      "kernel.vpto.mlir": "50b6012ffe9f15c05db8e10f57d94320ad172acff31e5e5e8dd8746c2b3cf3fb",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "9707323b5e007fb81717711d884f4be238fdbb47cbd17b9101f098aa40a62e49",
+      "kernel.ptodsl.py": "208f812883d6361c03149b3e1fcc9bb2981eac441d1cf1938673457d9ea598c9",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "18be35ba56b0a7d0fa89c75664343b645daa641e9b05c175f17c730d7a02afb8",
+      "kernel.ll": "1c28dc6afbfc80f5ec68e074ee8a97f8e0e1b6aed1d33415629bf76879013b02",
+      "workload.py": "00c6ec1a6cb6226a4fa9a6d5c9c2716f89be5094938940df5ebb875ce45d316a",
+      "input.tir": "fe74e83ef844a76170859b78af4ee71024678aab8245bd061ccb33c6e01caf0f",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_256",
+      "op": "copy",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "94b21591e822e990ef46862977a0097a0336458fad721a3429c77d60b4de2848",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2149,
+    "instructions": 70,
+    "archive": "copy_256/npuir_auto_simd/simulation/attempt_vde7lc18/npusim_20261004181058_sim_runner",
+    "reused_from": "copy_256/npuir_auto_simd",
+    "evidence": "copy_256/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "965e9c38cf359ba855a7ee2dec28ca95dc303a0853e8e9382df44b72abd8a0a3",
+      "kernel.mlir": "3b6b49187610f9541e5e64ba5fbc3f2831ecfe40dcef096d5272b51bc072133a",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "65906bdd5e8327d166d8f52d58ae50c55c440a5044023d5a82973b98fcc60586",
+      "workload.py": "a1e7168df140c2ad072971b1e58beb7f7538169c8f1820d00304dffef212269a",
+      "input.tir": "c2e84935e82edae9324b0db78fea0fd59e71f70fbd192c9205c295791d8fb73d",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "5cb0d6724b2bd6da8525e32a97df0d0ea50dd33d0fd24c24ef7060d4906673ed"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_4x64",
+      "op": "copy",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "copy_4x64/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "c6cbda89053e0f402d1042991c4181f18daaa637e1115a6437f64fcf624e664f",
+      "workload.py": "8d18bbda3f565633aa8bc3aaf2514aee334a4ef8e5acb177f2b0bc4c780a2bbd",
+      "input.tir": "b8f21117310981fd7daf7c9a61671f928f5d516d28f9e9999504fdf0d07b8925"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_4x64",
+      "op": "copy",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "e1a8223d1797c285813af1d48544883e01630757e6df7f74810307272df595b1",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2627,
+    "instructions": 116,
+    "archive": "copy_4x64/ascendc_simt/simulation/attempt_rq7j70zn/npusim_20261004181145_sim_runner",
+    "reused_from": "copy_4x64/ascendc_simt",
+    "evidence": "copy_4x64/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "656cbade7f979e37a5276a23e2e711407c5b4f5c494099921664832ca42e8624",
+      "kernel.asc": "981a901e9592227f8ce06bd9883be06370a0ba3590fe6fd021a895e9fbb65540",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "68d1abc160337643f5054ee0f8b5077922176dfe2b7a0b9c198f90b7ff72aee6",
+      "workload.py": "e0f4d4f93ab57bae9f668a76af468bfce7bd64f568a064d106637cb4f6ea195a",
+      "input.tir": "070fa76878f75ce77e05b57d4b6ac156fdd4535dc9907b7e45da1208968e4278",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_4x64",
+      "op": "copy",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "d32692dd58dce8b8293305d3d160cf9da8153473035848d5e97b09a893ab5eaa",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2143,
+    "instructions": 91,
+    "archive": "copy_4x64/ascendc_simd/simulation/attempt_vow2l_ve/npusim_20261004181231_sim_runner",
+    "reused_from": "copy_4x64/ascendc_simd",
+    "evidence": "copy_4x64/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "06a72fa405b38f8ad714e2dd1aa78dc58f737fe291c0268272f78a9edfd78a93",
+      "kernel.asc": "0ba70283c86f0a84007db1715d60102d1265ddf2dcab77cfa233ca9ef8088a53",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "2d1a028ce2113a7aa60ba9d81ceedbb941641aefec22650e81871327fe29e598",
+      "workload.py": "383688c3b132f6d1e1047f7df6d41d0d978037dca7738505b5717f6dc60aac52",
+      "input.tir": "8e777a5e3f7ce4dd945dc3ae8047009bc28e0bdfd77b02ba671acc18538c4ce4",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_4x64",
+      "op": "copy",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "8d18925300351c51f461f6cc9024fbfcacd3722588c85c9cf9b7c1a4f7393532",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2599,
+    "instructions": 136,
+    "archive": "copy_256/pto_simt/simulation/attempt_mquvv6e4/npusim_20261004180924_sim_runner",
+    "reused_from": "copy_256/pto_simt",
+    "evidence": "copy_4x64/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "539d176f3d35202b2b77741e426c2c5b93484b0e8f93c638347d74b4591b4778",
+      "kernel.vpto.mlir": "2c0f0e4987e28ab65ce9867d1acac6f5562a56292fe4005174f2c3a9b24d40a8",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "6a0f85c0b73ded91c2fa126ee318e4b35b0aca8274ff802edf6aa901786f1f9c",
+      "kernel.ptodsl.py": "8158e4673b84c2c9b80df88e603eba332adbdce0d43e9cfeb699ded779954dc2",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "3f91b969c95932d4b8cc744275093cb5ad736180ae3621e6aab42ef8776c21ce",
+      "kernel.ll": "a4d1cff958cc839f66025d7895890f9d1a321ead16c8f297761ce4cc690c474c",
+      "workload.py": "e0f4d4f93ab57bae9f668a76af468bfce7bd64f568a064d106637cb4f6ea195a",
+      "input.tir": "070fa76878f75ce77e05b57d4b6ac156fdd4535dc9907b7e45da1208968e4278",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_4x64",
+      "op": "copy",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "097812c17572b93557e1ea40630fde766849cfb9e8389de7277044098265e8c8",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2135,
+    "instructions": 83,
+    "archive": "copy_256/pto_simd/simulation/attempt_cpivhza0/npusim_20261004181014_sim_runner",
+    "reused_from": "copy_256/pto_simd",
+    "evidence": "copy_4x64/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "abaea6e6db49f4d9c8d412c863157b2b9f521fff97248bc87ac8245afd6cef5a",
+      "kernel.vpto.mlir": "50b6012ffe9f15c05db8e10f57d94320ad172acff31e5e5e8dd8746c2b3cf3fb",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "9707323b5e007fb81717711d884f4be238fdbb47cbd17b9101f098aa40a62e49",
+      "kernel.ptodsl.py": "be68cedf82f0d41715f19e7605c1fc06e134ec7f116dd734364825746a296cae",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "18be35ba56b0a7d0fa89c75664343b645daa641e9b05c175f17c730d7a02afb8",
+      "kernel.ll": "1c28dc6afbfc80f5ec68e074ee8a97f8e0e1b6aed1d33415629bf76879013b02",
+      "workload.py": "383688c3b132f6d1e1047f7df6d41d0d978037dca7738505b5717f6dc60aac52",
+      "input.tir": "8e777a5e3f7ce4dd945dc3ae8047009bc28e0bdfd77b02ba671acc18538c4ce4",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "copy_4x64",
+      "op": "copy",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "94b21591e822e990ef46862977a0097a0336458fad721a3429c77d60b4de2848",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2149,
+    "instructions": 70,
+    "archive": "copy_256/npuir_auto_simd/simulation/attempt_vde7lc18/npusim_20261004181058_sim_runner",
+    "reused_from": "copy_256/npuir_auto_simd",
+    "evidence": "copy_4x64/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "a5dd57833708c4494ed9678682a5a5f4a3b34323966e9983a1331892fe5fbc8f",
+      "kernel.mlir": "179566af3e18e5f61748c63c5a385cb2a93ad2978983314b2c6565f6cc340e2d",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "65906bdd5e8327d166d8f52d58ae50c55c440a5044023d5a82973b98fcc60586",
+      "workload.py": "5c92437b900cc69ffc74fa706df520a2bc1c487bcca767b598c372b171689ac8",
+      "input.tir": "4681d468b08f690da7e4b77d181025aa5c0bdc04c7d72eabf7be04514498367a",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "e4c198c2c26c325c7e7ca12897d3b9bfbb02e161eab024ab947fe16329ce45e9"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_256",
+      "op": "fill",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "fill_256/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "4e88d411657cb5ed46136c30a0781055abf3e334a5f71ca6c8dbfd33ad7628ca",
+      "workload.py": "05dcc32a1b0b20bea801cce6d55db1a2262b772faa2d9decd5647be9e45a2c85",
+      "input.tir": "737d91b62362b22bec22b94534a8b10916f7dac4e06d4007cd4fc639badc164f"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_256",
+      "op": "fill",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "ecd624e7ec16d47d5a872e6bb0c0d1c36fdf355056364f2849027f8524963aef",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1634,
+    "instructions": 110,
+    "archive": "fill_256/ascendc_simt/simulation/attempt_zc23_l3z/npusim_20261004181316_sim_runner",
+    "reused_from": "fill_256/ascendc_simt",
+    "evidence": "fill_256/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "12590628153b999babb01f7d273733c3400a1ab6ca7d5cb723377e4b0a69002d",
+      "kernel.asc": "e73918192b8d5ce9d0b7e4527b5dccde59427db52c80356ac92e7f74b284e1d4",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "994046a2afb289aba273d56439198b576aa36da0eaf9f55f0372fcabed3e7f6c",
+      "workload.py": "70a4956215be695c174c6b73345d21c5372bc312971bac776261a2f25ce170a0",
+      "input.tir": "0dfaa07e7368b30986dad2d960e670d4d75be3e3b93f412dcf75697ad9430d89",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_256",
+      "op": "fill",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "2a9274f72afb3e6942830d4f7a53254db9edcdbe26cb087990dce5ade0d055ab",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1430,
+    "instructions": 83,
+    "archive": "fill_256/ascendc_simd/simulation/attempt_5oggeyaf/npusim_20261004181354_sim_runner",
+    "reused_from": "fill_256/ascendc_simd",
+    "evidence": "fill_256/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "0c1aebca999d1a0f728e2b7c9077a958f30bd3c5aa8168c365b273793e5ec59e",
+      "kernel.asc": "e276b636f634552b3e2c6a44edb8a8ea45740ee33f0a7a5825bb683db5bd8b37",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "18dcb99cec3d466f16ae758611bd563375143917355f031f572ae175eec75459",
+      "workload.py": "a7b440a1ab7111839cf2b68441d1962d77c06d834dd8f3abfbc14662708e8163",
+      "input.tir": "5c8d456d68cc9c030a0812966320a1734738d970a9c093cfc7352b8b8cc54ae8",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_256",
+      "op": "fill",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "590a60073bfb158ae065218aa8f239fee14dabe1ac570c2e7a694eb1b828e551",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1650,
+    "instructions": 114,
+    "archive": "fill_256/pto_simt/simulation/attempt_n_5n9li4/npusim_20261004181435_sim_runner",
+    "reused_from": "fill_256/pto_simt",
+    "evidence": "fill_256/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "b52eea4c0e4e04597199b98dc3670d5bf322a0885a1006a4c3a375052dbd5e20",
+      "kernel.vpto.mlir": "8b2ae5151b6416fd6568194a25feb2aa6008d36eadab58dab6667418c3fbcebd",
+      "source-adaptation.diff": "15c6f66e3354c6106200eab837d4733a0822753c165eb763395911912dd74a95",
+      "kernel.pto": "5c604fef5ddd1923e4e88ced6da685c9ea60b965b2962b43b3163e3dece4a318",
+      "kernel.ptodsl.py": "deaec211dd0255e068e792c86bd018c48195c683200d8009566e04eb6f0d0e78",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "7cf8d85b4a2b71d1203075f951f0bdf0c706665fd76fec415c10bb4226edb63d",
+      "kernel.ll": "cafc7e406267e687d0cf82feeb104f801dfcaab98648988c763b0f294cb67c8d",
+      "workload.py": "70a4956215be695c174c6b73345d21c5372bc312971bac776261a2f25ce170a0",
+      "input.tir": "0dfaa07e7368b30986dad2d960e670d4d75be3e3b93f412dcf75697ad9430d89",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_256",
+      "op": "fill",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3f94f2657ee41f18aaa01438fddd1db9cfb6fd6c08edf2462059d647eaad34d1",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1432,
+    "instructions": 76,
+    "archive": "fill_256/pto_simd/simulation/attempt_vn61offi/npusim_20261004181518_sim_runner",
+    "reused_from": "fill_256/pto_simd",
+    "evidence": "fill_256/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "353449637f2043473c2a6000e5501e30ae12ed00b3a6529a8d446de9c37125b2",
+      "kernel.vpto.mlir": "85e35a1fefceb34fb40e40417f86a7b6d57da5fbfcc9cbbf4c9cbe31addce145",
+      "source-adaptation.diff": "15c6f66e3354c6106200eab837d4733a0822753c165eb763395911912dd74a95",
+      "kernel.pto": "6febba4e8da34d58047d5aaa13afa99a047939b64abbc0c57f8c691bb287318a",
+      "kernel.ptodsl.py": "848f498fa8139603054300324c726ce45f0f1cb96a5b565edb2c6598c3f66243",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "f58c332e428530c14c7d4514a5db691dc2dbabfa7de23d83d79c7ff51042549f",
+      "kernel.ll": "219364ad914e5e215b41d4972aebb93fcde27ff4606c29114f82c8bb0c5f3ece",
+      "workload.py": "a7b440a1ab7111839cf2b68441d1962d77c06d834dd8f3abfbc14662708e8163",
+      "input.tir": "5c8d456d68cc9c030a0812966320a1734738d970a9c093cfc7352b8b8cc54ae8",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_256",
+      "op": "fill",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3f5266329522c2ba17743a50fed31ede0fd2731ad90298290247198baff35c04",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1871,
+    "instructions": 80,
+    "archive": "fill_256/npuir_auto_simd/simulation/attempt_1lgupy3v/npusim_20261004181602_sim_runner",
+    "reused_from": "fill_256/npuir_auto_simd",
+    "evidence": "fill_256/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "626402632a87c3f993b5881d1055c7d2d109dfd28a562099a0e47c21f911ec27",
+      "kernel.mlir": "c1ae4fbbd2b2930846740964ae2e610dc0c0326b15d9a84506964e484c99f992",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "595c5c0ad9cd512031cd43b2c2c5163d03a16c814f2a1d455f25a6e15ff5415b",
+      "workload.py": "cd8c8698b08b2232a48e3c077f99938c98475976cc60a42d303c5450f51cb900",
+      "input.tir": "5acc737725a1c10e9de8f02f84d8b921b0b44a9a92236ef0324e4b5d01458bcb",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "3e8e886c430e4028f25cae4cc9bee999835f5fe3f79eb5e08409d8d06b755deb"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_4x64",
+      "op": "fill",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "fill_4x64/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "4e88d411657cb5ed46136c30a0781055abf3e334a5f71ca6c8dbfd33ad7628ca",
+      "workload.py": "4004bc6ff45d31ab0b953afebe68f0422b69f9536870c5e3da6530a6bed83222",
+      "input.tir": "85eea3280bbbdc03e0320dbacb0f2dd4740e89e3337cb06cdd530587b796b8fd"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_4x64",
+      "op": "fill",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "b0c3c7b8a23dbf997989b92a99a1440a60739914ea58b9201c0629d300283092",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1634,
+    "instructions": 110,
+    "archive": "fill_4x64/ascendc_simt/simulation/attempt_qkge3tkb/npusim_20261004181643_sim_runner",
+    "reused_from": "fill_4x64/ascendc_simt",
+    "evidence": "fill_4x64/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "12590628153b999babb01f7d273733c3400a1ab6ca7d5cb723377e4b0a69002d",
+      "kernel.asc": "e73918192b8d5ce9d0b7e4527b5dccde59427db52c80356ac92e7f74b284e1d4",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "d4d7804ae3b73a996061604bca5b6cfc93e9e52ba5337ef68910eeae68cbfd4a",
+      "workload.py": "1fc966c45fcfe2ea976a0f1ce8edc79973c7985880e338b33cb84e3d6d6a2a93",
+      "input.tir": "3ec3045240a9c3c5516742f9df52e5a0e53c536e688101ba6c15f224d46d92c8",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_4x64",
+      "op": "fill",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "cdabe223c1d78904c2d4efe0507ab8579cf55ad799e671b080eed2fc97c8049a",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1420,
+    "instructions": 83,
+    "archive": "fill_4x64/ascendc_simd/simulation/attempt_vtvgfthi/npusim_20261004181725_sim_runner",
+    "reused_from": "fill_4x64/ascendc_simd",
+    "evidence": "fill_4x64/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "8281b1617e03a59d8d79356fccb45b2dd26ad75833d8148cb443b148f8d730ce",
+      "kernel.asc": "c74ef54bda924cda009511e8bfee972c7099960e93efc4dd7ac435415d34b21f",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "1680bcab4297df135045505beb3eee04814f03320cf39ad1c74cae793506856f",
+      "workload.py": "538030a6e52d4fd80bec6a6e25bf2232505bc9c069ba03ba2530e34571e2a925",
+      "input.tir": "dfe402f0166f011cc8de034977bf106f9111c1403e3ea80341d68fbae84de0eb",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_4x64",
+      "op": "fill",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "590a60073bfb158ae065218aa8f239fee14dabe1ac570c2e7a694eb1b828e551",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1650,
+    "instructions": 114,
+    "archive": "fill_256/pto_simt/simulation/attempt_n_5n9li4/npusim_20261004181435_sim_runner",
+    "reused_from": "fill_256/pto_simt",
+    "evidence": "fill_4x64/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "b52eea4c0e4e04597199b98dc3670d5bf322a0885a1006a4c3a375052dbd5e20",
+      "kernel.vpto.mlir": "8b2ae5151b6416fd6568194a25feb2aa6008d36eadab58dab6667418c3fbcebd",
+      "source-adaptation.diff": "15c6f66e3354c6106200eab837d4733a0822753c165eb763395911912dd74a95",
+      "kernel.pto": "5c604fef5ddd1923e4e88ced6da685c9ea60b965b2962b43b3163e3dece4a318",
+      "kernel.ptodsl.py": "deaec211dd0255e068e792c86bd018c48195c683200d8009566e04eb6f0d0e78",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "7cf8d85b4a2b71d1203075f951f0bdf0c706665fd76fec415c10bb4226edb63d",
+      "kernel.ll": "cafc7e406267e687d0cf82feeb104f801dfcaab98648988c763b0f294cb67c8d",
+      "workload.py": "1fc966c45fcfe2ea976a0f1ce8edc79973c7985880e338b33cb84e3d6d6a2a93",
+      "input.tir": "3ec3045240a9c3c5516742f9df52e5a0e53c536e688101ba6c15f224d46d92c8",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_4x64",
+      "op": "fill",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 8,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3f94f2657ee41f18aaa01438fddd1db9cfb6fd6c08edf2462059d647eaad34d1",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1432,
+    "instructions": 76,
+    "archive": "fill_256/pto_simd/simulation/attempt_vn61offi/npusim_20261004181518_sim_runner",
+    "reused_from": "fill_256/pto_simd",
+    "evidence": "fill_4x64/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "4d096a502463a13aef87751e2e69cdbe479533f6f198b6512ffffecdea5d2438",
+      "kernel.vpto.mlir": "85e35a1fefceb34fb40e40417f86a7b6d57da5fbfcc9cbbf4c9cbe31addce145",
+      "source-adaptation.diff": "15c6f66e3354c6106200eab837d4733a0822753c165eb763395911912dd74a95",
+      "kernel.pto": "6febba4e8da34d58047d5aaa13afa99a047939b64abbc0c57f8c691bb287318a",
+      "kernel.ptodsl.py": "e704ff37461286399a849de3f87c1366ca9dc0fc7c0300856d53c4e282a17667",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "f58c332e428530c14c7d4514a5db691dc2dbabfa7de23d83d79c7ff51042549f",
+      "kernel.ll": "219364ad914e5e215b41d4972aebb93fcde27ff4606c29114f82c8bb0c5f3ece",
+      "workload.py": "538030a6e52d4fd80bec6a6e25bf2232505bc9c069ba03ba2530e34571e2a925",
+      "input.tir": "dfe402f0166f011cc8de034977bf106f9111c1403e3ea80341d68fbae84de0eb",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "fill_4x64",
+      "op": "fill",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "3f5266329522c2ba17743a50fed31ede0fd2731ad90298290247198baff35c04",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+    "cycles": 1871,
+    "instructions": 80,
+    "archive": "fill_256/npuir_auto_simd/simulation/attempt_1lgupy3v/npusim_20261004181602_sim_runner",
+    "reused_from": "fill_256/npuir_auto_simd",
+    "evidence": "fill_4x64/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "17af8b0740d154e8ae5d114d7196a8ac2fddad34356947874c7128bdef5c7ef0",
+      "kernel.mlir": "7fa2ba2f05ed2fc68673f9acd55a8caa5fec50bdafa4b29dc51241b105dba56f",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "595c5c0ad9cd512031cd43b2c2c5163d03a16c814f2a1d455f25a6e15ff5415b",
+      "workload.py": "ac0afb8062ff9529b3cfa22b989672496ae7f89e7d1ee3d14ce0f26e73fe1063",
+      "input.tir": "a65fa5c476dc487b228be79cf829157d8e3c055f7629d724ef5d6ada107a7ee7",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "b2fd1555ecfc951b2acf47480619dbde7c4a3066e9994892b9cd830020fa28e0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_row",
+      "op": "broadcast_row",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        64
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "broadcast_row/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "083b1a6063e698eb278ad2d6d6180a39fa70878c6bf94ee3323de4b7ccfd177a",
+      "workload.py": "64371a4cfcb255915aaee9e1016a23e10227a3fbfc5675b908392bc49d4e9126",
+      "input.tir": "f997fb565106a4c1622c115c7aabb3fef29d07d40400760790a7734e6776e128"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_row",
+      "op": "broadcast_row",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        64
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "fb3a1b4de8fb32dd3a935c0d934882f71479e2fdc26adecfa16beefc6136be03",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "411d6da03c6e670c8c0c874b23bcde63a86191dd9d99447932791560fef8450b",
+    "cycles": 2655,
+    "instructions": 155,
+    "archive": "broadcast_row/ascendc_simt/simulation/attempt_cbb2qoky/npusim_20261004181806_sim_runner",
+    "reused_from": "broadcast_row/ascendc_simt",
+    "evidence": "broadcast_row/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "e32e414a2ad9baac82e7c8ac4c479c1df78a6f3c220cbd20fa085860e0020368",
+      "kernel.asc": "6732b7c746e8d3a936a2fb0875a907020ed72fc3e97dba9ee5a08d0ad9f23da5",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "e7f71328e40c4dca2d0a613e8be130f2b59c2481c3d928b448947d5829585d3f",
+      "workload.py": "1d2bcb4e0cd3aa3f85b9bf1f58e4d9db07e4f19042367df571804b04419b7eb1",
+      "input.tir": "bb0ce3541cbb54785401f9ef5e93f94e51234b08fc279f904589fe76585f73f5",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_row",
+      "op": "broadcast_row",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        64
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "f221b25409a2c31da6e125d833ac1fd73d04d82ec406ace6d0732e20999aa066",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "411d6da03c6e670c8c0c874b23bcde63a86191dd9d99447932791560fef8450b",
+    "cycles": 2152,
+    "instructions": 103,
+    "archive": "broadcast_row/ascendc_simd/simulation/attempt_lutd_7cb/npusim_20261004181850_sim_runner",
+    "reused_from": "broadcast_row/ascendc_simd",
+    "evidence": "broadcast_row/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "d02375bad466fe6c9671d6ebd3e90aa4b27dcb36cf9e1de4ba3e17af98aeff21",
+      "kernel.asc": "fdec6488bcb0d4ebe88fb3af249ca7dcbe117597bcb1ba07be2d1b803f5fb584",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "dd9a1d4498b49d642c3272ab5ca7ec7fa04bf916f80008db0890ba4f8eee085d",
+      "workload.py": "501dac3fbeeaec822d4d4f6634ca4359d5459b784f9de707daeef546fc17555d",
+      "input.tir": "4f03b78dd24ae48be2649345f898d5b428ec292c31638d680b2714ee27d992dd",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_row",
+      "op": "broadcast_row",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        64
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "849168a1e01fce96e03d4365a3bbfbdb2e60e586ad67ca659841cdeaeaff54e9",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "411d6da03c6e670c8c0c874b23bcde63a86191dd9d99447932791560fef8450b",
+    "cycles": 2632,
+    "instructions": 171,
+    "archive": "broadcast_row/pto_simt/simulation/attempt__fzxojn7/npusim_20261004181934_sim_runner",
+    "reused_from": "broadcast_row/pto_simt",
+    "evidence": "broadcast_row/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "6153183738b5808d6b8cf42d01b49b19ceccfed709089f779091ab51d3db9738",
+      "kernel.vpto.mlir": "e10b19df122be4471189756f998fc2e376adf221132a9708146695d2a3f06525",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "cde1c9effeece6fd27f7d46413d3a2c08a4dbe713d4fe7849d89ae085558b813",
+      "kernel.ptodsl.py": "ca4e4b506c0233ab2ad5c60cdc1dd56de3396cbcb9eb9cea93977d9d9441295f",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "8b13b10c04bc2ec7d733d5f92cf2acd5859e95494fef4de1023d152044ca1dfd",
+      "kernel.ll": "0dee79339d2539ddcaef907fb5b933f8db255d229c444fcbeadb3c6e2044a795",
+      "workload.py": "1d2bcb4e0cd3aa3f85b9bf1f58e4d9db07e4f19042367df571804b04419b7eb1",
+      "input.tir": "bb0ce3541cbb54785401f9ef5e93f94e51234b08fc279f904589fe76585f73f5",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_row",
+      "op": "broadcast_row",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        64
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "9c48bfe255ef4912ee49d227a5dcbb009c1e8b3533a958c891c6dc002be34eba",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "411d6da03c6e670c8c0c874b23bcde63a86191dd9d99447932791560fef8450b",
+    "cycles": 2146,
+    "instructions": 100,
+    "archive": "broadcast_row/pto_simd/simulation/attempt_n8mwoqwv/npusim_20261004182021_sim_runner",
+    "reused_from": "broadcast_row/pto_simd",
+    "evidence": "broadcast_row/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "2a77fdcd107daadd40548add108bd06b18f61581fe62aa008adc2b45af7d1658",
+      "kernel.vpto.mlir": "408a72a1738a895f56a7a05947225bd4b56f5c54db2fa3d25be6f91faf44a496",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "0b5603c84ba5bcae846080c8b3d0ed102114cd652ba9c368149bdb89a7e2d147",
+      "kernel.ptodsl.py": "b93e2000a34f5399de922df0ef6c125428647c0bf7e51d210ad3d365c7280c6b",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "a115e3e750058485d5bcf77f2871d3d461ed7e64d7fbd76103c99f806fd7d5ae",
+      "kernel.ll": "0a83ac99034e7f662d512c306d03794749dc865c0356c9cf1597076605fcd226",
+      "workload.py": "501dac3fbeeaec822d4d4f6634ca4359d5459b784f9de707daeef546fc17555d",
+      "input.tir": "4f03b78dd24ae48be2649345f898d5b428ec292c31638d680b2714ee27d992dd",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_row",
+      "op": "broadcast_row",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        64
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "6eeb8907d0f55adef2ea1c39506bfe27d085abdeb84612253c8b19019689d5cb",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "411d6da03c6e670c8c0c874b23bcde63a86191dd9d99447932791560fef8450b",
+    "cycles": 2781,
+    "instructions": 153,
+    "archive": "broadcast_row/npuir_auto_simd/simulation/attempt_o9x5ajw6/npusim_20261004182102_sim_runner",
+    "reused_from": "broadcast_row/npuir_auto_simd",
+    "evidence": "broadcast_row/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "ced00f110f2c489fd68823715f41be22b3af4e79be7e3506fcc4f2ea2416650c",
+      "kernel.mlir": "b4da3825491dde89ab5e980109bc2caa1dd12bfde8190ff2d0d801743ee74790",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "4aeed3c151c4d77617650ef9e3f2db7bf65cc518e63eebc273c115ccf4ec082b",
+      "workload.py": "7da9837379ed4dfcdcb6cc260a8f67b658fedb05d966a508f4290313168a3e62",
+      "input.tir": "dba4f7cccc75ea359402f9d54e6da74aa30638701bd9c66064e89c3c520a4515",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "391f4875757c182d3b40bd12677a548c59b6e7a12d6e6946a4a7d1acdddbabdc"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_column",
+      "op": "broadcast_column",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        4,
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "broadcast_column/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "01403538b01605ceafff9975de70732bcb8b94c42f58b584f0f7f33e8256b19f",
+      "workload.py": "4947a5f4450b67c8ba9680b7057391f512402f214ef4c440e4c506d0aa8345da",
+      "input.tir": "491ade255a5377e1c498d49258b0280716f01e085c174984bb44629455bc044b"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_column",
+      "op": "broadcast_column",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        4,
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "241ac16b7b7cec8d9a8b877f3086a6189fbd27cfb934c071a9d20a8d63ca7e45",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0c74ee7fa777a3748a66fcf06a318f88d9b0a573f81823e6134afbb475220abc",
+    "cycles": 2641,
+    "instructions": 147,
+    "archive": "broadcast_column/ascendc_simt/simulation/attempt_bdzbknhf/npusim_20261004182147_sim_runner",
+    "reused_from": "broadcast_column/ascendc_simt",
+    "evidence": "broadcast_column/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "6b3ca06869f1dc5829304e50024d8eab5078e4189644903dc71f8ff263b6dea3",
+      "kernel.asc": "38d56c3dce354cf73572f3485dd933f9e6e92239a8ab4db336d47585c13e6d85",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "3c59dc3a4987b589fe2a8c34a51aea23b8ecf31041ce90180ac24b866b2185b3",
+      "workload.py": "bd4c090be26b6a27679cc8933df98bf9c4b6d85afcf85ab4e24dbf797abbe405",
+      "input.tir": "22f869fb767fafa1f65bbac693049eb79b89d3ea2d2b44ca4f34fff5dff6a463",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_column",
+      "op": "broadcast_column",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        4,
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "0133b8ff231e2fb8ec091ce877d5c713b473d7c5feb4ea78e8787071bba4f5e9",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0c74ee7fa777a3748a66fcf06a318f88d9b0a573f81823e6134afbb475220abc",
+    "cycles": 2145,
+    "instructions": 107,
+    "archive": "broadcast_column/ascendc_simd/simulation/attempt_andq8szi/npusim_20261004182231_sim_runner",
+    "reused_from": "broadcast_column/ascendc_simd",
+    "evidence": "broadcast_column/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "4901d29e4d71cf3ce518958b3b52307ae5ee2a07964638ed15ac0c8afd6998f9",
+      "kernel.asc": "146fd4a3a9aa788c0091e4f23ed09e8c9f54672847c141e73f81e7eea63d6156",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "36b723c552cff9bfb0fbd39f3e8e340675c0e45f52485e8b82ea963e9040bcb2",
+      "workload.py": "72611a5579a38ebdf3ec29fa01f97c966e55bd48c11123c13835a860f9787c1c",
+      "input.tir": "7ae7d154be181f4128dedb2eb584377878115a59fc036ad7053fe415945b15c1",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_column",
+      "op": "broadcast_column",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        4,
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "ac38e9a827829d6068f57de3b9c5744ff7d422d19dccf894effadad13f50cedb",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0c74ee7fa777a3748a66fcf06a318f88d9b0a573f81823e6134afbb475220abc",
+    "cycles": 2612,
+    "instructions": 167,
+    "archive": "broadcast_column/pto_simt/simulation/attempt_e5ar39oc/npusim_20261004182314_sim_runner",
+    "reused_from": "broadcast_column/pto_simt",
+    "evidence": "broadcast_column/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "3286f7b7d504a9c1d75ac54ff2d0f5e60255bd2d08eaeea5d71f24793b38a4d2",
+      "kernel.vpto.mlir": "8e36661ec2449a336ded26cbb643e4d738c550d0982c7e436a3e666c91e24fff",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "e1ae8d36589339deb12a20b40cbd6266316a7ce9a141ff6a74897a4a1d6716c5",
+      "kernel.ptodsl.py": "6aa5db00db214d47acaf91cbc2b0f0c936f3164117f6cfaac846ad44e975e00f",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "bf66cbea0ad87b59cdb6dc54707bd53aa3d1839832b37fb4cf463c0ac9a53c38",
+      "kernel.ll": "d51c04c28b82241566629849d44cc8cb0702bb0b8c573f08e70120c3d1053395",
+      "workload.py": "bd4c090be26b6a27679cc8933df98bf9c4b6d85afcf85ab4e24dbf797abbe405",
+      "input.tir": "22f869fb767fafa1f65bbac693049eb79b89d3ea2d2b44ca4f34fff5dff6a463",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_column",
+      "op": "broadcast_column",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        4,
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "B",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 24,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "74e196d3220286ee2da6decd6b4bf135db00696669f80c735514f8acafefaf5a",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0c74ee7fa777a3748a66fcf06a318f88d9b0a573f81823e6134afbb475220abc",
+    "cycles": 2164,
+    "instructions": 101,
+    "archive": "broadcast_column/pto_simd/simulation/attempt_jre7pj14/npusim_20261004182358_sim_runner",
+    "reused_from": "broadcast_column/pto_simd",
+    "evidence": "broadcast_column/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "f23489d72131531cdacdb024d704fa30e43cce43432efabfa4112f47d7195774",
+      "kernel.vpto.mlir": "1d3dc631c9ffde55c6b102035123fb2aad69fa4c8302a6819542b19d55b73d37",
+      "source-adaptation.diff": "663a521d71beb9c88c0efb926e2a5c7d3787653c3358aee1c7dbbaa87561f707",
+      "kernel.pto": "6b1d3dbcf768e514b99125cf557a2345b6b7e90c2f0906c15e3b44123b53204a",
+      "kernel.ptodsl.py": "53c1cb5c0ad6c13fcb16c22c08b70076bbee37615818d0fb2cda2a32a57c5ff0",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "746306f3ba7b9d489c332f0c1af9d4f8f5e096c9fe139928262571013feac37e",
+      "kernel.ll": "e6800873f2dc511d0fe52f514ee2b2937fbdecded747e524db54d199dbf202e9",
+      "workload.py": "72611a5579a38ebdf3ec29fa01f97c966e55bd48c11123c13835a860f9787c1c",
+      "input.tir": "7ae7d154be181f4128dedb2eb584377878115a59fc036ad7053fe415945b15c1",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "broadcast_column",
+      "op": "broadcast_column",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        4,
+        1
+      ],
+      "out": [
+        4,
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "58cc6c116a833852dba59136319c033334fb64ae6de02329e171aab9a36bae29",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0c74ee7fa777a3748a66fcf06a318f88d9b0a573f81823e6134afbb475220abc",
+    "cycles": 2879,
+    "instructions": 199,
+    "archive": "broadcast_column/npuir_auto_simd/simulation/attempt_3yyeqqwf/npusim_20261004182442_sim_runner",
+    "reused_from": "broadcast_column/npuir_auto_simd",
+    "evidence": "broadcast_column/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "5f23071a1ae4e5289776130e92b9f55d50d02f6a0dbd64bae67fb5d5eb36814b",
+      "kernel.mlir": "0029cda3bcc2172337410bd33450a2cd1f2bc4c7e85f690d358c60090756aca5",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "e80ccd17f6893d2fa631eaf8d3bc22d68003c167f52d1fc04386764ed14c21c7",
+      "workload.py": "3e9e7ef25cfa415044c04fef81923eb139d81c103eabbb9e4df348647bd4a2de",
+      "input.tir": "c121d89b04bd78290200da3a7be7a6db9b87aa4b9c5cf9fb99a11418bb6b7e52",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "327f5cc00395d768ae9d914ef3193f76a52e22625b3f2024a57fb0d61a8fe653"
+    }
+  },
+  {
+    "case": {
+      "name": "flatten",
+      "op": "flatten",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "flatten/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "c6cbda89053e0f402d1042991c4181f18daaa637e1115a6437f64fcf624e664f",
+      "workload.py": "e675a303b9aafcd900eb0af3639d1c627109c3f091ded44cf9675fbf8088a340",
+      "input.tir": "949cd735efa961c6d1ade5bf4d2148a018a70f5102663dc3b8991117a6218240"
+    }
+  },
+  {
+    "case": {
+      "name": "flatten",
+      "op": "flatten",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "dfd3a1652f230042a74c58e874573c135f143aa6ae3d0aad014e404d805ec1cc",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2647,
+    "instructions": 116,
+    "archive": "flatten/ascendc_simt/simulation/attempt_2d8xsyy2/npusim_20261004182528_sim_runner",
+    "reused_from": "flatten/ascendc_simt",
+    "evidence": "flatten/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "656cbade7f979e37a5276a23e2e711407c5b4f5c494099921664832ca42e8624",
+      "kernel.asc": "981a901e9592227f8ce06bd9883be06370a0ba3590fe6fd021a895e9fbb65540",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "ea7f1f5bfb01c87dbdbc4dbc279c497c92b275e8200e7405a6928dce59b5bc14",
+      "workload.py": "a36e97e8f06cfcb4cbeb483c8910e5ac5b0ae779773a37777d65c4b9c4db2786",
+      "input.tir": "b63bf4043769cd7a5e81b4236307e2963958a91725b16759c05208da621816a0",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "flatten",
+      "op": "flatten",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "02cbfcfeab7464b1733e1798f6055ad938ca0831a9ef6f6dfe679db02ce187ac",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2149,
+    "instructions": 91,
+    "archive": "flatten/ascendc_simd/simulation/attempt_qlxugfew/npusim_20261004182616_sim_runner",
+    "reused_from": "flatten/ascendc_simd",
+    "evidence": "flatten/ascendc_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "1c055ba4d2b0919c1a1938a88f1c3585bd14ae705e207837ff066ef823460d22",
+      "kernel.asc": "173faef51f2afca7e7281928ae279fefe613f6245bbb36a0b2b2dea559f9eeff",
+      "correctness.txt": "7ed13139623cc1926267d7b4f0d9927df517119661a729fc2787c96052de1008",
+      "profile.json": "f3d8423a95123b9350409c0c55fb9db56d258e041a1cf01c55efb346f962d610",
+      "workload.py": "5cda2931b625600dc6d8b4ec84953e3627160c3eecb0e51b1164c1de2229659d",
+      "input.tir": "7b1242d73f685a98c99c71854811d5de0a8b69760f08006fe8d93dc09127c7d7",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "flatten",
+      "op": "flatten",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "8d18925300351c51f461f6cc9024fbfcacd3722588c85c9cf9b7c1a4f7393532",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2599,
+    "instructions": 136,
+    "archive": "copy_256/pto_simt/simulation/attempt_mquvv6e4/npusim_20261004180924_sim_runner",
+    "reused_from": "copy_256/pto_simt",
+    "evidence": "flatten/pto_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "539d176f3d35202b2b77741e426c2c5b93484b0e8f93c638347d74b4591b4778",
+      "kernel.vpto.mlir": "2c0f0e4987e28ab65ce9867d1acac6f5562a56292fe4005174f2c3a9b24d40a8",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "6a0f85c0b73ded91c2fa126ee318e4b35b0aca8274ff802edf6aa901786f1f9c",
+      "kernel.ptodsl.py": "8158e4673b84c2c9b80df88e603eba332adbdce0d43e9cfeb699ded779954dc2",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "3f91b969c95932d4b8cc744275093cb5ad736180ae3621e6aab42ef8776c21ce",
+      "kernel.ll": "a4d1cff958cc839f66025d7895890f9d1a321ead16c8f297761ce4cc690c474c",
+      "workload.py": "a36e97e8f06cfcb4cbeb483c8910e5ac5b0ae779773a37777d65c4b9c4db2786",
+      "input.tir": "b63bf4043769cd7a5e81b4236307e2963958a91725b16759c05208da621816a0",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "flatten",
+      "op": "flatten",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "097812c17572b93557e1ea40630fde766849cfb9e8389de7277044098265e8c8",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 2135,
+    "instructions": 83,
+    "archive": "copy_256/pto_simd/simulation/attempt_cpivhza0/npusim_20261004181014_sim_runner",
+    "reused_from": "copy_256/pto_simd",
+    "evidence": "flatten/pto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main_kernel_mix_aiv"
+    ],
+    "evidence_sha256": {
+      "device.tir": "30f2d224e7770547ce6b76df805162039cf9f91f076628b33ab732d79eee227d",
+      "kernel.vpto.mlir": "50b6012ffe9f15c05db8e10f57d94320ad172acff31e5e5e8dd8746c2b3cf3fb",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "kernel.pto": "9707323b5e007fb81717711d884f4be238fdbb47cbd17b9101f098aa40a62e49",
+      "kernel.ptodsl.py": "208f812883d6361c03149b3e1fcc9bb2981eac441d1cf1938673457d9ea598c9",
+      "correctness.txt": "3ece0d9afafab047070439df216aafc118d39023294627b2c087a2e4f62a58ee",
+      "profile.json": "18be35ba56b0a7d0fa89c75664343b645daa641e9b05c175f17c730d7a02afb8",
+      "kernel.ll": "1c28dc6afbfc80f5ec68e074ee8a97f8e0e1b6aed1d33415629bf76879013b02",
+      "workload.py": "5cda2931b625600dc6d8b4ec84953e3627160c3eecb0e51b1164c1de2229659d",
+      "input.tir": "7b1242d73f685a98c99c71854811d5de0a8b69760f08006fe8d93dc09127c7d7",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "flatten",
+      "op": "flatten",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        256
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "aca25b9cfcbfcad539e89c680d826befd0023fa20050696e5de3610ad9620431",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+    "cycles": 14012,
+    "instructions": 11851,
+    "archive": "flatten/npuir_auto_simd/simulation/attempt_gpf3t1ke/npusim_20261004182702_sim_runner",
+    "reused_from": "flatten/npuir_auto_simd",
+    "evidence": "flatten/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=256 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "198615833d522e2d9c68659d31b7506a90c0776db9b67ccd3732829467c76cf3",
+      "kernel.mlir": "04ca9293080b2b7e622bbeff6618453a38055f37d8513237282d3b6d79c8c636",
+      "correctness.txt": "570a9a953934b50c33e802ec642e4ace6a56ab5a0ece58f387bf2006fe8624ac",
+      "profile.json": "40cd6e906ca0e69ec874c8965c1f517e4837b59c96a482635e7dd9a738c4b0bc",
+      "workload.py": "ed714c1ff8a1b21deca404b2bfb188db373de1029c26f1d73a0f1de5534a1dfb",
+      "input.tir": "fb6d6c227446bdb962d7977aba8b1d151c2c9b58ac9db80989edb0a8989b5d11",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "b0b5536e6ae3e09dd38ce15b510af7b17a55cbd35274618c4f39fe17c85dd68a"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_all_256",
+      "op": "reduce_all",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        1
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "reduce_all_256/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "a9a47a416b71c30a5bac46f6c2be96a7e8386dd836a8d850f121b44869cc5c09",
+      "workload.py": "02d96688e9ec61d94c860b6bfbeb515ec4c378391a5a0bf411642059908f7430",
+      "input.tir": "db905d5ee196923929cf2c30e5b03542af167904a047ba4a49bde105f1df66fb"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_all_256",
+      "op": "reduce_all",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        1
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "5e9b8f7f83c1725afa47863945ddfe357c97bdcc137f228c312fbc183d40c104",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7a0243316f7c881a2f53e4935bbc79d429d7be5683c47eb4b613fd9ae47b89a0",
+    "cycles": 19235,
+    "instructions": 2175,
+    "archive": "reduce_all_256/ascendc_simt/simulation/attempt_nexnbi_5/npusim_20261004183336_sim_runner",
+    "reused_from": "reduce_all_256/ascendc_simt",
+    "evidence": "reduce_all_256/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=1 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "5e9a6410d785584fdce95af970eab0a488365204fd658b0b2e4759ba156da9f6",
+      "kernel.asc": "b48b83a4626a7c45dfcd44023a9012dcf286f68043fb60c01c9fbccdb733e5bc",
+      "correctness.txt": "c88bf73f40bb0ca8a208efa46c770e336a66aac6e77e7e364c188e13f2c572c7",
+      "profile.json": "88bbfe879b022925dd87fb608b03960074b6820f54390a71488aea79bac54377",
+      "workload.py": "7d491227c14388735d47d42dd312f9a2e8f0c4308f69c8d735670e535dc6460e",
+      "input.tir": "f4f0a5ae5804791f2d4795722ebc4db5fcb082d9c0d9350e99790945ac19e825",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_all_256",
+      "op": "reduce_all",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        1
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 135, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 24, in compile_device\n    (p/'kernel.aibin').write_bytes(compile_ascend((p/'kernel.asc').read_text(), target_format='aibin', npu_arch='dav-3510',\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/tilelang/tilelang/contrib/bisheng.py\", line 200, in compile_ascend\n    _run_command(compile_command, code, verbose, \"device compilation\")\n  File \"/workspace/tilelang/tilelang/contrib/bisheng.py\", line 129, in _run_command\n    raise RuntimeError(f\"Ascend {stage} failed.\\nCommand: {shlex.join(command)}\\nCompiler output:\\n{output}\\nSource:\\n{code}\")\nRuntimeError: Ascend device compilation failed.\nCommand: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin/bisheng -O2 -fPIC -std=c++20 -mllvm -cce-aicore-dcpreload-args=false --npu-arch=dav-3510 -I/workspace/tilelang/src -g --sysroot=/workspace/setup/cann/sysroot --gcc-toolchain=/workspace/setup/cann/sysroot/usr --cce-aicore-only /tmp/tmp9fpyfb05/tl_kernel.asc -o /tmp/tmp9fpyfb05/tl_kernel.rel.o\nCompiler output:\nfatal error: error in backend: /tmp/tmp9fpyfb05/tl_kernel.asc:17:3: Unsupported scalar instruction in AIV loop.\nbisheng: error: clang frontend command failed with exit code 70 (use -v to see invocation)\n2026-08-18T19:12:48+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin\n\nSource:\n#include <tl_templates/ascend/common.h>\n#include <tl_templates/ascend/debug.h>\n#include <tl_templates/ascend/simd_inst.h>\n__simd_vf__ inline void main_kernel_simd_vf_0(__ubuf__ uint8_t* buf_dyn_shmem) {\n  ((__ubuf__ float*)buf_dyn_shmem)[256] = float(0x0p+0f/*0.000000e+00*/);\n  for (int32_t k = 0; k < 256; ++k) {\n    ((__ubuf__ float*)buf_dyn_shmem)[256] = (((__ubuf__ float*)buf_dyn_shmem)[256] + ((__ubuf__ float*)buf_dyn_shmem)[k]);\n  }\n}\n\nextern \"C\" __global__ __vector__ void main_kernel(__gm__ float* A, __gm__ float* O) {\n  asc_init();\n  __ubuf__ uint8_t *buf_dyn_shmem = (__ubuf__ uint8_t *)0;\n  asc_copy_gm2ub_align((__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[0]))), (__gm__ uint8_t*)((&(A[0]))), 1, 1024, 0, 0, 0, static_cast<asc_load_l2_cache_mode>(0), 1024, 1024);\n  asc_sync_notify(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));\n  asc_sync_wait(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));\n  main_kernel_simd_vf_0(buf_dyn_shmem);\n  asc_sync_notify(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));\n  asc_sync_wait(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));\n  asc_copy_ub2gm_align((__gm__ uint8_t*)((&(O[0]))), (__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[256]))), 1, 4, static_cast<asc_store_l2_cache_mode>(4), 4, 4);\n}\n\n\n",
+    "evidence": "reduce_all_256/ascendc_simd",
+    "evidence_sha256": {
+      "device.tir": "900674a5d546c867ecfa8d3264258667dbc1f7a99ecaf6176ee05d3f89942337",
+      "error.txt": "6b1e8b03a4914b70ddb27313c3658a3649b80b422c31ad088dab84beb04ec854",
+      "failure.txt": "4fc98f5d9e1ebc008fd6d0471ba0cf78bc1ae4101332489f2a8049107f7f8802",
+      "kernel.asc": "5b6b4ce09bf43b21db59e4ff42baa63a36dfef6a343063620f2b90c534812100",
+      "worker.log": "ce6e8c0719663df6873e06802c1ad32bd2bc04e1108e37700e79cc15ec29e531",
+      "workload.py": "0ccdb8afe58c1ac7f5e735d45058c8772a6b653e594fadd5d71b2440ea96ed4f",
+      "input.tir": "72130b3086ec051f8fe15d793493f9fcbc21a9859c2b39361452d917b6209f70",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_all_256",
+      "op": "reduce_all",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        1
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 141, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 33, in compile_device\n    import tilelang.contrib.ptodsl\n  File \"/workspace/tilelang/tilelang/contrib/ptodsl/__init__.py\", line 21, in <module>\n    from .simt import (\n  File \"/workspace/tilelang/tilelang/contrib/ptodsl/simt.py\", line 5, in <module>\n    import ptodsl._allreduce as _allreduce\nModuleNotFoundError: No module named 'ptodsl._allreduce'\n",
+    "evidence": "reduce_all_256/pto_simt",
+    "evidence_sha256": {
+      "device.tir": "a9083ba9ef29746aaae6470fb518d6075f52692b1cb21b8eeaa326bd045fe272",
+      "error.txt": "8b8bdf2013ad9b34a402430b4323d8b8393e82e9f218fe56b7600a005d1d2bdc",
+      "failure.txt": "cd91526774b7eedf7e941d325319b0b4e2b2e35f2b3ffc90a14a87c61b9072ef",
+      "kernel.ptodsl.py": "33cc9318967cdf958579dce4f1d8aca3ebc65cd088635a3c95ede22a2c37ce43",
+      "worker.log": "86fa5d3b398e7522bf0a0864296b6ab9705a574415d4fbc673c1c168de0e3617",
+      "workload.py": "7d491227c14388735d47d42dd312f9a2e8f0c4308f69c8d735670e535dc6460e",
+      "input.tir": "f4f0a5ae5804791f2d4795722ebc4db5fcb082d9c0d9350e99790945ac19e825",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_all_256",
+      "op": "reduce_all",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        1
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 135, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 36, in compile_device\n    run(base+['-o',str(p/'kernel.fatobj.o')],p/'device-compile.log')\n  File \"/workspace/setup/scenarios/worker.py\", line 18, in run\n    subprocess.run(cmd, stdout=f, stderr=subprocess.STDOUT, check=True, timeout=180)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['ptoas', '/workspace/setup/tilelang/results/scenarios/reduce_all_256/pto_simd/kernel.pto', '--pto-arch=a5', '--pto-backend=vpto', '-o', '/workspace/setup/tilelang/results/scenarios/reduce_all_256/pto_simd/kernel.fatobj.o']' returned non-zero exit status 1.\n",
+    "evidence": "reduce_all_256/pto_simd",
+    "evidence_sha256": {
+      "device.tir": "5e25f1c8db4269bb6eb2424bbf06b26bef8cd8438ac70c5ac61a916ecc8cb540",
+      "kernel.vpto.mlir": "5e16537cdbe223dc09daaa2efc1faa233ed328a145fe5d0ece0e414b2ea82c47",
+      "error.txt": "d9e9d15dc4b828bde30b46ce53271a083b4e6a12eb88c28c2f7c360a757b8e48",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "failure.txt": "7ad6384365c2708ad973e4568d4e7afaf6ee149a2d1a6931d0b71019699adcce",
+      "kernel.pto": "91d0672b625f354a42d41fc116a4bc488fad681544f33af25293872d10bbe8de",
+      "kernel.ptodsl.py": "d8537386e86c1c454cbb2a71765d2c0ef24f43c2d849b8b09c2bf0e88d3a1e74",
+      "worker.log": "7e7b3381e8d29850ed11e6b36f124c13d2933d1c621243920028a6be433998e7",
+      "device-compile.log": "2e71517325ba1ee2f2ea5dcca6d7a546de79808e5e40d5e00c3c2537edf8e92a",
+      "kernel.ll": "4fc1cfa9777c799013e9e9a9c6c6e4008cbd055d4ecf9365ac62a93aaa812810",
+      "workload.py": "0ccdb8afe58c1ac7f5e735d45058c8772a6b653e594fadd5d71b2440ea96ed4f",
+      "input.tir": "72130b3086ec051f8fe15d793493f9fcbc21a9859c2b39361452d917b6209f70",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_all_256",
+      "op": "reduce_all",
+      "a": [
+        256
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        1
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "d7cf44f22ec7b28670fb1ae4b3628b465499e73f461c5420d0b86d13e6120917",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "7a0243316f7c881a2f53e4935bbc79d429d7be5683c47eb4b613fd9ae47b89a0",
+    "cycles": 7217,
+    "instructions": 2131,
+    "archive": "reduce_all_256/npuir_auto_simd/simulation/attempt_p68va61d/npusim_20261004183608_sim_runner",
+    "reused_from": "reduce_all_256/npuir_auto_simd",
+    "evidence": "reduce_all_256/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=1 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "27b57916840af9dfeb5e311e2860e71d431586eae8554d10d5768cc18d2ae891",
+      "kernel.mlir": "cba325063ce8335ed1c8505a93c3a987c4e108902d77af518f98d8b6d00da626",
+      "correctness.txt": "85a9cdc8aa17cd59c1e6a6b56e8b14a61f75facaf2cc6bcce6f177b310eabbd0",
+      "profile.json": "6b8fe88beb8f6e559ceb8f1a59d85ffaffa24730b348c2f02e1d11981c8d4269",
+      "workload.py": "356a545526039c650a24248060cf1aa0f3c51f5f7dc288879738d12379a3a678",
+      "input.tir": "e23bc56873560797938ed05b10d70b5f83006fe94201601f75232d3c388dfaea",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "b63707456cfa043fd1fb4fd476101978e2199ebbf73e606005a08681c9e63433"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_rows",
+      "op": "reduce_rows",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "reduce_rows/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "0f0979b77cc7998c2cd725cd5e0351b5dca2557c413dcb0eabe70770608e1c6c",
+      "workload.py": "6ab155f912dc72d3ba87599da136ab893f54082c98e32b80e8317a5c560c3102",
+      "input.tir": "38b86bed4068326634f29626e781431f2c5ec9765b52a06979295cb8d1099fcc"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_rows",
+      "op": "reduce_rows",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "32a5bc01f3c8d4943bc639c3922810198af3a22c9f07e62ae6a17f6f65d5a7ba",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0958a5bd72df35fd67f76c399502191d4ea7aa390a7a111af1a3395723aab745",
+    "cycles": 6802,
+    "instructions": 641,
+    "archive": "reduce_rows/ascendc_simt/simulation/attempt_714iff__/npusim_20261004182845_sim_runner",
+    "reused_from": "reduce_rows/ascendc_simt",
+    "evidence": "reduce_rows/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=4 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "fa6e74d434957eced8c10aeecabb1f3ea393efd4e4f3d0c4132628c35da593c5",
+      "kernel.asc": "02273addd75b7c164b6236b379b50ec35dee75534f7a50a7e673e8ee3e01b315",
+      "correctness.txt": "9adfeb437207166438f810257ff728894bf616b6478faea3ab0c6bedd639b880",
+      "profile.json": "33ec4ee256ce15b6acce3d1b21289fe2d9327ff2da891ce29f6ad4a7939da797",
+      "workload.py": "47483a99d1b9463c619a183c5799825b499249dcdfb4b3fa25c93aa374744194",
+      "input.tir": "1dd27c0795bfa9b9fe5fb76f7c72676f66a1374bbd53cbd60c176d48820b3378",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_rows",
+      "op": "reduce_rows",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 130, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 23, in compile_device\n    (p/'kernel.aibin').write_bytes(compile_ascend((p/'kernel.asc').read_text(), target_format='aibin', npu_arch='dav-3510',\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/tilelang/tilelang/contrib/bisheng.py\", line 200, in compile_ascend\n    _run_command(compile_command, code, verbose, \"device compilation\")\n  File \"/workspace/tilelang/tilelang/contrib/bisheng.py\", line 129, in _run_command\n    raise RuntimeError(f\"Ascend {stage} failed.\\nCommand: {shlex.join(command)}\\nCompiler output:\\n{output}\\nSource:\\n{code}\")\nRuntimeError: Ascend device compilation failed.\nCommand: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin/bisheng -O2 -fPIC -std=c++20 -mllvm -cce-aicore-dcpreload-args=false --npu-arch=dav-3510 -I/workspace/tilelang/src -g --sysroot=/workspace/setup/cann/sysroot --gcc-toolchain=/workspace/setup/cann/sysroot/usr --cce-aicore-only /tmp/tmpcai4uu_z/tl_kernel.asc -o /tmp/tmpcai4uu_z/tl_kernel.rel.o\nCompiler output:\nfatal error: error in backend: /tmp/tmpcai4uu_z/tl_kernel.asc:19:3: Unsupported scalar instruction in AIV loop.\nbisheng: error: clang frontend command failed with exit code 70 (use -v to see invocation)\n2026-08-18T19:12:48+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin\n\nSource:\n#include <tl_templates/ascend/common.h>\n#include <tl_templates/ascend/debug.h>\n#include <tl_templates/ascend/simd_inst.h>\n__simd_vf__ inline void main_kernel_simd_vf_0(__ubuf__ uint8_t* buf_dyn_shmem) {\n  for (int32_t i = 0; i < 4; ++i) {\n    ((__ubuf__ float*)buf_dyn_shmem)[(i + 256)] = float(0x0p+0f/*0.000000e+00*/);\n    for (int32_t k = 0; k < 64; ++k) {\n      ((__ubuf__ float*)buf_dyn_shmem)[(i + 256)] = (((__ubuf__ float*)buf_dyn_shmem)[(i + 256)] + ((__ubuf__ float*)buf_dyn_shmem)[((i * 64) + k)]);\n    }\n  }\n}\n\nextern \"C\" __global__ __vector__ void main_kernel(__gm__ float* A, __gm__ float* O) {\n  asc_init();\n  __ubuf__ uint8_t *buf_dyn_shmem = (__ubuf__ uint8_t *)0;\n  asc_copy_gm2ub_align((__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[0]))), (__gm__ uint8_t*)((&(A[0]))), 1, 1024, 0, 0, 0, static_cast<asc_load_l2_cache_mode>(0), 1024, 1024);\n  asc_sync_notify(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));\n  asc_sync_wait(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));\n  main_kernel_simd_vf_0(buf_dyn_shmem);\n  asc_sync_notify(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));\n  asc_sync_wait(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));\n  asc_copy_ub2gm_align((__gm__ uint8_t*)((&(O[0]))), (__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[256]))), 1, 16, static_cast<asc_store_l2_cache_mode>(4), 16, 16);\n}\n\n\n",
+    "evidence": "reduce_rows/ascendc_simd",
+    "evidence_sha256": {
+      "device.tir": "f9aa1773c2cac935c736d8395b03cf47eeacdef9b64abdc4fd15724ea71b327c",
+      "error.txt": "e3fd66cf79a8371f6bb4c683b460a773240eedb20bdaea3352c8f5c8202408fa",
+      "failure.txt": "9522b61480d77fe1a90e7112e4ce940c1fb5fe6908c460758af98b6fc91dc39f",
+      "kernel.asc": "cfc83df3df18698c482c13065d6ad91c573ff67221e98980e11f3c01106211ce",
+      "worker.log": "62db009d08d51aebbcf2979cb76835fb543eed49cb5052e878fc53b16b0407e0",
+      "workload.py": "5ee99713fadf8fc9594882f663fac68dd8bdf613e3f4b1441e32af077d78fb5d",
+      "input.tir": "66c5bcfb50e139455056392aa1207f5cd2e39c92d5b463192fd81e000f2e8d03",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_rows",
+      "op": "reduce_rows",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 141, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 33, in compile_device\n    import tilelang.contrib.ptodsl\n  File \"/workspace/tilelang/tilelang/contrib/ptodsl/__init__.py\", line 21, in <module>\n    from .simt import (\n  File \"/workspace/tilelang/tilelang/contrib/ptodsl/simt.py\", line 5, in <module>\n    import ptodsl._allreduce as _allreduce\nModuleNotFoundError: No module named 'ptodsl._allreduce'\n",
+    "evidence": "reduce_rows/pto_simt",
+    "evidence_sha256": {
+      "device.tir": "550ed519f8926e23dba801a8be66e756052504cb1c0e2e1771f4e1cac8c3848c",
+      "error.txt": "8b8bdf2013ad9b34a402430b4323d8b8393e82e9f218fe56b7600a005d1d2bdc",
+      "failure.txt": "cd91526774b7eedf7e941d325319b0b4e2b2e35f2b3ffc90a14a87c61b9072ef",
+      "kernel.ptodsl.py": "114fbfb7275f92d7698286c265e8e8a5dec1f9e1ec7e27e4dc4fe289761e4257",
+      "worker.log": "03e78268a94851f64e719e029b5b20564fb27ba25c74ff2c8a382aaaee448218",
+      "workload.py": "47483a99d1b9463c619a183c5799825b499249dcdfb4b3fa25c93aa374744194",
+      "input.tir": "1dd27c0795bfa9b9fe5fb76f7c72676f66a1374bbd53cbd60c176d48820b3378",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_rows",
+      "op": "reduce_rows",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 130, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 35, in compile_device\n    run(base+['-o',str(p/'kernel.fatobj.o')],p/'device-compile.log')\n  File \"/workspace/setup/scenarios/worker.py\", line 17, in run\n    subprocess.run(cmd, stdout=f, stderr=subprocess.STDOUT, check=True, timeout=180)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['ptoas', '/workspace/setup/tilelang/results/scenarios/reduce_rows/pto_simd/kernel.pto', '--pto-arch=a5', '--pto-backend=vpto', '-o', '/workspace/setup/tilelang/results/scenarios/reduce_rows/pto_simd/kernel.fatobj.o']' returned non-zero exit status 1.\n",
+    "evidence": "reduce_rows/pto_simd",
+    "evidence_sha256": {
+      "device.tir": "421667af56e2e6e0947107ed9cbb1fabb4a37f81d4ce54d45b2509ede8ef9667",
+      "kernel.vpto.mlir": "79c49111da6d6046482766e5121c24cbb501c90fdfb531f1c4d56532f0d49fe7",
+      "error.txt": "fc641c8595eac1599f2df484cec6e838c563a0be082cab48fe44ae9ac1ca041b",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "failure.txt": "11216e7133c67affd2afe8d1f3aa4516051863426ef1d4c51d7b44a1d758e8ca",
+      "kernel.pto": "12f65d115e990b2b603fd6c52eb33c521343fb764ea9cd2fc30a416b050a3ae0",
+      "kernel.ptodsl.py": "1e517bc8bec0572e00bdbdbcebfa6a5c964cfc0c39ebd0aa58c2e101a88ff20a",
+      "worker.log": "dd5ef0d6db144aa1de1d75ab8ff5f3f23becb5c86e8090b974d55c4a1d7a3bb0",
+      "device-compile.log": "4ccc39b226bab20a513c81811247db5510bcf16cfc781d74c0556a69c1f809c4",
+      "kernel.ll": "052ba2ddd6870f1730cd17e3189b08bffc69c662e75ba71126b64b86b0158f66",
+      "workload.py": "5ee99713fadf8fc9594882f663fac68dd8bdf613e3f4b1441e32af077d78fb5d",
+      "input.tir": "66c5bcfb50e139455056392aa1207f5cd2e39c92d5b463192fd81e000f2e8d03",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_rows",
+      "op": "reduce_rows",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        4
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "62acb37abe433b9706c37507f36ca280d7f2f385baa09415557774f6e7b4d268",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "0958a5bd72df35fd67f76c399502191d4ea7aa390a7a111af1a3395723aab745",
+    "cycles": 7518,
+    "instructions": 2145,
+    "archive": "reduce_rows/npuir_auto_simd/simulation/attempt_m9nq3jhj/npusim_20261004182955_sim_runner",
+    "reused_from": "reduce_rows/npuir_auto_simd",
+    "evidence": "reduce_rows/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=4 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "ecd875095f6573fa7ffb459466b0dafb349f8523bec1870829490b85fe76ba2e",
+      "kernel.mlir": "6674e767f709f499a33a177d843792f0a75d576063b294cb6db6508015e3c055",
+      "correctness.txt": "d521fe05cec56b0790ce09c55dd22c340e7bc98d1ee58ea00da82b39ebddf964",
+      "profile.json": "f765f996cb01fabc8b5dcb35b517750d87370b64836a44c4ceec80d559072065",
+      "workload.py": "35c86b993af9f4bd1ce4cb475b25047c65c1aa72179992a23d747f450d3414d2",
+      "input.tir": "3a55711168ece7369d8020713e2bf707493fa63a4de523a498bdfe858bcfc5e5",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "c36d5fbe91635110d48af20c923fa56151db1fd2a636927193f4a88ccc590db2"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_columns",
+      "op": "reduce_columns",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        64
+      ]
+    },
+    "backend": "cpu",
+    "mode": "native",
+    "status": "passed",
+    "stage": "cpu_correctness",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "evidence": "reduce_columns/cpu_native",
+    "evidence_sha256": {
+      "kernel.cc": "730d32f3092903fe50b03c4ebd653a84ae0d5cc4121fb88b521726bf4deeab91",
+      "workload.py": "3471d31b3e5fe295593ed4daf8b8c202b27d540d559d500e65786245618a9aa4",
+      "input.tir": "6c9bf42e18c9904f17da57569d96d27642d5b270944cc8af4607fbcf4f261b0a"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_columns",
+      "op": "reduce_columns",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simt",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "kernel_arg_bytes": 16,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "f07220f294cc6b79be8b8815e4f201fd4893eb10c07333d5e37262b37312873c",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "98c788f8e566c2456ed4266940466fa2f2ccae994c14ff55443c446203fc9583",
+    "cycles": 2458,
+    "instructions": 172,
+    "archive": "reduce_columns/ascendc_simt/simulation/attempt_o9h9j3js/npusim_20261004183103_sim_runner",
+    "reused_from": "reduce_columns/ascendc_simt",
+    "evidence": "reduce_columns/ascendc_simt",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=64 symbol=main_kernel"
+    ],
+    "evidence_sha256": {
+      "device.tir": "06dd9c40cf0a6e55b66c7e7a79f80b742597f966a171d8398c92515af6c02e50",
+      "kernel.asc": "5c15f3dc253f2ed5cfe6e9672d4f14949d531010882146a7b00ec055bbd8bafc",
+      "correctness.txt": "a43813a92ea0573f686e944e5d960afe7c8f7b530ebb1c50ac26a979bf1efab9",
+      "profile.json": "17de2cf9a8de7e0d9e3fa21e08ed8ebef13f55e673b9d51a29a958f9b7aa7240",
+      "workload.py": "15575eb3bf26648b617fdcf6b2c1c1c76855c050311095996c6af3cc426c14a1",
+      "input.tir": "7eba8c8ad84c679194409d5d1b0597b845c50cb818f80b423a764b3e919fce17",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_columns",
+      "op": "reduce_columns",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        64
+      ]
+    },
+    "backend": "ascendc",
+    "mode": "simd",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 130, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 23, in compile_device\n    (p/'kernel.aibin').write_bytes(compile_ascend((p/'kernel.asc').read_text(), target_format='aibin', npu_arch='dav-3510',\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/tilelang/tilelang/contrib/bisheng.py\", line 200, in compile_ascend\n    _run_command(compile_command, code, verbose, \"device compilation\")\n  File \"/workspace/tilelang/tilelang/contrib/bisheng.py\", line 129, in _run_command\n    raise RuntimeError(f\"Ascend {stage} failed.\\nCommand: {shlex.join(command)}\\nCompiler output:\\n{output}\\nSource:\\n{code}\")\nRuntimeError: Ascend device compilation failed.\nCommand: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin/bisheng -O2 -fPIC -std=c++20 -mllvm -cce-aicore-dcpreload-args=false --npu-arch=dav-3510 -I/workspace/tilelang/src -g --sysroot=/workspace/setup/cann/sysroot --gcc-toolchain=/workspace/setup/cann/sysroot/usr --cce-aicore-only /tmp/tmp0p89yqhi/tl_kernel.asc -o /tmp/tmp0p89yqhi/tl_kernel.rel.o\nCompiler output:\nfatal error: error in backend: /tmp/tmp0p89yqhi/tl_kernel.asc:19:3: Unsupported scalar instruction in AIV loop.\nbisheng: error: clang frontend command failed with exit code 70 (use -v to see invocation)\n2026-08-18T19:12:48+08:00 clang version 15.0.5 (clang-5c68a1cb1231 flang-5c68a1cb1231)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /workspace/Ascend/cann-9.2.0-beta.2/tools/bisheng_compiler/bin\n\nSource:\n#include <tl_templates/ascend/common.h>\n#include <tl_templates/ascend/debug.h>\n#include <tl_templates/ascend/simd_inst.h>\n__simd_vf__ inline void main_kernel_simd_vf_0(__ubuf__ uint8_t* buf_dyn_shmem) {\n  for (int32_t i = 0; i < 64; ++i) {\n    ((__ubuf__ float*)buf_dyn_shmem)[(i + 256)] = float(0x0p+0f/*0.000000e+00*/);\n    for (int32_t k = 0; k < 4; ++k) {\n      ((__ubuf__ float*)buf_dyn_shmem)[(i + 256)] = (((__ubuf__ float*)buf_dyn_shmem)[(i + 256)] + ((__ubuf__ float*)buf_dyn_shmem)[((k * 64) + i)]);\n    }\n  }\n}\n\nextern \"C\" __global__ __vector__ void main_kernel(__gm__ float* A, __gm__ float* O) {\n  asc_init();\n  __ubuf__ uint8_t *buf_dyn_shmem = (__ubuf__ uint8_t *)0;\n  asc_copy_gm2ub_align((__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[0]))), (__gm__ uint8_t*)((&(A[0]))), 1, 1024, 0, 0, 0, static_cast<asc_load_l2_cache_mode>(0), 1024, 1024);\n  asc_sync_notify(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));\n  asc_sync_wait(PIPE_MTE2, PIPE_V, static_cast<event_t>(0));\n  main_kernel_simd_vf_0(buf_dyn_shmem);\n  asc_sync_notify(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));\n  asc_sync_wait(PIPE_V, PIPE_MTE3, static_cast<event_t>(0));\n  asc_copy_ub2gm_align((__gm__ uint8_t*)((&(O[0]))), (__ubuf__ uint8_t*)((&(((__ubuf__ float*)buf_dyn_shmem)[256]))), 1, 256, static_cast<asc_store_l2_cache_mode>(4), 256, 256);\n}\n\n\n",
+    "evidence": "reduce_columns/ascendc_simd",
+    "evidence_sha256": {
+      "device.tir": "339a829ff2b2861953b2901803b56911ed3ab75b673749cd017fd0f3fc2a8e21",
+      "error.txt": "ff1c92899360e5650c68d6704a7605bbfd496ee247284838cdbad6b1ac9b7410",
+      "failure.txt": "41eaec24a2c8bc783304e47612493fbfc11a70cceaba1e4876f04aa5fe24ce4b",
+      "kernel.asc": "f1af95f5c4d0c1f0c182be8047a64ed87cce7849bd89975caa6a04f2e2d06fe8",
+      "worker.log": "717ba62523f2f99fbc9657bc4cd57fb681aff7efc483f5376edcc943e8f86f06",
+      "workload.py": "b0250a66ff30789667c780cb6ccafe4550a18a0a2358fc0933fbdd4b664d9c0d",
+      "input.tir": "840aef37f7a732d22dc450c4f276100a959069261fe9b595de4175a4f514de3d",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_columns",
+      "op": "reduce_columns",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simt",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 141, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 33, in compile_device\n    import tilelang.contrib.ptodsl\n  File \"/workspace/tilelang/tilelang/contrib/ptodsl/__init__.py\", line 21, in <module>\n    from .simt import (\n  File \"/workspace/tilelang/tilelang/contrib/ptodsl/simt.py\", line 5, in <module>\n    import ptodsl._allreduce as _allreduce\nModuleNotFoundError: No module named 'ptodsl._allreduce'\n",
+    "evidence": "reduce_columns/pto_simt",
+    "evidence_sha256": {
+      "device.tir": "fde065cd46d4039898a37a4896553a06ac5f2057758bd55ff37aceba86376195",
+      "error.txt": "8b8bdf2013ad9b34a402430b4323d8b8393e82e9f218fe56b7600a005d1d2bdc",
+      "failure.txt": "cd91526774b7eedf7e941d325319b0b4e2b2e35f2b3ffc90a14a87c61b9072ef",
+      "kernel.ptodsl.py": "ce3e0992fdf2793d1e3bc75e1ff50a17db35cee456a07735fb370829fe2ccfd8",
+      "worker.log": "c2d6f786c62707eb74072e14f610a0bab325d0768506b9220eb061b825d6b1e1",
+      "workload.py": "15575eb3bf26648b617fdcf6b2c1c1c76855c050311095996c6af3cc426c14a1",
+      "input.tir": "7eba8c8ad84c679194409d5d1b0597b845c50cb818f80b423a764b3e919fce17",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_columns",
+      "op": "reduce_columns",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        64
+      ]
+    },
+    "backend": "pto",
+    "mode": "simd",
+    "status": "failed",
+    "stage": "device_compile",
+    "frontend_version": "0.1.15+cuda.git994b44ec",
+    "arguments": [
+      "A",
+      "O"
+    ],
+    "source_symbol": "main_kernel",
+    "symbol": "main_kernel_mix_aiv",
+    "abi": "pointers",
+    "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 130, in main\n    compile_device(args.backend,p,result)\n  File \"/workspace/setup/scenarios/worker.py\", line 35, in compile_device\n    run(base+['-o',str(p/'kernel.fatobj.o')],p/'device-compile.log')\n  File \"/workspace/setup/scenarios/worker.py\", line 17, in run\n    subprocess.run(cmd, stdout=f, stderr=subprocess.STDOUT, check=True, timeout=180)\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['ptoas', '/workspace/setup/tilelang/results/scenarios/reduce_columns/pto_simd/kernel.pto', '--pto-arch=a5', '--pto-backend=vpto', '-o', '/workspace/setup/tilelang/results/scenarios/reduce_columns/pto_simd/kernel.fatobj.o']' returned non-zero exit status 1.\n",
+    "evidence": "reduce_columns/pto_simd",
+    "evidence_sha256": {
+      "device.tir": "50623280e54b95ed757f9570fdcd1978ba455df8a40ffbc1b39607b63a0993a7",
+      "kernel.vpto.mlir": "40b16027e26774733aa5055b950941a9f8dccb2d596150e1bae4f9a4dbe213f5",
+      "error.txt": "bff507e536af45f5f3d0e0dacda089e9486f1b7c92053967da801c08cc62a0a6",
+      "source-adaptation.diff": "6fed9958c48a2fb5e73d66c0d066787d31357726a75d07846aa8e8cf381c880f",
+      "failure.txt": "6fe20e0a5004ee11accc83eb5cce3a8e91cee25b68fd5be6c404e63d252b403f",
+      "kernel.pto": "bf40128081ab889232a25b411a11b85d58c8b94bcc7e8dcc59d42743c7af18b5",
+      "kernel.ptodsl.py": "3f2d3cb4b118eaa108041e10308027b0d3ed5d08f063dc55fec8f71e68c4f56a",
+      "worker.log": "73dca57cfede8583a5e282644aa6a220314331f9d2f82990f9c59f315223a227",
+      "device-compile.log": "936284d7bcec4f59461d13d4a567cc5c040e99d4ee4893d54d10454e7463b59d",
+      "kernel.ll": "ee8b4a16a01fc848e6cf12a84c6d8a5c1e28a88b83fcb5d36df06f8676df3ef6",
+      "workload.py": "b0250a66ff30789667c780cb6ccafe4550a18a0a2358fc0933fbdd4b664d9c0d",
+      "input.tir": "840aef37f7a732d22dc450c4f276100a959069261fe9b595de4175a4f514de3d",
+      "passes.json": "2a99fbe9973b2d0191ad856b186b5a110fe65e81f5102873f79f2a5134f084f0"
+    }
+  },
+  {
+    "case": {
+      "name": "reduce_columns",
+      "op": "reduce_columns",
+      "a": [
+        4,
+        64
+      ],
+      "b": [
+        1
+      ],
+      "out": [
+        64
+      ]
+    },
+    "backend": "npuir",
+    "mode": "auto_simd",
+    "status": "passed",
+    "stage": "simulation",
+    "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+    "symbol": "main",
+    "abi": "npuir",
+    "kernel_arg_bytes": 232,
+    "correct": true,
+    "output_guard_correct": true,
+    "binary_sha256": "536e010b93ef49e7096f975202e1880bd42dc37f8c5c19cc83547f61e17f90fc",
+    "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+    "fixture_sha256": "98c788f8e566c2456ed4266940466fa2f2ccae994c14ff55443c446203fc9583",
+    "cycles": 6966,
+    "instructions": 1559,
+    "archive": "reduce_columns/npuir_auto_simd/simulation/attempt_a_vo_fan/npusim_20261004183151_sim_runner",
+    "reused_from": "reduce_columns/npuir_auto_simd",
+    "evidence": "reduce_columns/npuir_auto_simd",
+    "correctness_marker": [
+      "SIMULATOR_CORRECT elements=64 symbol=main"
+    ],
+    "evidence_sha256": {
+      "003_tl.NpuLoopVectorize.tir": "9787fafb099661cdc33118ac90932bfc706be8935e310fc2fc532e86a8a2c595",
+      "kernel.mlir": "50feb16d9c908fcedeb4f52bed144be7b84e91ea15de8e5ad2f21b8e64707f8c",
+      "correctness.txt": "5986a6d69386277b5d7b7ae2e76827bb721232d6c0b8656e283171821434dea5",
+      "profile.json": "00e8559fb945b0f1cb5f8848465715ae1d3345a092ee5e185569e0db28448cab",
+      "workload.py": "0f43167b3267e935ceae1d3836ccd24c885d62879c4fb82e5b60210007312752",
+      "input.tir": "325b40d1ab44a2ddfcf9db84043c7aa547efdb6964544c56f9dc13f985ec78cf",
+      "passes.json": "69b1923be6a70f74425c4e4532bde85e62dedd1f76f6daaa665053665c4052a7",
+      "temps/module.hivm.opt.mlir": "d24d17ccef458cfca803b5a6c6d4295bcd42b13b3f4f7cea8de3bcabdc67b597"
+    }
+  }
+]

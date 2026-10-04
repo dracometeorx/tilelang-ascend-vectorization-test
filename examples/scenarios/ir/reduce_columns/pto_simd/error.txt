@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/setup/scenarios/worker.py", line 130, in main
+    compile_device(args.backend,p,result)
+  File "/workspace/setup/scenarios/worker.py", line 35, in compile_device
+    run(base+['-o',str(p/'kernel.fatobj.o')],p/'device-compile.log')
+  File "/workspace/setup/scenarios/worker.py", line 17, in run
+    subprocess.run(cmd, stdout=f, stderr=subprocess.STDOUT, check=True, timeout=180)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['ptoas', '/workspace/setup/tilelang/results/scenarios/reduce_columns/pto_simd/kernel.pto', '--pto-arch=a5', '--pto-backend=vpto', '-o', '/workspace/setup/tilelang/results/scenarios/reduce_columns/pto_simd/kernel.fatobj.o']' returned non-zero exit status 1.

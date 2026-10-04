@@ -1,0 +1,26 @@
+# from tvm.script import ir as I
+# from tvm.script import tirx as T
+
+@I.ir_module
+class Module:
+    @T.prim_func
+    def main_kernel(O: T.handle("float32", "global")):
+        T.func_attr({"calling_conv": 2, "dyn_shared_memory_buf": 1024, "target": T.target({"arch": "dav-3510", "keys": ["pto", "ascend"], "kind": "ascend", "launch_grid_only": True, "max_vector_bits": 64, "supports_kernel_status_return": False, "supports_vector_predicate": True, "tag": ""}), "thread_extent": {"blockIdx.x": 1}, "tirx.is_global_func": T.bool(True), "tirx.kernel_launch_params": ["blockIdx.x", "tirx.use_dyn_shared_memory"], "tirx.noalias": True, "tl.non_restrict_params": []})
+        bx = T.launch_thread("blockIdx.x", 1)
+        o = T.alloc_buffer((256,), scope="shared.dyn")
+        o_1 = T.decl_buffer((256,), data=o.data, scope="shared.dyn")
+        with T.sblock("VECTOR", no_realize=True):
+            T.reads()
+            T.writes()
+            with T.sblock("SIMD_VF", no_realize=True):
+                T.reads()
+                T.writes()
+                T.sblock_attr({"tl.vf_source_index": T.int64(0)})
+                T.attr("simdvf", "tl.simdvf_scope", 1)
+                for vchunk in range(4):
+                    mask: T.boolx256 = T.tl.simd.pset(32, "PAT_ALL")
+                    vreg_0: T.float32x64 = T.tl.simd.vdup(T.float32(1.25), mask, "MODE_ZEROING")
+                    T.tl.simd.vsts(T.tvm_access_ptr(T.type_annotation("float32"), o.data, vchunk * 64, 1, 2), vreg_0, mask, "NORM_B32")
+            T.ascend_set_flag("V_MTE3", 0)
+            T.ascend_wait_flag("V_MTE3", 0)
+            T.ascend_copy_ubuf_to_gm(T.tvm_access_ptr(T.type_annotation("float32"), O, 0, 256, 2), T.tvm_access_ptr(T.type_annotation("float32"), o.data, 0, 256, 1), 0, 1, 1024, 4, 1024, 1024)
