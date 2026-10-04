@@ -1,0 +1,8 @@
+--- generated
++++ standalone
+@@ -1,5 +1,4 @@
+ from ptodsl import pto
+-import tilelang.contrib.ptodsl as tl
+ 
+ @pto.jit(name="main_kernel", kernel_kind="vector", target="a5", mode="explicit")
+ def main_kernel(A: pto.ptr(pto.f32, "gm"), B: pto.ptr(pto.f32, "gm"), O: pto.ptr(pto.f32, "gm")):

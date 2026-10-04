@@ -1,0 +1,11 @@
+[
+  "tir.BindTarget",
+  "tir.Simplify",
+  "tir.RemoveNoOp",
+  "tl.NpuLoopVectorize",
+  "tl.LegalizeNpuirBF16",
+  "tl.PlanAndUpdateBufferAllocationLocation",
+  "tir.LowerOpaqueBlock",
+  "tl.LowerNpuirBlock",
+  "tir.RemoveNoOp"
+]

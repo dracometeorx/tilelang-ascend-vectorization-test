@@ -1,0 +1,149 @@
+[
+  {
+    "backend": "ascendc",
+    "shape": [
+      256
+    ],
+    "mode": "simt",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2636,
+      "kernel_instructions_executed": 135
+    }
+  },
+  {
+    "backend": "ascendc",
+    "shape": [
+      256
+    ],
+    "mode": "simd",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2143,
+      "kernel_instructions_executed": 103
+    }
+  },
+  {
+    "backend": "ascendc",
+    "shape": [
+      4,
+      64
+    ],
+    "mode": "simt",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2618,
+      "kernel_instructions_executed": 135
+    }
+  },
+  {
+    "backend": "ascendc",
+    "shape": [
+      4,
+      64
+    ],
+    "mode": "simd",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2161,
+      "kernel_instructions_executed": 103
+    }
+  },
+  {
+    "backend": "npuir",
+    "shape": [
+      4,
+      64
+    ],
+    "mode": "auto_simd",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2747,
+      "kernel_instructions_executed": 135
+    },
+    "binary_sha256": "ebf342561d6f6d63c43865cc1229561e4b35a6c3f1a77143f23d9df868ed4d78",
+    "runner_sha256": "bbd8ff4206a05c3e29815cacfc883543ec60d485fa6f9951ad78c500d0738218"
+  },
+  {
+    "backend": "npuir",
+    "shape": [
+      256
+    ],
+    "mode": "auto_simd",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2799,
+      "kernel_instructions_executed": 135
+    },
+    "binary_sha256": "ebf342561d6f6d63c43865cc1229561e4b35a6c3f1a77143f23d9df868ed4d78",
+    "runner_sha256": "bbd8ff4206a05c3e29815cacfc883543ec60d485fa6f9951ad78c500d0738218"
+  },
+  {
+    "backend": "pto",
+    "shape": [
+      4,
+      64
+    ],
+    "mode": "simd",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2160,
+      "kernel_instructions_executed": 97
+    },
+    "binary_sha256": "0905c332bffff534b4bed395cad72d9124029981fc9deb0d255cd1d36d3f5c81",
+    "runner_sha256": "bbd8ff4206a05c3e29815cacfc883543ec60d485fa6f9951ad78c500d0738218"
+  },
+  {
+    "backend": "pto",
+    "shape": [
+      4,
+      64
+    ],
+    "mode": "simt",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2639,
+      "kernel_instructions_executed": 167
+    },
+    "binary_sha256": "c94976dc4e1e847699b9a9aa78d3ff4445f3eb1cd9db7c27cbb2baccaf805b61",
+    "runner_sha256": "bbd8ff4206a05c3e29815cacfc883543ec60d485fa6f9951ad78c500d0738218"
+  },
+  {
+    "backend": "pto",
+    "shape": [
+      256
+    ],
+    "mode": "simd",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2145,
+      "kernel_instructions_executed": 97
+    },
+    "binary_sha256": "0905c332bffff534b4bed395cad72d9124029981fc9deb0d255cd1d36d3f5c81",
+    "runner_sha256": "bbd8ff4206a05c3e29815cacfc883543ec60d485fa6f9951ad78c500d0738218"
+  },
+  {
+    "backend": "pto",
+    "shape": [
+      256
+    ],
+    "mode": "simt",
+    "correct": true,
+    "profile": {
+      "ai_core_active": 1,
+      "kernel_total_clocks": 2611,
+      "kernel_instructions_executed": 167
+    },
+    "binary_sha256": "c94976dc4e1e847699b9a9aa78d3ff4445f3eb1cd9db7c27cbb2baccaf805b61",
+    "runner_sha256": "bbd8ff4206a05c3e29815cacfc883543ec60d485fa6f9951ad78c500d0738218"
+  }
+]

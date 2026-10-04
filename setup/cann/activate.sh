@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+export ASCEND_HOME_PATH=/workspace/Ascend/cann-9.2.0-beta.2
+export ASCEND_TOOLKIT_HOME="$ASCEND_HOME_PATH"
+export BISHENG_HOME="$ASCEND_HOME_PATH/tools/bisheng_compiler"
+export PATH="/workspace/setup/cann:$BISHENG_HOME/bin:$PATH"
+export CPATH="$ASCEND_HOME_PATH/include:$ASCEND_HOME_PATH/asc/include:/workspace/setup/cann/components-9.2/ge-executor/x86_64-linux/include:/workspace/setup/cann/components-9.2/ge-compiler/x86_64-linux/include:/workspace/tilelang/src${CPATH:+:$CPATH}"
+export CPATH="$CPATH:/workspace/setup/cann/components-9.2/ge-executor/x86_64-linux/include/acl:/workspace/setup/cann/components-9.2/ge-compiler/x86_64-linux/include/acl:$ASCEND_HOME_PATH/include/acl"
+export LD_LIBRARY_PATH="$ASCEND_HOME_PATH/tools/simulator/Ascend950PR_9589/camodel:$ASCEND_HOME_PATH/lib64${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export ASCEND_WORK_PATH=/workspace/.cache/ascend
+export ASCEND_GLOBAL_LOG_LEVEL=3
+export ASCEND_SLOG_PRINT_TO_STDOUT=0
+export CORE_ENABLE_MASK=0x1

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.lab/
+*.tar.gz
+*.whl
+*.rpm
+*.deb
+setup/*/results/
+setup/cann/components-*/
+setup/cann/packages/

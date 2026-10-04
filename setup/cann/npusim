@@ -1,0 +1,5 @@
+#!/workspace/tilelang/.venv/bin/python
+from cannsim.main import main
+
+if __name__ == "__main__":
+    main()

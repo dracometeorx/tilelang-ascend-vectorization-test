@@ -1,0 +1,12 @@
+{
+  "tilelang_repository": "https://github.com/dracometeorx/tilelang.git",
+  "tilelang_commit": "994b44eca1a83a00d19d926e5264a6c608700656",
+  "python_main": "3.12.14",
+  "python_npuir": "3.11.16",
+  "cann": "9.2.0-beta.2",
+  "npuir_compiler": "1.2.0",
+  "npuir_tilelang": "0.1.1.030+npuir+4e1bb3e4",
+  "ptoas_vmi": "0.1.9",
+  "simulation_target": "Ascend950PR_9589",
+  "ascend_arch": "dav-3510"
+}

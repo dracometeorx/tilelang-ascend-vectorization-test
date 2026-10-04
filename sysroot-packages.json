@@ -1,0 +1,22 @@
+[
+  {
+    "filename": "libc6-dev_2.36-9+deb12u14_amd64.deb",
+    "url": "https://deb.debian.org/debian/pool/main/g/glibc/libc6-dev_2.36-9+deb12u14_amd64.deb",
+    "sha256": "0218fc2befcd784c1b0c6292c0a137ce89fad054efaa579ad083bee0f2c01aae"
+  },
+  {
+    "filename": "libgcc-12-dev_12.2.0-14+deb12u1_amd64.deb",
+    "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgcc-12-dev_12.2.0-14+deb12u1_amd64.deb",
+    "sha256": "d720259380a84f2ffc6fe516eff5cbe9c8a005138e8d6a5748747ba4b3404a82"
+  },
+  {
+    "filename": "libstdc++-12-dev_12.2.0-14+deb12u1_amd64.deb",
+    "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libstdc++-12-dev_12.2.0-14+deb12u1_amd64.deb",
+    "sha256": "d28def6c23630432b57cb38a4c2fd67a79d4e0484027386ca6e8d6005c3d7a73"
+  },
+  {
+    "filename": "linux-libc-dev_6.1.176-1_amd64.deb",
+    "url": "https://deb.debian.org/debian/pool/main/l/linux/linux-libc-dev_6.1.176-1_amd64.deb",
+    "sha256": "8bb258735b9dffbb111da778ebdd024750878e435ffd9dfcadcb6762ede6b4cf"
+  }
+]
