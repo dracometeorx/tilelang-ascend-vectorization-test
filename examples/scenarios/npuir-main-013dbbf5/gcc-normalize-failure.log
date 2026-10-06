@@ -1,0 +1,87 @@
+FAILED: [code=1] tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/Normalize/NormalizeTypeConversion.cpp.o 
+/usr/bin/g++ -DBISHENGIR_ENABLE_EXECUTION_ENGINE -DBSPUB_DAVINCI -D_DEBUG -D_GLIBCXX_ASSERTIONS -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/build/tools/bishengir/lib/Dialect/HFusion/Transforms -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/build/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/llvm-project/llvm/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/llvm-project/llvm/../mlir/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/build/tools/mlir/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/build/tools/bishengir/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/build/tools/triton/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/triton/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/triton/third_party -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/triton/third_party/nvidia/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/build/tools/triton/third_party -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/triton/third_party/proton/Dialect/include -I/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/third-party/triton/bin -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -fno-lifetime-dse -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wimplicit-fallthrough -Wno-maybe-uninitialized -Wno-nonnull -Wno-class-memaccess -Wno-redundant-move -Wno-pessimizing-move -Wno-noexcept-type -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -Wno-misleading-indentation -Wctad-maybe-unsupported -fdiagnostics-color -ffunction-sections -fdata-sections -O3 -DNDEBUG -std=c++17  -fno-exceptions -funwind-tables -UNDEBUG -MD -MT tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/Normalize/NormalizeTypeConversion.cpp.o -MF tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/Normalize/NormalizeTypeConversion.cpp.o.d -o tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/Normalize/NormalizeTypeConversion.cpp.o -c /workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:229:13: error: explicit specialization in non-namespace scope ‘struct mlir::hfusion::NormalizeToTargetType<ElemType, OpType>’
+  229 |   template <> bool isSupportOperand<bool>(OpType op) const { return false; }
+      |             ^
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:229:20: error: template-id ‘isSupportOperand<bool>’ in declaration of primary template
+  229 |   template <> bool isSupportOperand<bool>(OpType op) const { return false; }
+      |                    ^~~~~~~~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:231:13: error: explicit specialization in non-namespace scope ‘struct mlir::hfusion::NormalizeToTargetType<ElemType, OpType>’
+  231 |   template <> bool isSupportOperand<int8_t>(OpType op) const {
+      |             ^
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:231:20: error: template-id ‘isSupportOperand<int8_t>’ in declaration of primary template
+  231 |   template <> bool isSupportOperand<int8_t>(OpType op) const {
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:231:20: error: ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const’ cannot be overloaded with ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const’
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:229:20: note: previous declaration ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const’
+  229 |   template <> bool isSupportOperand<bool>(OpType op) const { return false; }
+      |                    ^~~~~~~~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp: In instantiation of ‘llvm::LogicalResult mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::matchAndRewrite(OpType, mlir::PatternRewriter&) const [with ElemType = signed char; OpType = mlir::hfusion::SelectOp]’:
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:165:17:   required from here
+  165 |   LogicalResult matchAndRewrite(OpType op,
+      |                 ^~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: error: use of deleted function ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const [with OpElemType = signed char; ElemType = signed char; OpType = mlir::hfusion::SelectOp]’
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:227:8: note: declared here
+  227 |   bool isSupportOperand(OpType op) const = delete;
+      |        ^~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: note: use ‘-fdiagnostics-all-candidates’ to display considered candidates
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp: In instantiation of ‘llvm::LogicalResult mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::matchAndRewrite(OpType, mlir::PatternRewriter&) const [with ElemType = signed char; OpType = mlir::linalg::ElemwiseUnaryOp]’:
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:165:17:   required from here
+  165 |   LogicalResult matchAndRewrite(OpType op,
+      |                 ^~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: error: use of deleted function ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const [with OpElemType = signed char; ElemType = signed char; OpType = mlir::linalg::ElemwiseUnaryOp]’
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:227:8: note: declared here
+  227 |   bool isSupportOperand(OpType op) const = delete;
+      |        ^~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: note: use ‘-fdiagnostics-all-candidates’ to display considered candidates
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp: In instantiation of ‘llvm::LogicalResult mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::matchAndRewrite(OpType, mlir::PatternRewriter&) const [with ElemType = signed char; OpType = mlir::linalg::ElemwiseBinaryOp]’:
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:165:17:   required from here
+  165 |   LogicalResult matchAndRewrite(OpType op,
+      |                 ^~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: error: use of deleted function ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const [with OpElemType = signed char; ElemType = signed char; OpType = mlir::linalg::ElemwiseBinaryOp]’
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:227:8: note: declared here
+  227 |   bool isSupportOperand(OpType op) const = delete;
+      |        ^~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: note: use ‘-fdiagnostics-all-candidates’ to display considered candidates
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp: In instantiation of ‘llvm::LogicalResult mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::matchAndRewrite(OpType, mlir::PatternRewriter&) const [with ElemType = signed char; OpType = mlir::hfusion::ElemwiseUnaryOp]’:
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:165:17:   required from here
+  165 |   LogicalResult matchAndRewrite(OpType op,
+      |                 ^~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: error: use of deleted function ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const [with OpElemType = signed char; ElemType = signed char; OpType = mlir::hfusion::ElemwiseUnaryOp]’
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:227:8: note: declared here
+  227 |   bool isSupportOperand(OpType op) const = delete;
+      |        ^~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: note: use ‘-fdiagnostics-all-candidates’ to display considered candidates
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp: In instantiation of ‘llvm::LogicalResult mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::matchAndRewrite(OpType, mlir::PatternRewriter&) const [with ElemType = signed char; OpType = mlir::hfusion::ElemwiseBinaryOp]’:
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:165:17:   required from here
+  165 |   LogicalResult matchAndRewrite(OpType op,
+      |                 ^~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: error: use of deleted function ‘bool mlir::hfusion::NormalizeToTargetType<ElemType, OpType>::isSupportOperand(OpType) const [with OpElemType = signed char; ElemType = signed char; OpType = mlir::hfusion::ElemwiseBinaryOp]’
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:227:8: note: declared here
+  227 |   bool isSupportOperand(OpType op) const = delete;
+      |        ^~~~~~~~~~~~~~~~
+/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/AscendNPU-IR-Dev/bishengir/lib/Dialect/HFusion/Transforms/Normalize/NormalizeTypeConversion.cpp:176:35: note: use ‘-fdiagnostics-all-candidates’ to display considered candidates
+  176 |     if (isSupportOperand<ElemType>(op)) {
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+[4/1984] Building CXX object tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/Normalize/Utils/MathHelpers.cpp.o
+[5/1984] Building CXX object tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/AddFFTSAddr.cpp.o
+[6/1984] Building CXX object tools/bishengir/lib/Dialect/HFusion/Transforms/CMakeFiles/obj.MLIRHFusionTransforms.dir/AdaptTritonKernel.cpp.o
+ninja: build stopped: subcommand failed.

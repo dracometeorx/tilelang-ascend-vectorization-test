@@ -1,0 +1,4 @@
+bishengir-compile 1.0.0 (https://gitcode.com/Ascend/AscendNPU-IR.git 77f5b0617813 2026-10-06) 
+llvm 19.1.7 98ef2bc767ed
+Release build with assertions.
+

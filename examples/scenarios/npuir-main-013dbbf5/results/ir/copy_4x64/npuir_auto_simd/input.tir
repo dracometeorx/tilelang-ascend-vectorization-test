@@ -1,0 +1,19 @@
+# from tvm.script import tir as T
+
+@T.prim_func
+def main(A: T.Buffer((4, 64), "float32"), B: T.Buffer((1,), "float32"), O: T.Buffer((4, 64), "float32")):
+    # with T.block("root"):
+    cid = T.launch_thread("blockIdx.x", 1)
+    vid = T.launch_thread("blockIdx.z", 2)
+    with T.block("tilelang_root"):
+        T.reads(A[0, 0], O[0, 0])
+        T.writes()
+        T.block_attr({"tilelang.is_npu_kernel_frame": T.bool(True)})
+        a = T.alloc_buffer((4, 64), scope="shared.dyn")
+        b = T.alloc_buffer((1,), scope="shared.dyn")
+        o = T.alloc_buffer((4, 64), scope="shared.dyn")
+        T.copy(T.region(A[0, 0], 1, 4, 64), T.region(a[0, 0], 2, 4, 64))
+        for i in T.parallel(4):
+            for j in T.parallel(64):
+                o[i, j] = a[i, j]
+        T.copy(T.region(o[0, 0], 1, 4, 64), T.region(O[0, 0], 2, 4, 64))

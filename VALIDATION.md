@@ -1,5 +1,15 @@
 # 验证记录
 
+## 新版 A5 构建与模拟（2026-10-06）
+
+- 先 fetch 远端 `main@06d764af`，保留历史不相连的旧本地分支；恢复脚本，核对 658 份历史证据哈希，重建 14 份逐字节相同 workload / SHA256 相同 fixture。
+- 从官方公开 `Ascend/AscendNPU-IR` 取得必需的相同 `77f5b061`，固定前端 `013dbbf5` / TVM `c2921fda` / LLVM / Triton，完成完整开发依赖、TVM 和新 TileLang 的隔离源码构建及实际导入。没有旧 wheel 与新 Python 源码混用。
+- 14/14 新版场景完成 lowering、设备编译、独立厂商 CAModel 执行、逐元素精确输出、64 个 FP32 canary 和 Profiling；0 个失败、0 个复用。显式 SIMD、实际 pass、源码提交、导入位置、native 库哈希逐例保留。
+- 实测新 ABI 56 字节（5 指针、3 grid i32、尾部对齐），V2 launch、localMemorySize=221184；检查优化入口、ELF 参数段、main 符号和 sync/workspace 未使用。原 224 字节只是已被排除的推测。
+- 设备后端仍为原 BishengIR 1.2.0 / LLVM 19.1.7 和 CANN 9.2.0-beta.2；新 A5 编译选项、前端、ABI、启动 API 同时变化。列广播融合和 flatten 开销下降有优化 IR/执行计数证据；三种 reduction 的向量计数仍为 0。
+- 14 份实际 PC 指令事件总数均匹配 Profiling，无重复 instruction ID。完整轨迹留本地，精简 ELF/IR/ABI/指标已导出；各额外冒烟与失败诊断不计入正式 14 条。
+- 证据见 [本次目录](examples/scenarios/npuir-main-013dbbf5/)，完整分析见 [中文](examples/scenarios/README.md) / [English](examples/scenarios/README.en.md)。以下为历史验证，没有在本次重跑整个旧矩阵。
+
 验证日期：2026-10-02，x86_64 Linux 云环境，无物理 NPU。
 
 ## 原云环境

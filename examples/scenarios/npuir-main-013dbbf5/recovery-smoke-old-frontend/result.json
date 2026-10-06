@@ -1,0 +1,38 @@
+{
+  "case": {
+    "name": "copy_256",
+    "op": "copy",
+    "a": [
+      256
+    ],
+    "b": [
+      1
+    ],
+    "out": [
+      256
+    ]
+  },
+  "backend": "npuir",
+  "mode": "auto_simd",
+  "status": "passed",
+  "stage": "simulation",
+  "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+  "symbol": "main",
+  "abi": "npuir",
+  "kernel_arg_bytes": 232,
+  "correct": true,
+  "output_guard_correct": true,
+  "binary_sha256": "94b21591e822e990ef46862977a0097a0336458fad721a3429c77d60b4de2848",
+  "runner_sha256": "7e051e0902603e4926865d7fd9d6ffdde4fe7307444e1d2ce3a578c3219c01ba",
+  "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+  "cycles": 2172,
+  "instructions": 70,
+  "archive": "copy_256/npuir_auto_simd/simulation/attempt_dyw3j5u8/npusim_20261006112612_sim_runner",
+  "purpose": "current-environment smoke with historical frontend; not a new-frontend validation",
+  "independent_execution": true,
+  "historical_hash_comparison": {
+    "binary_sha256": true,
+    "runner_sha256": true,
+    "fixture_sha256": true
+  }
+}

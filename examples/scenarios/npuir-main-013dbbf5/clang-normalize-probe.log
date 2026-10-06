@@ -1,0 +1,3 @@
+[0;1;35mwarning: [0m[1munknown warning option '-Wno-maybe-uninitialized'; did you mean '-Wno-uninitialized'? [-Wunknown-warning-option][0m
+[0;1;35mwarning: [0m[1munknown warning option '-Wno-class-memaccess'; did you mean '-Wno-class-varargs'? [-Wunknown-warning-option][0m
+2 warnings generated.

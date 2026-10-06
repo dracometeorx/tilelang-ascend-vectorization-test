@@ -1,0 +1,40 @@
+{
+  "checked_at_utc": "2026-10-06T15:13:48.707637+00:00",
+  "formal_cases": 14,
+  "lowered": 14,
+  "compiled": 14,
+  "independent_vendor_simulations": 14,
+  "exact_values_and_canaries": 14,
+  "failed": 0,
+  "reused": 0,
+  "unique_archives": 14,
+  "exported_evidence_hashes_checked": 210,
+  "actual_library_hashes_checked": true,
+  "compiler_hash_unchanged": true,
+  "elf_main_symbols_and_argument_sections_checked": true,
+  "all_kernel_arg_bytes": 56,
+  "all_fixture_and_workload_hashes_match_preparation": true,
+  "all_pc_event_counts_match_profiling": true,
+  "all_duplicate_instruction_id_counts_zero": true,
+  "scripts_sha256": {
+    "suite.py": "5e4e41033ace42768124def419ef92290ad261a719d6df4561874ae1866fddd1",
+    "report.py": "1c933dfb50fc3802fc3a11b87daa420263c205c6fb60811a081b3ddfcdc6124d",
+    "cases.py": "b0f07efbb56e322f49bcb0d8e3fbf34b8972405a202a43cb202363799d1a7123",
+    "worker.py": "d6907ea5c66cbe98f89d0f5c27febd88579ee1ab413aa3151055ddb1a421259f",
+    "run.sh": "d749293dc6b90cc5e63e54c7a6e84eb5b5f04c24716907e49af2bb736d8afdf4",
+    "compare_npuir.py": "6a271d30e049c0338b5e106b53a8a027f9bfcdad0c794d4e42d792f15e5223d4",
+    "prepare_npuir_main.py": "3efe9f12064b2466bd61238f0579daa267bfb0042b546a1aff18abaaab0ef02e",
+    "sim_runner.cc": "e9b021e0e78c73d655f32cbe4504fb5d632edd6be9c5771ad4775068cd3a16e1"
+  },
+  "packaging_checks": {
+    "scenario_python_syntax": "passed",
+    "backend_shell_syntax": "passed",
+    "git_diff_check": "Passed for authored code/docs; raw generated IR/readelf/build output retains original trailing whitespace for byte-exact hashes.",
+    "bilingual_relative_links": "passed",
+    "credential_pattern_scan": "passed",
+    "maximum_new_evidence_file_bytes": 76982,
+    "staged_template_files": 39,
+    "repeated_staging": "passed",
+    "clean_machine_installation": false
+  }
+}

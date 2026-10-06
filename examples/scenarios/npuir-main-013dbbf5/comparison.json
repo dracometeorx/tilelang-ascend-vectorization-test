@@ -1,0 +1,1829 @@
+{
+  "scope": "Only new_npuir contains current executions; other columns are historical.",
+  "limitations": "Frontend, compilation flags, ABI and launch changed. Device compiler and CAModel retained. No causal attribution from cycle delta alone.",
+  "ir_hash_method": "Function bodies exclude headers and indentation only; differing hashes do not prove different semantics. Static intrinsic counts are not executed instruction counts.",
+  "cases": [
+    {
+      "case": "scalar_const_256",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2213,
+        "instructions": 101,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.8,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.2903225806451613
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 65,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5838,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "7c51b323a8f3ed563bcae64f8b7c6f3b126c9bb36b44ae3f7515f812b4f5ee27",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "31d24f3d6d9094bb3d57b20301698f1bbe5a76d2dee45ff6e2242203da255924"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadds.s.x": 1,
+            "vldsx1.v64f32": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2229,
+        "instructions": 106,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.8,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.2903225806451613
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 70,
+            "load_count": 3,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5707,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "219ecbd2010e4a46e6633170a05bf070535dac3a45aa72e7f4eaf90cb0660130",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "31d24f3d6d9094bb3d57b20301698f1bbe5a76d2dee45ff6e2242203da255924"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadds.s.x": 1,
+            "vldsx1.v64f32": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2137,
+        "instructions": 98,
+        "vector_instructions": {
+          "RVECEX_count": 6,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.5,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.1935483870967742,
+          "SIMD_LdStIPC": 0.2903225806451613
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 64,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6008,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2111,
+        "instructions": 93,
+        "vector_instructions": {
+          "RVECEX_count": 6,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.5,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.21428571428571427,
+          "SIMD_LdStIPC": 0.32142857142857145
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 63,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6002,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -16,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "scalar_const_4x64",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2186,
+        "instructions": 101,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.8,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.2903225806451613
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 65,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5778,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "cb1574d0b9993005842f9bb3056d83d3119b22424f5a1d01d5372c4ef3aea965",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "31d24f3d6d9094bb3d57b20301698f1bbe5a76d2dee45ff6e2242203da255924"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadds.s.x": 1,
+            "vldsx1.v64f32": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2238,
+        "instructions": 106,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.8,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.2903225806451613
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 70,
+            "load_count": 3,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5715,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "ed5ab470ff287ecd89b2957333375ab410b40d1a6b22e50e6f7630f5de408e13",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "425ae320c9d1500cb546dbf83b4dc636573c62e530f411be9df770369c731148"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadds.s.x": 1,
+            "vldsx1.v64f32": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2128,
+        "instructions": 98,
+        "vector_instructions": {
+          "RVECEX_count": 6,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.5,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.1935483870967742,
+          "SIMD_LdStIPC": 0.2903225806451613
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 64,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5992,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2111,
+        "instructions": 93,
+        "vector_instructions": {
+          "RVECEX_count": 6,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 1.5,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.21428571428571427,
+          "SIMD_LdStIPC": 0.32142857142857145
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 63,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6002,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -52,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "scalar_buffer_256",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2774,
+        "instructions": 146,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 103,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4697,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "b85be0f64f22c5abfa1dfea7acbec7717a234bcab6c455e932fdea890527390d",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "7d76afa3594051970986a0dd9c78da8576f9bc7619200bfa3d0c82a3bdd52695"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2767,
+        "instructions": 153,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 110,
+            "load_count": 4,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4677,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "9c1b099efc9a3cef9377f0083c92b560c7e6ac0d64a14e2a9f505630900e187e",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "7d76afa3594051970986a0dd9c78da8576f9bc7619200bfa3d0c82a3bdd52695"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2119,
+        "instructions": 103,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 68,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5965,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2135,
+        "instructions": 100,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.1724137931034483,
+          "SIMD_LdStIPC": 0.3448275862068966
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 69,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": 7,
+        "instructions": -7
+      }
+    },
+    {
+      "case": "scalar_buffer_4x64",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2774,
+        "instructions": 146,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 103,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4701,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "366d55398cd826fd034d57883fcd283995490fbf7e847c8cc219bff93e8bdf1c",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "7d76afa3594051970986a0dd9c78da8576f9bc7619200bfa3d0c82a3bdd52695"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2767,
+        "instructions": 153,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 110,
+            "load_count": 4,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4677,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "58788636c1ce092463d82eef6928d4f9e587008a267add69081df111552e8414",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "177b13471d9b0e471c281f685b83315c49a9ada162a75ca27e160a60b5e51345"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2131,
+        "instructions": 103,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 68,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5931,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2135,
+        "instructions": 100,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.1724137931034483,
+          "SIMD_LdStIPC": 0.3448275862068966
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 69,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": 7,
+        "instructions": -7
+      }
+    },
+    {
+      "case": "copy_256",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2117,
+        "instructions": 65,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 52,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5942,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "1166627acd812a11e34a661aaca483629bbd04311c2ef5ef71c214db5d0dc5bf",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2149,
+        "instructions": 70,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 57,
+            "load_count": 3,
+            "store_count": 0,
+            "load_store_ratio": 0.05
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5845,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "5cb0d6724b2bd6da8525e32a97df0d0ea50dd33d0fd24c24ef7060d4906673ed",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2138,
+        "instructions": 91,
+        "vector_instructions": {
+          "RVECEX_count": 1,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 9.0,
+          "SIMD_ScalarIPC": 0.07142857142857142,
+          "SIMD_ExecIPC": 0.03571428571428571,
+          "SIMD_LdStIPC": 0.32142857142857145
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 62,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6029,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2135,
+        "instructions": 83,
+        "vector_instructions": {
+          "RVECEX_count": 1,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 9.0,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.04,
+          "SIMD_LdStIPC": 0.36
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 58,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6009,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -32,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "copy_4x64",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2143,
+        "instructions": 65,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 52,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6024,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "87d108cfba948cb99627b394dcbae45ecd77b430be9a35b117dc1641eaeb6399",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2149,
+        "instructions": 70,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 57,
+            "load_count": 3,
+            "store_count": 0,
+            "load_store_ratio": 0.05
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5845,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "e4c198c2c26c325c7e7ca12897d3b9bfbb02e161eab024ab947fe16329ce45e9",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2143,
+        "instructions": 91,
+        "vector_instructions": {
+          "RVECEX_count": 1,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 9.0,
+          "SIMD_ScalarIPC": 0.07142857142857142,
+          "SIMD_ExecIPC": 0.03571428571428571,
+          "SIMD_LdStIPC": 0.32142857142857145
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 62,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6034,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2135,
+        "instructions": 83,
+        "vector_instructions": {
+          "RVECEX_count": 1,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 9.0,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.04,
+          "SIMD_LdStIPC": 0.36
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 58,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6009,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -6,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "fill_256",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1483,
+        "instructions": 75,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.04,
+          "SIMD_ExecIPC": 0.08,
+          "SIMD_LdStIPC": 0.2
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 53,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.6622,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "cf5a8b1f27d743a3e094bc8916b3b15adcd5dfefb77436374128400e823a6cc5",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "31d9fc01c640d5c99137a5ea76c51d0498b0aa58f172f70157447dd73abac366"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vdups.z": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1871,
+        "instructions": 80,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.04,
+          "SIMD_ExecIPC": 0.08,
+          "SIMD_LdStIPC": 0.2
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 58,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.52,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "3e8e886c430e4028f25cae4cc9bee999835f5fe3f79eb5e08409d8d06b755deb",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "31d9fc01c640d5c99137a5ea76c51d0498b0aa58f172f70157447dd73abac366"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vdups.z": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1430,
+        "instructions": 83,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.04,
+          "SIMD_ExecIPC": 0.08,
+          "SIMD_LdStIPC": 0.2
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 61,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.649,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1432,
+        "instructions": 76,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.08695652173913043,
+          "SIMD_LdStIPC": 0.21739130434782608
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 57,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.6564,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -388,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "fill_4x64",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1471,
+        "instructions": 75,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.04,
+          "SIMD_ExecIPC": 0.08,
+          "SIMD_LdStIPC": 0.2
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 53,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.656,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "36a8873d6d1ed4de9941ca2f77b5c85106f92d5c0ee160ab6f03184ff7ce5da9",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "31d9fc01c640d5c99137a5ea76c51d0498b0aa58f172f70157447dd73abac366"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vdups.z": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1871,
+        "instructions": 80,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.04,
+          "SIMD_ExecIPC": 0.08,
+          "SIMD_LdStIPC": 0.2
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 58,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.52,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "b2fd1555ecfc951b2acf47480619dbde7c4a3066e9994892b9cd830020fa28e0",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "fc7d51370237d85fc2640f551598b38270b1fe12cfd1a1ef40ae48a8abcb499f"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vdups.z": 1,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1420,
+        "instructions": 83,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.04,
+          "SIMD_ExecIPC": 0.08,
+          "SIMD_LdStIPC": 0.2
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 61,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.6486,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 1432,
+        "instructions": 76,
+        "vector_instructions": {
+          "RVECEX_count": 2,
+          "RVECLD_count": 0,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.5,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.08695652173913043,
+          "SIMD_LdStIPC": 0.21739130434782608
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 57,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE3",
+          "dominant_pipeline_util": 0.6564,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -400,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "broadcast_row",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2722,
+        "instructions": 146,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 103,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4673,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "a633c594687a477e17bbbbba09985139b1b15c6ed990fff9956bb0fb07a45641",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "93adc6279e51f5422b7e57e10644e6f17b48efc311d16c87cef5213ed616fcd9"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2781,
+        "instructions": 153,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 110,
+            "load_count": 4,
+            "store_count": 0,
+            "load_store_ratio": 0.04
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4603,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "391f4875757c182d3b40bd12677a548c59b6e7a12d6e6946a4a7d1acdddbabdc",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "93adc6279e51f5422b7e57e10644e6f17b48efc311d16c87cef5213ed616fcd9"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2152,
+        "instructions": 103,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.06451612903225806,
+          "SIMD_ExecIPC": 0.16129032258064516,
+          "SIMD_LdStIPC": 0.3225806451612903
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 68,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5994,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2146,
+        "instructions": 100,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 5,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.0,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.1724137931034483,
+          "SIMD_LdStIPC": 0.3448275862068966
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 69,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6048,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -59,
+        "instructions": -7
+      }
+    },
+    {
+      "case": "broadcast_column",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2739,
+        "instructions": 148,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 8,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.6,
+          "SIMD_ScalarIPC": 0.08823529411764706,
+          "SIMD_ExecIPC": 0.14705882352941177,
+          "SIMD_LdStIPC": 0.38235294117647056
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 101,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4662,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "1976b5206a9184a5c4129d7e96ffbb445be11b55cfeb9eae4e8924d058cf7c02",
+          "vector_function_count": 1,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "78fa1c759c96c3ac5a58527fc1e49b73ff0558674808a614f760a34813099cbe"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 2,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 2,
+            "vstsx1.v64f32": 1
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2879,
+        "instructions": 199,
+        "vector_instructions": {
+          "RVECEX_count": 7,
+          "RVECLD_count": 13,
+          "RVECST_count": 12,
+          "ub_traffic_ratio": 3.5714285714285716,
+          "SIMD_ScalarIPC": 0.07472666485949218,
+          "SIMD_ExecIPC": 0.07167705791994217,
+          "SIMD_LdStIPC": 0.266851902051143
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 124,
+            "load_count": 4,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.4404,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "327f5cc00395d768ae9d914ef3193f76a52e22625b3f2024a57fb0d61a8fe653",
+          "vector_function_count": 2,
+          "vector_body_hashes_ignoring_header_and_indentation": [
+            "4da60d828cd658c3ad53be78ffa270175debd9955ed13aa43ffb5dd5a29fce7d",
+            "30bd8788e85f2b0f6de931943d64e8e82a00e780b370277678e6e28ce8820a9b"
+          ],
+          "static_vector_intrinsics": {
+            "pge.b32": 3,
+            "vadd.s.x": 1,
+            "vldsx1.v64f32": 3,
+            "vstsx1.v64f32": 2
+          },
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2145,
+        "instructions": 107,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 8,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.6,
+          "SIMD_ScalarIPC": 0.08823529411764706,
+          "SIMD_ExecIPC": 0.14705882352941177,
+          "SIMD_LdStIPC": 0.38235294117647056
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 68,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.5986,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2164,
+        "instructions": 101,
+        "vector_instructions": {
+          "RVECEX_count": 5,
+          "RVECLD_count": 8,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 2.6,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.16666666666666666,
+          "SIMD_LdStIPC": 0.43333333333333335
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 67,
+            "load_count": 2,
+            "store_count": 0,
+            "load_store_ratio": 0.03
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6067,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -140,
+        "instructions": -51
+      }
+    },
+    {
+      "case": "flatten",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 7280,
+        "instructions": 1870,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1601,
+            "load_count": 258,
+            "store_count": 256,
+            "load_store_ratio": 0.32
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.7809,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "35abb5b89aa4bc6206d2b0a92ad31a267e7733fefe4693fe74abbe6dc2e00bf6",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 1,
+          "static_memref_stores": 1
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 14012,
+        "instructions": 11851,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 512,
+          "RVECST_count": 1024,
+          "ub_traffic_ratio": 0,
+          "SIMD_ScalarIPC": 0.2,
+          "SIMD_ExecIPC": 0.0,
+          "SIMD_LdStIPC": 0.17142857142857143
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 6460,
+            "load_count": 3,
+            "store_count": 0,
+            "load_store_ratio": 0.0
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SIMD",
+          "dominant_pipeline_util": 0.6029,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "b0b5536e6ae3e09dd38ce15b510af7b17a55cbd35274618c4f39fe17c85dd68a",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 0,
+          "static_memref_stores": 0
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2149,
+        "instructions": 91,
+        "vector_instructions": {
+          "RVECEX_count": 1,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 9.0,
+          "SIMD_ScalarIPC": 0.07142857142857142,
+          "SIMD_ExecIPC": 0.03571428571428571,
+          "SIMD_LdStIPC": 0.32142857142857145
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 62,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6012,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "historical_pto_simd": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 2135,
+        "instructions": 83,
+        "vector_instructions": {
+          "RVECEX_count": 1,
+          "RVECLD_count": 4,
+          "RVECST_count": 5,
+          "ub_traffic_ratio": 9.0,
+          "SIMD_ScalarIPC": 0.0,
+          "SIMD_ExecIPC": 0.04,
+          "SIMD_LdStIPC": 0.36
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 58,
+            "load_count": 1,
+            "store_count": 0,
+            "load_store_ratio": 0.02
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_MTE2",
+          "dominant_pipeline_util": 0.6009,
+          "imbalance_ratio": 1.0
+        }
+      },
+      "delta": {
+        "cycles": -6732,
+        "instructions": -9981
+      }
+    },
+    {
+      "case": "reduce_all_256",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 7216,
+        "instructions": 2126,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1857,
+            "load_count": 514,
+            "store_count": 257,
+            "load_store_ratio": 0.42
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.8095,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "d43ab1048342c7e9c4ea6369a4fb9a67a6516ac944e0720a857830de10e7ae07",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 2,
+          "static_memref_stores": 2
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 7217,
+        "instructions": 2131,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1862,
+            "load_count": 515,
+            "store_count": 257,
+            "load_store_ratio": 0.41
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.8146,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "b63707456cfa043fd1fb4fd476101978e2199ebbf73e606005a08681c9e63433",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 2,
+          "static_memref_stores": 2
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "failed",
+        "stage": "device_compile"
+      },
+      "historical_pto_simd": {
+        "status": "failed",
+        "stage": "device_compile"
+      },
+      "delta": {
+        "cycles": -1,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "reduce_rows",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 7208,
+        "instructions": 2140,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1871,
+            "load_count": 514,
+            "store_count": 258,
+            "load_store_ratio": 0.41
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.8113,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "98c9cc152abbc20924e3ddb260f6eb0f6dbee08cae9262cffee1de66accc9a52",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 2,
+          "static_memref_stores": 2
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 7518,
+        "instructions": 2145,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1876,
+            "load_count": 515,
+            "store_count": 258,
+            "load_store_ratio": 0.41
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.7835,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "c36d5fbe91635110d48af20c923fa56151db1fd2a636927193f4a88ccc590db2",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 2,
+          "static_memref_stores": 2
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "failed",
+        "stage": "device_compile"
+      },
+      "historical_pto_simd": {
+        "status": "failed",
+        "stage": "device_compile"
+      },
+      "delta": {
+        "cycles": -310,
+        "instructions": -5
+      }
+    },
+    {
+      "case": "reduce_columns",
+      "new_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 6945,
+        "instructions": 1554,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1413,
+            "load_count": 322,
+            "store_count": 320,
+            "load_store_ratio": 0.45
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.8507,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "fd5935121ea632caf1b9e5b34c46e951fc1222ff1e895e2d9617edf1a4ca0b17",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 2,
+          "static_memref_stores": 2
+        }
+      },
+      "historical_npuir": {
+        "status": "passed",
+        "stage": "simulation",
+        "cycles": 6966,
+        "instructions": 1559,
+        "vector_instructions": {
+          "RVECEX_count": 0,
+          "RVECLD_count": 0,
+          "RVECST_count": 0,
+          "ub_traffic_ratio": 0
+        },
+        "scalar_instructions": {
+          "AIV0": {
+            "total_count": 1418,
+            "load_count": 323,
+            "store_count": 320,
+            "load_store_ratio": 0.45
+          }
+        },
+        "dominant_pipeline": {
+          "dominant_pipeline": "AIV0_SCALAR",
+          "dominant_pipeline_util": 0.8543,
+          "imbalance_ratio": 1.0
+        },
+        "optimized_ir": {
+          "sha256": "d24d17ccef458cfca803b5a6c6d4295bcd42b13b3f4f7cea8de3bcabdc67b597",
+          "vector_function_count": 0,
+          "vector_body_hashes_ignoring_header_and_indentation": [],
+          "static_vector_intrinsics": {},
+          "static_memref_loads": 2,
+          "static_memref_stores": 2
+        }
+      },
+      "historical_ascendc_simd": {
+        "status": "failed",
+        "stage": "device_compile"
+      },
+      "historical_pto_simd": {
+        "status": "failed",
+        "stage": "device_compile"
+      },
+      "delta": {
+        "cycles": -21,
+        "instructions": -5
+      }
+    }
+  ]
+}

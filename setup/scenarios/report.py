@@ -8,12 +8,30 @@ import shutil
 from cases import CASES, fixture
 
 PATHS=['cpu_native','ascendc_simt','ascendc_simd','pto_simt','pto_simd','npuir_auto_simd']
+LABELS=dict(zip(PATHS,['CPU','AscendC SIMT','AscendC SIMD','PTO SIMT','PTO SIMD','NPU-IR 自动向量化路径']))
+
+def trace_instruction_summary(trace, profile_total):
+    """Count displayed instruction events; retain the cross-check with Profiling."""
+    raw=trace.read_bytes()
+    events=[event for event in json.loads(raw)['traceEvents']
+            if event.get('ph') in ('X','i') and 'pc' in event.get('args',{})]
+    ids=[event['args']['instr_id'] for event in events if 'instr_id' in event['args']]
+    return dict(source_sha256=hashlib.sha256(raw).hexdigest(),
+        method='CAModel core_0 trace events with phase X/i and args.pc; excludes counters, metadata and dependency flows',
+        displayed_instruction_events=len(events), profiling_total=profile_total,
+        count_matches_profiling=len(events)==profile_total,
+        duplicate_instruction_ids=len(ids)-len(set(ids)),
+        events_without_instruction_id=len(events)-len(ids),
+        mnemonic_event_counts=dict(sorted(Counter(event['name'] for event in events).items())))
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--results',type=Path,default=Path('/workspace/setup/tilelang/results/scenarios'))
     ap.add_argument('--export',type=Path,required=True)
+    ap.add_argument('--paths',nargs='+',choices=PATHS,default=PATHS,
+                    help='Export only measured paths, e.g. npuir_auto_simd for a new frontend')
     args=ap.parse_args()
+    if len(set(args.paths))!=len(args.paths): ap.error('--paths must not contain duplicates')
     args.results=args.results.resolve(); args.export=args.export.resolve()
     args.export.mkdir(parents=True,exist_ok=True)
     records=[]; table=[]
@@ -22,7 +40,7 @@ def main():
         fixtures=args.export/'fixtures'; fixtures.mkdir(exist_ok=True)
         (fixtures/(case['name']+'.json')).write_text(json.dumps(dict(case=case,A=data[0],B=data[1],expected=data[2]),indent=2)+'\n')
         cells=[]
-        for path in PATHS:
+        for path in args.paths:
             p=args.results/case['name']/path
             r=json.loads((p/'result.json').read_text())
             r['evidence']=case['name']+'/'+path
@@ -32,12 +50,15 @@ def main():
             if r['status']=='failed': names+=['worker.log','compiler-worker.log','device-compile.log','error.txt']
             if r['backend']=='npuir':
                 names += [str(f.relative_to(p)) for f in p.glob('*NpuLoopVectorize*.tir')]
-                names += ['temps/module.hivm.opt.mlir']
+                names += ['temps/module.hivm.opt.mlir','abi-signatures.txt','device-command.json','device-compile.log','elf.txt','argsize.bin','kernel.aibin']
             for name in names:
                 if (p/name).exists():
                     target=dest/name; target.parent.mkdir(parents=True,exist_ok=True); shutil.copyfile(p/name,target)
             if r['status']=='passed' and r['backend']!='cpu':
                 assert r['correct'] and r['output_guard_correct'] and r['cycles']>0 and r['instructions']>0
+                assert hashlib.sha256((p/'kernel.aibin').read_bytes()).hexdigest()==r['binary_sha256']
+                actual_fixture=args.results/(case['name']+'.bin')
+                assert hashlib.sha256(actual_fixture.read_bytes()).hexdigest()==r['fixture_sha256']
                 archive=Path(r['archive'])
                 assert (archive/'report/index.html').exists()
                 log=(archive/'npusim.log').read_text()
@@ -50,6 +71,10 @@ def main():
                 profile=json.loads(profiles[0].read_text())
                 assert (r['cycles'],r['instructions'])==(profile['kernel_info']['kernel_total_clocks'],profile['kernel_info']['kernel_instructions_executed'])
                 shutil.copyfile(profiles[0],dest/'profile.json')
+                trace=profiles[0].parent/'core_0/trace_core0.json'
+                if trace.exists():
+                    (dest/'instruction-events.json').write_text(json.dumps(
+                        trace_instruction_summary(trace,r['instructions']),indent=2)+'\n')
                 r['archive']=str(archive.relative_to(args.results))
                 cells.append(f"{r['cycles']}/{r['instructions']}"+(' †' if r.get('reused_from') and r['reused_from']!=r['evidence'] else ''))
             elif r['backend']=='cpu' and r['status']=='passed': cells.append('通过')
@@ -61,11 +86,12 @@ def main():
     counts=Counter(r['status'] for r in records)
     device_passes=[r for r in records if r['backend']!='cpu' and r['status']=='passed']
     unique_runs=len({r['archive'] for r in device_passes})
+    device_total=sum(r['backend']!='cpu' for r in records)
     lines=['# Parallel 场景实测矩阵','',
            '单 block、FP32；A 的逻辑规模为 256 个元素（fill 不读取 A），输出按场景为 256、1、4 或 64 个元素。数字为 CAModel **周期/执行指令数**，不是物理 NPU 性能。',
            '† 表示跨组合复用 ELF、ABI、符号、fixture 和 runner 哈希均一致的已验证模拟；不代表独立再次执行。', '',
-           '| 场景 | CPU | AscendC SIMT | AscendC SIMD | PTO SIMT | PTO SIMD | NPU-IR 自动向量化路径 |',
-           '|---|---|---|---|---|---|---|',*table,'',f'状态统计：`{dict(counts)}`；设备通过 {len(device_passes)}/{len(CASES)*5} 个组合，引用 {unique_runs} 份不同的成功模拟归档。', '',
+           '| 场景 | '+' | '.join(LABELS[path] for path in args.paths)+' |',
+           '|'+'---|'*(len(args.paths)+1),*table,'',f'状态统计：`{dict(counts)}`；设备通过 {len(device_passes)}/{device_total} 个组合，引用 {unique_runs} 份不同的成功模拟归档。', '',
            '每个组合的源程序、IR 和失败日志见 `ir/`；`metrics.json` 保存失败阶段、完整诊断、校验标记、哈希和模拟报告的相对路径。完整 ELF/轨迹/HTML 留在工作目录。',
            '未重新验证空白机器安装；未修改编译器，不将未通过的组合视为可用后端。']
     (args.export/'README.md').write_text('\n'.join(lines)+'\n')

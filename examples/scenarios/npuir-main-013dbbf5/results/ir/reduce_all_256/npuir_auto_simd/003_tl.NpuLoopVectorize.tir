@@ -1,0 +1,24 @@
+# from tvm.script import ir as I
+# from tvm.script import tir as T
+
+@I.ir_module
+class Module:
+    @T.prim_func
+    def main(A: T.Buffer((256,), "float32"), B: T.Buffer((1,), "float32"), O: T.Buffer((1,), "float32")):
+        T.func_attr({"target": T.target({"host": {"keys": ["cpu"], "kind": "stackvm", "tag": ""}, "keys": [], "kind": "npuir", "tag": ""})})
+        # with T.block("root"):
+        cid = T.launch_thread("blockIdx.x", 1)
+        vid = T.launch_thread("blockIdx.z", 2)
+        with T.block("tilelang_root"):
+            T.reads(A[0], O[0])
+            T.writes()
+            a = T.alloc_buffer((256,), scope="shared.dyn")
+            b = T.alloc_buffer((1,), scope="shared.dyn")
+            o = T.alloc_buffer((1,), scope="shared.dyn")
+            T.copy(T.region(A[0], 1, 256), T.region(a[0], 2, 256))
+            for i_split in T.parallel(1):
+                o[0] = T.float32(0)
+            for i_split in T.parallel(1):
+                for k in range(256):
+                    o[0] = o[0] + a[k]
+            T.copy(T.region(o[0], 1, 1), T.region(O[0], 2, 1))

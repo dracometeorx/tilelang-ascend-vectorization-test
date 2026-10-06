@@ -1,0 +1,6 @@
+{
+  "import_path": "/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/tvm/python/tvm/__init__.py",
+  "library_path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm.so",
+  "version": "0.17.dev0",
+  "llvm_enabled": 0
+}

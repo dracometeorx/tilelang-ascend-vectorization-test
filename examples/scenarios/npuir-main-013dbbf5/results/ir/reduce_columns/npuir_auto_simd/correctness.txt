@@ -1,0 +1,1 @@
+SIMULATOR_CORRECT elements=64 symbol=main

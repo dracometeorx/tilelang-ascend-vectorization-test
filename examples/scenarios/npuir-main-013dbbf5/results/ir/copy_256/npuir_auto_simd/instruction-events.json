@@ -1,0 +1,33 @@
+{
+  "source_sha256": "9d40f20c16ebe401d6a6a439b8314aecdb99a5ac70d54688b002d00defd49f6b",
+  "method": "CAModel core_0 trace events with phase X/i and args.pc; excludes counters, metadata and dependency flows",
+  "displayed_instruction_events": 65,
+  "profiling_total": 65,
+  "count_matches_profiling": true,
+  "duplicate_instruction_ids": 0,
+  "events_without_instruction_id": 1,
+  "mnemonic_event_counts": {
+    "ADD": 1,
+    "ADD_IMM": 3,
+    "AND": 1,
+    "BAR": 1,
+    "CALL": 2,
+    "DCCI": 1,
+    "DC_PRELOAD_XN_IMM": 1,
+    "END": 1,
+    "LD_XD_XN_IMM": 2,
+    "MADD": 1,
+    "MOVK": 12,
+    "MOV_SPR_XN": 5,
+    "MOV_SRC_TO_DST_ALIGNv2": 2,
+    "MOV_XD_IMM": 13,
+    "MOV_XD_SPR": 8,
+    "MOV_XD_XN": 2,
+    "RET": 2,
+    "SBITSET": 3,
+    "SET_FLAG": 1,
+    "SHL": 1,
+    "SHR": 1,
+    "WAIT_FLAG": 1
+  }
+}

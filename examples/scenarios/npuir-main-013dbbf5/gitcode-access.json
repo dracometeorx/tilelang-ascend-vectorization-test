@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "url": "https://gitcode.com/Ascend/AscendNPU-IR-Dev.git/info/refs?service=git-upload-pack",
+      "checked_at_utc": "2026-10-06T11:13:13.506480+00:00",
+      "http_status": 401,
+      "final_url": "https://gitcode.com/Ascend/AscendNPU-IR-Dev.git/info/refs?service=git-upload-pack",
+      "location": null,
+      "www_authenticate": "Basic realm=\"GitCode\"",
+      "body_prefix": "<CH.00905401> HTTP Basic: Access denied.\nThe password-based authentication of Git has been removed. Please use your personal access token instead of the password. Request-id is qJHoNNLNPs."
+    },
+    {
+      "url": "https://gitcode.com/Ascend/AscendNPU-IR.git/info/refs?service=git-upload-pack",
+      "checked_at_utc": "2026-10-06T11:13:17.264321+00:00",
+      "http_status": 200,
+      "final_url": "https://gitcode.com/Ascend/AscendNPU-IR.git/info/refs?service=git-upload-pack",
+      "content_type": "application/x-git-upload-pack-advertisement"
+    }
+  ],
+  "git_ls_remote": {
+    "exit_code": 128,
+    "stdout": "",
+    "stderr": "fatal: could not read Username for 'https://gitcode.com': terminal prompts disabled\n"
+  },
+  "tls_verification": "enabled",
+  "proxy": "inherited; not bypassed",
+  "authenticated_git_ls_remote": {
+    "exit_code": 128,
+    "server_response": "<CH.00905404> can not read project. user: [redacted]. Request-id is Sx4a7PS73y.",
+    "git_error": "repository 'https://gitcode.com/Ascend/AscendNPU-IR-Dev.git/' not found",
+    "credential_persistence": "not stored in files, git config, or repository; temporary process ended"
+  }
+}

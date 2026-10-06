@@ -1,0 +1,8 @@
+{
+  "observations_current": true,
+  "observed_phase": "running",
+  "network_policy_state": "enforced",
+  "network_policy_mode": "restricted",
+  "gitcode_in_effective_allowed_hosts": true,
+  "configured_secret_count": 0
+}

@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "stage": "frontend_import",
+  "process_exit_code": 134,
+  "error": "LLVM ERROR: Option 'default' already exists!",
+  "lowering_executed": false,
+  "simulation_executed": false,
+  "counts_toward_14_case_matrix": false
+}

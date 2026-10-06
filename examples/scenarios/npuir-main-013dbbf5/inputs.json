@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "status": "prepared_inputs_only",
+  "frontend_commit": "013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+  "required_environment": {
+    "TILELANG_ENABLE_SIMT": "0"
+  },
+  "historical_metrics_sha256": "24f7130111a57fadbdbe2bc53967d02bdbdb2fdf3d1ef91860ead48edb84e140",
+  "frontend_import_verified": false,
+  "compiled": false,
+  "simulated": false,
+  "cases": [
+    {
+      "case": {
+        "name": "scalar_const_256",
+        "op": "scalar_const",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "72784d7257d7c168e32b52cbfe12feef017833dd5d6731812cb9b2423f279a0e",
+      "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "scalar_const_4x64",
+        "op": "scalar_const",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "9e91939f170f9aff514bc9206bd0a69f0b25e8351b6fa63e1a9e8a1cc364beb9",
+      "fixture_sha256": "7ec581d0ecd0a3adac7cc316310b62ea52ac0a9c7e8d30d14d6b256034060519",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_256",
+        "op": "scalar_buffer",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "61cb147078fa5c0cbfd2771a6d2bd44be0c672352390315f63ad9fa81de0f584",
+      "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "scalar_buffer_4x64",
+        "op": "scalar_buffer",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "6ee3c878925f186ab0d595e08feebb78111aa877b8252875e1fffb30e7106d50",
+      "fixture_sha256": "53e428b3dea4a7e2f4fde608793ab772195a2a5b77d54a11a84c63982ab194a4",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "copy_256",
+        "op": "copy",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "a1e7168df140c2ad072971b1e58beb7f7538169c8f1820d00304dffef212269a",
+      "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "copy_4x64",
+        "op": "copy",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "5c92437b900cc69ffc74fa706df520a2bc1c487bcca767b598c372b171689ac8",
+      "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "fill_256",
+        "op": "fill",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "cd8c8698b08b2232a48e3c077f99938c98475976cc60a42d303c5450f51cb900",
+      "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "fill_4x64",
+        "op": "fill",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "ac0afb8062ff9529b3cfa22b989672496ae7f89e7d1ee3d14ce0f26e73fe1063",
+      "fixture_sha256": "5b19484b9915fa25b17f9226a7b318aec468499a1c931f035854d24246c2249e",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "broadcast_row",
+        "op": "broadcast_row",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          64
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "7da9837379ed4dfcdcb6cc260a8f67b658fedb05d966a508f4290313168a3e62",
+      "fixture_sha256": "411d6da03c6e670c8c0c874b23bcde63a86191dd9d99447932791560fef8450b",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "broadcast_column",
+        "op": "broadcast_column",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          4,
+          1
+        ],
+        "out": [
+          4,
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "3e9e7ef25cfa415044c04fef81923eb139d81c103eabbb9e4df348647bd4a2de",
+      "fixture_sha256": "0c74ee7fa777a3748a66fcf06a318f88d9b0a573f81823e6134afbb475220abc",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "flatten",
+        "op": "flatten",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          256
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "ed714c1ff8a1b21deca404b2bfb188db373de1029c26f1d73a0f1de5534a1dfb",
+      "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "reduce_all_256",
+        "op": "reduce_all",
+        "a": [
+          256
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          1
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "356a545526039c650a24248060cf1aa0f3c51f5f7dc288879738d12379a3a678",
+      "fixture_sha256": "7a0243316f7c881a2f53e4935bbc79d429d7be5683c47eb4b613fd9ae47b89a0",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "reduce_rows",
+        "op": "reduce_rows",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          4
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "35c86b993af9f4bd1ce4cb475b25047c65c1aa72179992a23d747f450d3414d2",
+      "fixture_sha256": "0958a5bd72df35fd67f76c399502191d4ea7aa390a7a111af1a3395723aab745",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    },
+    {
+      "case": {
+        "name": "reduce_columns",
+        "op": "reduce_columns",
+        "a": [
+          4,
+          64
+        ],
+        "b": [
+          1
+        ],
+        "out": [
+          64
+        ]
+      },
+      "status": "not_run",
+      "stage": "prepared_inputs",
+      "workload_sha256": "0f43167b3267e935ceae1d3836ccd24c885d62879c4fb82e5b60210007312752",
+      "fixture_sha256": "98c788f8e566c2456ed4266940466fa2f2ccae994c14ff55443c446203fc9583",
+      "workload_byte_equal_to_historical": true,
+      "fixture_hash_equal_to_historical": true
+    }
+  ]
+}

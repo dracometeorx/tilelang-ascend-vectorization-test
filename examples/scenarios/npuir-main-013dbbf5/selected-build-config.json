@@ -1,0 +1,56 @@
+{
+  "a5_dependency": {
+    "cache_sha256": "9deacee627000710e89388b1b758bb21f51d33b89eac782e80bdc8bd1b476e38",
+    "selected_configuration": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+      "CMAKE_C_COMPILER": "/usr/bin/gcc",
+      "CMAKE_MODULE_LINKER_FLAGS": "",
+      "CMAKE_PROJECT_INCLUDE": "/workspace/setup/backends/npuir-main/vendor-clang.cmake",
+      "LLVM_ENABLE_ASSERTIONS": "ON",
+      "LLVM_ENABLE_LLD": "ON",
+      "LLVM_ENABLE_RTTI": "ON",
+      "LLVM_INCLUDE_BENCHMARKS": "OFF",
+      "LLVM_INCLUDE_EXAMPLES": "OFF",
+      "LLVM_INCLUDE_TESTS": "OFF",
+      "LLVM_PARALLEL_LINK_JOBS": "2",
+      "MLIR_ENABLE_BINDINGS_PYTHON": "ON",
+      "MLIR_INCLUDE_TESTS": "OFF",
+      "Python3_EXECUTABLE": "/workspace/setup/backends/npuir-main/venv/bin/python"
+    }
+  },
+  "tvm": {
+    "cache_sha256": "7e9a113787e81f573d7a1e90485cbd5c7a9211180953084e45bf9ff4190d93e9",
+    "selected_configuration": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_C_COMPILER": "/usr/bin/cc",
+      "CMAKE_MODULE_LINKER_FLAGS": "",
+      "USE_CUDA": "OFF",
+      "USE_LLVM": "OFF",
+      "USE_ROCM": "OFF",
+      "USE_RTTI": "ON"
+    }
+  },
+  "frontend": {
+    "cache_sha256": "0021d783d1ade8eeecda3a30529b77b0cbe86bef1640c4f28a5e2925e2dc5eca",
+    "selected_configuration": {
+      "BISHENGIR_ROOT_PATH": "/workspace/setup/backends/npuir-main/bishengir-install",
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_CXX_COMPILER": "/usr/bin/c++",
+      "CMAKE_C_COMPILER": "/usr/bin/cc",
+      "CMAKE_JOB_POOLS": "frontend_link=1",
+      "CMAKE_JOB_POOL_LINK": "frontend_link",
+      "CMAKE_MODULE_LINKER_FLAGS": "-Wl,--exclude-libs,ALL",
+      "MLIR_INCLUDE_TESTS": "OFF",
+      "Python3_EXECUTABLE": "/workspace/setup/backends/npuir-main/venv/bin/python",
+      "TILELANG_NPUIR_TARGET": "A5",
+      "TVM_PREBUILD_PATH": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current",
+      "TVM_SOURCE_DIR": "/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/tvm",
+      "USE_CUDA": "OFF",
+      "USE_LLVM": "OFF",
+      "USE_NPUIR": "ON",
+      "USE_ROCM": "OFF"
+    }
+  }
+}

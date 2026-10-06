@@ -1,0 +1,34 @@
+{
+  "case": {
+    "name": "copy_256",
+    "op": "copy",
+    "a": [
+      256
+    ],
+    "b": [
+      1
+    ],
+    "out": [
+      256
+    ]
+  },
+  "backend": "npuir",
+  "mode": "auto_simd",
+  "status": "failed",
+  "stage": "lowering",
+  "started_at_utc": "2026-10-06T14:48:42.719957+00:00",
+  "provenance": {
+    "frontend_import_path": "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/__init__.py",
+    "frontend_library_path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelang_module.so",
+    "frontend_library_sha256": "4a25b79da13228fd814357d73a3198904ece1ab8e70ae2906684a8a58742fc9e",
+    "tvm_import_path": "/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/tvm/python/tvm/__init__.py",
+    "tvm_library_path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm.so",
+    "tvm_library_sha256": "bef1bc382a9bffbb8ed9bde3fce8a0643fe147fbe92e01dc23bcbd7aa809e5c0",
+    "tilelang_enable_simt": "0",
+    "source_commit": "013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+    "tvm_source_commit": "c2921fdaf795b1103d21abc962e83a209c7258d7",
+    "source_changes": []
+  },
+  "frontend_version": "0.1.2+013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+  "error": "Traceback (most recent call last):\n  File \"/workspace/setup/scenarios/worker.py\", line 156, in main\n    if args.backend=='npuir': artifact=tilelang.lower(func,target=target)\n                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/setup/backends/tilelang-mlir-ascend/tilelang/engine/lower.py\", line 267, in lower\n    mod = OptimizeForTarget(mod, target)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/setup/backends/tilelang-mlir-ascend/tilelang/engine/phase.py\", line 142, in OptimizeForTarget\n    if _is_a5_device() and enable_npuir_simt():\n       ^^^^^^^^^^^^^^^\n  File \"/workspace/setup/backends/tilelang-mlir-ascend/tilelang/jit/jit_npu.py\", line 36, in _is_a5_device\n    _ARCH_CACHE = NPUUtils().get_arch()\n                  ^^^^^^^^^^\n  File \"/workspace/setup/backends/tilelang-mlir-ascend/tilelang/utils/npu_utils.py\", line 65, in __init__\n    so = build_npu_ext(\n         ^^^^^^^^^^^^^^\n  File \"/workspace/setup/backends/tilelang-mlir-ascend/tilelang/utils/npu_utils.py\", line 495, in build_npu_ext\n    asc_path = get_ascend_path()\n               ^^^^^^^^^^^^^^^^^\n  File \"/workspace/setup/backends/tilelang-mlir-ascend/tilelang/utils/npu_utils.py\", line 320, in get_ascend_path\n    raise EnvironmentError(\nOSError: ASCEND_HOME_PATH is not set, source <ascend-toolkit>/set_env.sh first\n"
+}

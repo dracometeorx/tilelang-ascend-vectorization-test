@@ -1,0 +1,38 @@
+{
+  "case": {
+    "name": "copy_256",
+    "op": "copy",
+    "a": [
+      256
+    ],
+    "b": [
+      1
+    ],
+    "out": [
+      256
+    ]
+  },
+  "backend": "npuir",
+  "mode": "auto_simd",
+  "status": "passed",
+  "stage": "simulation",
+  "frontend_version": "0.1.1.030+npuir+4e1bb3e494b0bd70a55ec0b7ddaa78a4b6a93333",
+  "symbol": "main",
+  "abi": "npuir",
+  "kernel_arg_bytes": 232,
+  "binary_sha256": "94b21591e822e990ef46862977a0097a0336458fad721a3429c77d60b4de2848",
+  "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+  "purpose": "Probe V2 launch API and localMemorySize on a previously verified old-frontend ELF; does not verify new A5 ABI",
+  "probe_only": true,
+  "counts_toward_new_frontend": false,
+  "launch_api": "rtKernelLaunchWithFlagV2",
+  "local_memory_size": 221184,
+  "correct": true,
+  "output_guard_correct": true,
+  "runner_sha256": "acb7fc4c15cc7db5a6f2ed63f8643c0af2abdcf0c41442fd4d2f3e89c54c3eff",
+  "cycles": 2154,
+  "instructions": 70,
+  "archive": "/workspace/setup/tilelang/results/scenarios-launch-v2-probe/simulation/attempt_eo68n89e/npusim_20261006130303_sim_runner_v2_probe",
+  "independent_execution": true,
+  "runner_source_sha256": "b2d96a2d8276239c3ce9b6a5ab2b1607e9460f79848b0954761b008eee8c637e"
+}

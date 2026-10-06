@@ -2,6 +2,61 @@
 
 [English](README.en.md)
 
+## 新版 A5 实测（2026-10-06）
+
+**固定新版 `tile-ai/tilelang-mlir-ascend@013dbbf5` 的 14/14 场景均成功 lowering、设备编译和真实厂商 CAModel 模拟；NaN 预填后的逐元素精确比较、输出 canary 和 Profiling 全部通过。14 次独立模拟，0 次复用，0 个正式场景失败。** 以下“本次”列是新执行；旧 NPU-IR、AscendC/PTO 列取自 2026-10-04 历史证据，没有在本次重跑。
+
+前端完整提交为 `013dbbf5824c3ac29e975d78c0b38e60b2410be7`，TVM 为 `c2921fdaf795b1103d21abc962e83a209c7258d7`。14 份 workload 与历史源文件逐字节一致，fixture SHA256 全部匹配；归约仍为外层 `T.Parallel`、内层 `T.serial`，没有改为 `T.reduce_sum`。显式 `TILELANG_ENABLE_SIMT=0`，所有场景实际经过 `tl.NpuLoopVectorize`，未经过 SIMT indirect-load pass。
+
+数字为 **CAModel 周期 / 执行指令数**，不是物理 A5 性能。历史列中的共享模拟关系仍见下方完整历史矩阵的 † 标记；本次 14 条没有共享模拟。
+
+| 场景 | 新 NPU-IR（本次） | 旧 NPU-IR（历史） | AscendC SIMD（历史） | PTO SIMD（历史） |
+|---|---:|---:|---:|---:|
+| scalar_const_256 | 2213/101 | 2229/106 | 2137/98 | 2111/93 |
+| scalar_const_4x64 | 2186/101 | 2238/106 | 2128/98 | 2111/93 |
+| scalar_buffer_256 | 2774/146 | 2767/153 | 2119/103 | 2135/100 |
+| scalar_buffer_4x64 | 2774/146 | 2767/153 | 2131/103 | 2135/100 |
+| copy_256 | 2117/65 | 2149/70 | 2138/91 | 2135/83 |
+| copy_4x64 | 2143/65 | 2149/70 | 2143/91 | 2135/83 |
+| fill_256 | 1483/75 | 1871/80 | 1430/83 | 1432/76 |
+| fill_4x64 | 1471/75 | 1871/80 | 1420/83 | 1432/76 |
+| broadcast_row | 2722/146 | 2781/153 | 2152/103 | 2146/100 |
+| broadcast_column | 2739/148 | 2879/199 | 2145/107 | 2164/101 |
+| flatten | 7280/1870 | 14012/11851 | 2149/91 | 2135/83 |
+| reduce_all_256 | 7216/2126 | 7217/2131 | device_compile failed | device_compile failed |
+| reduce_rows | 7208/2140 | 7518/2145 | device_compile failed | device_compile failed |
+| reduce_columns | 6945/1554 | 6966/1559 | device_compile failed | device_compile failed |
+
+### 构建、后端与 ABI
+
+原 Dev 仓库权限问题通过官方公开 [Ascend/AscendNPU-IR](https://gitcode.com/Ascend/AscendNPU-IR) 解决：直接获取完全相同的 `77f5b0617813c9974b56e4090bccf57d2612a301`，只覆盖本地子模块 URL，没有替换 gitlink。固定 LLVM/Triton、7 份官方 Triton 补丁、545 份开发静态库、MLIR headers/config 和新 TVM/TileLang 库均实际构建完成。独立 Python 3.11.16 环境没有安装旧 TileLang wheel；每例记录源码提交、实际导入位置和新编译主库/helper/TVM SHA256。构建配置、宿主 GCC/Clang 兼容处理及 LLVM 符号隔离见 [构建说明](../../setup/backends/NPUIR_MAIN.md) 和 [构建凭据](npuir-main-013dbbf5/frontend-build.json)。
+
+设备编译仍用原 **CANN 9.2.0-beta.2、BishengIR 1.2.0 / LLVM 19.1.7**，模拟仍为 `Ascend950PR_9589` / `dav-3510`；新构建的开发工具链提供前端依赖，不替换本次设备后端。但编译选项改为固定新版 JIT 的 A5 配置，包含 HFusion、Triton kernel adaptation、VF merge 和 `--disable-ffts`，详见逐例 `device-command.json`。因此本表比较的是前端及配套编译流程的组合变化，不能把全部差异单独归因于前端 IR。
+
+新版 `tilelang.lower` 返回 tensor/linalg MLIR；旧版返回已较低层的 HIVM MLIR，初始 IR 不处于相同阶段。比较同时检查 `temps/module.hivm.opt.mlir` 与实际设备 Profiling。旧参数虽然能返回成功，却产生缺少内核参数段的 ELF，已作为诊断拒绝启动。
+
+**实测 ABI 为 56 字节，旧版是 232 字节；此前 224 字节仅为源码推测，已排除。** 新版输入的五个动态 memref 和六个 i32 经适配后成为五个裸指针、三个 grid i32及尾部对齐；ELF 参数段、优化入口和符号逐例核对。runner 使用 `rtKernelLaunchWithFlagV2`、`localMemorySize=221184`、单 block；只有输入/优化 main 均确认 sync/workspace 未使用才传 null。CPU 无设备查询时由 harness 显式设置固定 A5 架构缓存，没有替换计算、修改固定前端源码或跳过 lowering pass。
+
+### Lowering 与机器指令变化
+
+- **列广播有实质改进。** [新版优化 IR](npuir-main-013dbbf5/results/ir/broadcast_column/npuir_auto_simd/temps/module.hivm.opt.mlir) 将旧版两个向量函数合为一个，消除完整广播临时缓冲，直接加载每行标量、广播到寄存器并相加。总指令 `199→148`；Profiling 的向量执行/加载/存储分类从 `7/13/12→5/8/5`。周期 `2879→2739`，但仍高于历史 AscendC/PTO SIMD 的 `2145/2164`。
+- **flatten 明显改善，但未成为连续拷贝。** [新版 IR](npuir-main-013dbbf5/results/ir/flatten/npuir_auto_simd/temps/module.hivm.opt.mlir) 保留 256 次标量循环，消除旧版逐元素 `copy_ubuf_to_ubuf_1d_float` helper，改为直接 `memref.load/store`。总指令 `11851→1870`，周期 `14012→7280`；旧 helper 的向量加载/存储 `512/1024` 变为 `0/0`，新版标量加载/存储为 `258/256`（含外围加载）。这有 IR 与执行计数互相印证，但仍远慢于历史 AscendC/PTO 连续拷贝的约 2140 周期。
+- **三种 reduction 没有实现向量归约。** 新版仍为标量累加循环，三项向量执行/加载/存储分类均为 0。正确通过不等于已 SIMD 化；这些结论仅适用于本次 Parallel/serial workload。历史 AscendC SIMD/PTO SIMD 的设备编译失败、PTO SIMT 的实际 helper 缺失仍作为历史失败保留，本次没有重测或删除所需 helper。
+- **scalar_buffer 和行广播原先已有融合。** 新版仍在寄存器中完成广播加法，三项向量分类与旧版同为 `5/5/5`，总指令 `153→146`。不能把它们描述为本次首次消除完整广播缓冲。copy 继续直接连接 GM→UB→GM，向量计数均为 0，总指令 `70→65`。
+- **fill 的周期下降不能直接解释为新向量化。** `1871→1483/1471`，总指令 `80→75`，但向量分类仍为 `2/0/5`；`fill_256` 的向量函数体在忽略函数头/缩进后与旧版一致。常量加法也保持向量分类 `5/4/5`。ABI/FFTS、外围标量指令、编译选项和启动 API 同时变化，缺少控制实验和旧完整时间线，不能把 fill 的全部周期变化精确分摊给某一个原因。
+
+[comparison.json](npuir-main-013dbbf5/comparison.json) 提供每例旧/新 Profiling、静态 IR 特征和差值。新增 `instruction-events.json` 汇总 CAModel 实际 PC 指令事件（X/i，排除依赖箭头和计数器），14 例均与 Profiling 总执行数一致、无重复 instruction ID；这些是设备指令，不是 IR 行数。分类计数不是总指令数的完整分解。
+
+### 证据与验证边界
+
+[本次完整精简证据](npuir-main-013dbbf5/results/) 包含 workload、输入 TIR、vectorize 后 TIR、pass 清单、初始/优化 MLIR、ELF、ABI 签名/参数段、编译命令、数值/canary 标记、Profiling 和 SHA256。[preflight.json](npuir-main-013dbbf5/preflight.json) 记录恢复、构建和最终状态；`inputs.json` 的 `not_run` 是不可变的输入准备记录，不是最终结果。完整 pass dump、SDK、虚拟环境及大型轨迹留在本地。
+
+新快照并未完整迁移旧环境：远端基线为 `06d764af`，快照本地仅 `840972e`；历史完整轨迹缺失，本次重新恢复脚本/环境、校验 658 份历史精简证据并准备相同输入。额外旧前端 copy 恢复冒烟 `2172/70`、旧 ELF 的 V2 启动探测 `2154/70`，以及新版 copy ABI 冒烟 `2155/65` 都是独立诊断，**不计入本次 14 条矩阵**，见 [probes](npuir-main-013dbbf5/probes/)。同一旧 ELF 已出现小幅周期变化，不能据几十周期差异给后端排序。
+
+没有物理 NPU，未验证真实 A5 驱动/运行时/启动行为，也未在全新空白机器完成从零安装。runner 仅覆盖已验证的单 block FP32 小算子，不外推到多 block、workspace 或跨核同步。
+
+## 历史基线（2026-10-04）
+
 单 block、FP32；A 的逻辑规模为 256 个元素（fill 不读取 A），输出按场景为 256、1、4 或 64 个元素。数字为 CAModel **周期/执行指令数**，不是物理 NPU 性能。
 † 表示跨组合复用 ELF、ABI、符号、fixture 和 runner 哈希均一致的已验证模拟；不代表独立再次执行。
 

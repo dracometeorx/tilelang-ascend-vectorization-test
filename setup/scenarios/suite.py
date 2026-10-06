@@ -10,9 +10,12 @@ import signal
 import subprocess
 import sys
 import tempfile
-from cases import CASES, write_fixture
+from cases import CASES, source, write_fixture
 
 HERE=Path(__file__).resolve().parent
+PATHS={'cpu_native':('cpu','native'), 'ascendc_simt':('ascendc','simt'),
+       'ascendc_simd':('ascendc','simd'), 'pto_simt':('pto','simt'),
+       'pto_simd':('pto','simd'), 'npuir_auto_simd':('npuir','auto_simd')}
 
 def execute(cmd,log,timeout=240,cwd=None):
     with log.open('w') as f:
@@ -32,7 +35,7 @@ def simulate(p,fixture,runner,result,timeout=300):
     runs=p/'simulation'; runs.mkdir(exist_ok=True)
     run=Path(tempfile.mkdtemp(prefix='attempt_',dir=runs))
     before=set(run.glob('npusim_*/npusim.log'))
-    abi='npuir' if result['abi']=='npuir' else ''.join(result['arguments'])
+    abi=result['abi'] if result['abi'] in ('npuir','npuir_a5') else ''.join(result['arguments'])
     args=f'{binary} {result["symbol"]} {fixture} {abi}'
     cmd=['/workspace/setup/cann/npusim','record',str(runner),'-u',args,'-s','Ascend950','-n','0','-f',str(binary),'-o',str(run)]
     code=execute(cmd,p/'simulation.log',timeout,cwd=run)
@@ -74,17 +77,42 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',type=Path,default=Path('/workspace/setup/tilelang/results/scenarios'))
     parser.add_argument('--case',choices=[c['name'] for c in CASES])
+    parser.add_argument('--paths',nargs='+',choices=PATHS,default=list(PATHS))
+    parser.add_argument('--npuir-activate',type=Path,default=Path('/workspace/setup/backends/activate_npuir.sh'))
+    parser.add_argument('--expected-npuir-root',type=Path,
+                        help='Require prepared identical inputs and verify the fixed new frontend')
+    parser.add_argument('--npuir-cross-compile-a5',action='store_true')
     phases=parser.add_mutually_exclusive_group()
     phases.add_argument('--compile-only',action='store_true')
     phases.add_argument('--simulate-only',action='store_true')
     parser.add_argument('--reuse-identical',action='store_true',help='Reuse verified simulation only for identical ELF, ABI, symbol, fixture and runner hashes')
     parser.add_argument('--simulation-timeout',type=int,default=300,help='Seconds allowed per CAModel invocation')
     args=parser.parse_args()
+    if len(set(args.paths))!=len(args.paths): parser.error('--paths must not contain duplicates')
+    if args.expected_npuir_root and args.paths!=['npuir_auto_simd']:
+        parser.error('--expected-npuir-root requires --paths npuir_auto_simd')
+    if args.npuir_cross_compile_a5 and not args.expected_npuir_root:
+        parser.error('--npuir-cross-compile-a5 requires --expected-npuir-root')
     if args.simulation_timeout<=0: parser.error('--simulation-timeout must be positive')
     out=args.out.resolve()
     if any(c.isspace() for c in str(out)):
         parser.error('--out must not contain whitespace (npusim user arguments)')
     out.mkdir(parents=True,exist_ok=True)
+    if args.expected_npuir_root:
+        inputs=json.loads((out/'inputs.json').read_text())
+        assert inputs['frontend_commit']=='013dbbf5824c3ac29e975d78c0b38e60b2410be7'
+        manifests={entry['case']['name']:entry for entry in inputs['cases']}
+        # Verify existing prepared inputs before any worker or simulator runs.
+        for case in CASES:
+            manifest=manifests[case['name']]
+            prepared=out/case['name']/'npuir_auto_simd'/'workload.py'
+            assert manifest['case']==case
+            assert digest(prepared)==manifest['workload_sha256']
+            assert digest(out/(case['name']+'.bin'))==manifest['fixture_sha256']
+            assert prepared.read_text()==source(case,'npuir','auto_simd')
+            with tempfile.TemporaryDirectory() as tmp:
+                generated=Path(tmp)/'fixture.bin'; write_fixture(case,generated)
+                assert generated.read_bytes()==(out/(case['name']+'.bin')).read_bytes()
     runner=None if args.compile_only else build_runner()
     records=[]
     cache={}
@@ -103,16 +131,20 @@ def main():
                     if key[:3]==(old.get('binary_sha256'),old.get('fixture_sha256'),old.get('runner_sha256')) and (old['cycles'],old['instructions'])==(info['kernel_total_clocks'],info['kernel_instructions_executed']): cache[key]=old
     for case in CASES:
         if args.case and case['name']!=args.case: continue
-        fixture=out/(case['name']+'.bin'); write_fixture(case,fixture)
-        for backend,mode in [('cpu','native'),('ascendc','simt'),('ascendc','simd'),('pto','simt'),('pto','simd'),('npuir','auto_simd')]:
+        fixture=out/(case['name']+'.bin')
+        if not args.expected_npuir_root: write_fixture(case,fixture)
+        for backend,mode in [PATHS[path] for path in args.paths]:
             p=out/case['name']/(backend+'_'+mode); p.mkdir(parents=True,exist_ok=True)
             worker=[str(HERE/'worker.py'),'--case',case['name'],'--backend',backend,'--mode',mode,'--out',str(p)]
+            if args.expected_npuir_root:
+                worker+=['--expected-npuir-root',str(args.expected_npuir_root.resolve())]
+            if args.npuir_cross_compile_a5: worker+=['--npuir-cross-compile-a5']
             if not args.simulate_only:
                 (p/'result.json').unlink(missing_ok=True)
                 cmd=[sys.executable]+worker
                 if backend=='npuir':
-                    cmd=['bash','-c','source /workspace/setup/backends/activate_npuir.sh && python '+shlex.join(worker)]
-                code=execute(cmd,p/'worker.log')
+                    cmd=['bash','-c','source '+shlex.quote(str(args.npuir_activate.resolve()))+' && python '+shlex.join(worker)]
+                code=execute(cmd,p/'worker.log',cwd=args.expected_npuir_root)
                 if not (p/'result.json').exists() or code in (124,-6,-11):
                     (p/'result.json').write_text(json.dumps(dict(case=case,backend=backend,mode=mode,status='failed',stage='worker',error=f'Worker exit {code}; see worker.log')))
                 result=json.loads((p/'result.json').read_text())

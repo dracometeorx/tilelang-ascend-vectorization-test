@@ -7,13 +7,14 @@
 #include <vector>
 #include <limits>
 #include <cstdint>
+#include <cstddef>
 
 #define CHECK(call) do { auto rc = (call); if (rc != RT_ERROR_NONE) { \
   std::fprintf(stderr, "%s failed: %d\n", #call, int(rc)); return 1; } } while (0)
 
 int main(int argc, char **argv) {
-  if (argc != 5) { std::fprintf(stderr, "Usage: sim_runner kernel.aibin symbol fixture.bin ABO|AO|O|npuir\n"); return 2; }
-  if (std::string(argv[4]) != "ABO" && std::string(argv[4]) != "AO" && std::string(argv[4]) != "O" && std::string(argv[4]) != "npuir") return 2;
+  if (argc != 5) { std::fprintf(stderr, "Usage: sim_runner kernel.aibin symbol fixture.bin ABO|AO|O|npuir|npuir_a5\n"); return 2; }
+  if (std::string(argv[4]) != "ABO" && std::string(argv[4]) != "AO" && std::string(argv[4]) != "O" && std::string(argv[4]) != "npuir" && std::string(argv[4]) != "npuir_a5") return 2;
   std::ifstream fixture(argv[3], std::ios::binary);
   uint32_t sizes[3] = {};
   fixture.read(reinterpret_cast<char*>(sizes), sizeof(sizes));
@@ -52,7 +53,26 @@ int main(int argc, char **argv) {
     if (c == 'B') args.push_back(db);
     if (c == 'O') args.push_back(dc);
   }
-  if (std::string(argv[4]) == "npuir") {
+  if (std::string(argv[4]) == "npuir_a5") {
+    // A5 Triton adaptation: 5 bare pointers + 3 grid i32, tail padded to
+    // the 56 bytes measured in __CCE_KernelArgSize. PID args are lowered away.
+    // The worker checks lock/workspace are unused in both input and optimized IR.
+    struct NpuirA5Args {
+      void *lock, *workspace, *a, *b, *out;
+      int32_t grid_x, grid_y, grid_z, padding;
+    } npu_args{nullptr, nullptr, da, db, dc, 1, 1, 1, 0};
+    static_assert(sizeof(NpuirA5Args) == 56);
+    static_assert(offsetof(NpuirA5Args, a) == 16);
+    static_assert(offsetof(NpuirA5Args, out) == 32);
+    static_assert(offsetof(NpuirA5Args, grid_x) == 40);
+    rtArgsEx_t args_info{};
+    args_info.args = &npu_args;
+    args_info.argsSize = sizeof(npu_args);
+    rtTaskCfgInfo_t cfg_info{};
+    // Fixed frontend A5 launcher default; single block only.
+    cfg_info.localMemorySize = 221184;
+    CHECK(rtKernelLaunchWithFlagV2(argv[2], 1, &args_info, nullptr, stream, 0, &cfg_info));
+  } else if (std::string(argv[4]) == "npuir") {
     // The CANN 9.2 compiler expands each dynamic rank-1 memref to its
     // allocated/aligned pointers, offset, size and stride. KernelArgSize=232.
     // These one-block workloads have no cross-core/FFTS synchronization or workspace

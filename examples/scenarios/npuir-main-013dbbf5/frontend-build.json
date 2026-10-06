@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-10-06T15:00:32.608923+00:00",
+  "source_commit": "013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+  "libraries": {
+    "libtilelang_module.so": {
+      "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelang_module.so",
+      "sha256": "4a25b79da13228fd814357d73a3198904ece1ab8e70ae2906684a8a58742fc9e",
+      "bytes": 122106408
+    },
+    "libtilelangir.so": {
+      "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelangir.so",
+      "sha256": "2887b7a435422044f1f3127df342d041540454170e752fe440f2b49792378cc3",
+      "bytes": 247829488
+    },
+    "tvm-current/libtvm.so": {
+      "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm.so",
+      "sha256": "bef1bc382a9bffbb8ed9bde3fce8a0643fe147fbe92e01dc23bcbd7aa809e5c0",
+      "bytes": 77718528
+    },
+    "tvm-current/libtvm_runtime.so": {
+      "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm_runtime.so",
+      "sha256": "b7cb7553b5e21b13a68fe3acbec26f51c6dafe355d2d3d27be0accd670ff2d24",
+      "bytes": 4520064
+    }
+  },
+  "native_import_verified": true,
+  "native_adapter_loaded": true,
+  "native_source_unmodified": true,
+  "module_linker_flags": "-Wl,--exclude-libs,ALL",
+  "reason": "Hide statically linked LLVM symbols in the helper module to prevent duplicate command-line option registration when loading both native libraries. LLVM assertions remain enabled."
+}

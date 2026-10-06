@@ -1,0 +1,368 @@
+{
+  "cann": "9.2.0-beta.2",
+  "backend": "bishengir-compile 1.2.0 / LLVM 19.1.7",
+  "target": "Ascend950PR_9589",
+  "device_arch": "dav-3510 (Bisheng internal target dav-c310-vec)",
+  "files": [
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/bin/bishengir-compile",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/bin/bishengir-compile",
+      "bytes": 128956352,
+      "sha256": "465c8533e07736ea0351b49ff8b4625912af11c8b75c89ca2f92212761104bb3"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/bin/hivmc-a5",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/bin/hivmc-a5",
+      "bytes": 91734136,
+      "sha256": "77ee9fb4021cfebd7671a4f074d7ba2e6c98512f06c75756634746816760cbe5"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/bin/bisheng",
+      "resolved": "/workspace/setup/cann/components-9.2/bisheng-compiler/tools/bisheng_compiler/bin/bisheng",
+      "bytes": 151547072,
+      "sha256": "c4866a4d55d02675c62123a5ddcd1a6e59ea5f790bf7e4d7b8ae961fa9f84c6a"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/bin/ld.lld",
+      "resolved": "/workspace/setup/cann/components-9.2/bisheng-compiler/tools/bisheng_compiler/bin/ld.lld",
+      "bytes": 85951616,
+      "sha256": "6c70912a48a4048334d09da1e32b7b9ba835e64cfc135f8bdaf81a4ce8157f69"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/host.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/host.bc",
+      "bytes": 2036,
+      "sha256": "3c517f1bea79859e93db9c8affc09947020b1f18f461134ab815a29349a55694"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aic.c220.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aic.c220.bc",
+      "bytes": 2672500,
+      "sha256": "b9dbbbf51fec1902dec30684e1e56ad397c539b1957f7bdcb2de30783af1f0cc"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aic.c310.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aic.c310.bc",
+      "bytes": 5750152,
+      "sha256": "02d786f4cda6e1287fcc9e8567161c7d9db4d3995ede80fc79b979fedd0b8bf1"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aiv.c220.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aiv.c220.bc",
+      "bytes": 16666308,
+      "sha256": "772dd6aa942ae3ef9f89489c77d9e20e697e50472f4694844d5c4382602b6ab1"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aiv.c310.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.aiv.c310.bc",
+      "bytes": 29970120,
+      "sha256": "297cc77096b9a7773b2f02c86039d80d787830e24e8b205de21a3a1d0ffd7595"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aic.c220.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aic.c220.bc",
+      "bytes": 1265080,
+      "sha256": "c81ecb73c2fb257cce160bc874e76f722c60a4b88018690278b24ae851529069"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aic.c310.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aic.c310.bc",
+      "bytes": 1813252,
+      "sha256": "313dea4e53708fe06f2eef9630f12631c990b96aa57dbac1826f9378b7c9e839"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aiv.c220.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aiv.c220.bc",
+      "bytes": 2200140,
+      "sha256": "da41dc890916655b548e50674242ec8eddbf90866056c1ea002d8972fe2b44cc"
+    },
+    {
+      "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aiv.c310.bc",
+      "resolved": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/lib/meta_op.mix.aiv.c310.bc",
+      "bytes": 3183148,
+      "sha256": "df7a1ece38e3df303fd59dce1579f6b4467a616d7419ae3a1a8abc17b23d20e0"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libAA.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libAA.so",
+      "bytes": 706520,
+      "sha256": "b76c8e79931cf1c59d74db19a71588b9b541023a6de7a91587ecd32f9e229b0b"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libAXI_STREAM_BUS.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libAXI_STREAM_BUS.so",
+      "bytes": 210824,
+      "sha256": "6b317e25cf88834fa5fe7305de975dc52593d7181aa0dbad994e96fb0650ed99"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libAfifo.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libAfifo.so",
+      "bytes": 239496,
+      "sha256": "bcf8e6f2ae8fa665f26a544f3a49441ff5c739c1be682a576bdb8e1888425c3b"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libChiRingFabric.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libChiRingFabric.so",
+      "bytes": 1214424,
+      "sha256": "3e88f7e0fff12283d4f6329e0cff5e92803bfdc8bf94609b0508e52c89cfa0db"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libCuberWrapper.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libCuberWrapper.so",
+      "bytes": 415704,
+      "sha256": "d422670339f996266e614d635bb94981b1a79fbc8a68ca270db51b5fefaf5eec"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libDDR_Inf.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libDDR_Inf.so",
+      "bytes": 112520,
+      "sha256": "e97421101c3d9a83710814a28d0d694a348ccffcc998052026967179a1710454"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libDVPP_CA.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libDVPP_CA.so",
+      "bytes": 739288,
+      "sha256": "8c848f617ded61b5d6173b2a682f809cb979eb9a026f48922a981639f03ee127"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libEslTop.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libEslTop.so",
+      "bytes": 22408,
+      "sha256": "a0e4c29646bbe662f26c15141e5dbf18d6f3751e90c604219d12103e4d13bf39"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libEslTop_Unions.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libEslTop_Unions.so",
+      "bytes": 448472,
+      "sha256": "76bb914a773e6cf7f7fa5d3be9f877178f944c0e91e71196c99145ddd49356dc"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libHBMSim.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libHBMSim.so",
+      "bytes": 370568,
+      "sha256": "c71d22c1eb1f6f15239fdbfe18dd731d9147c87b8b2978841082f19c5638ba62"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libHISI_CHI_IF.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libHISI_CHI_IF.so",
+      "bytes": 313224,
+      "sha256": "0b1f1b45a25fd94b64598ff195793f5c3a6eb6326eaa2fe27d88b4904f589e04"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libL2Buf.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libL2Buf.so",
+      "bytes": 370568,
+      "sha256": "19861a7d30a17f1dd91e280b52dd956446fb09af83b32a725acf34891e068c02"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libMATA.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libMATA.so",
+      "bytes": 2164696,
+      "sha256": "7701aa75a08cc75bd50ff3b193e791e5fd490e6a696aeec09211d4b7f9fd3252"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libNcMpi.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libNcMpi.so",
+      "bytes": 759776,
+      "sha256": "5b750cfc625746d5d714329325ff0f0e9fa5d830489204f65049970729edb4f1"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libPCIE.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libPCIE.so",
+      "bytes": 1223656,
+      "sha256": "4a0214c3f426ce8bd12803b5e476bf27df3a7e259a1ff78bcbcc9b8493e823db"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libPMU.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libPMU.so",
+      "bytes": 214976,
+      "sha256": "5e380fdaf635dab4eeb62ae220d199204e44fb13572d8148c4aa206023abc4aa"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libParallelScheduler.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libParallelScheduler.so",
+      "bytes": 116616,
+      "sha256": "5d5de1190e9681420dc3d8c60d225e76f4f8337710209d6ebbdd01be36840ccf"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libPowerModel.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libPowerModel.so",
+      "bytes": 460760,
+      "sha256": "b43c8c38535125e615862609e0b12b3e1e1365505eac4b969c849eba6f8753d8"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libSCHE.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libSCHE.so",
+      "bytes": 632792,
+      "sha256": "3020798561a41e631d5622033b2b563036eb15c5c12a52ccab6464a2e377d587"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libSDMAA.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libSDMAA.so",
+      "bytes": 350088,
+      "sha256": "65b80ebabcd83d29c0e9eb11237a73368cebfe30629f677c305136752c553176"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libSDMAM.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libSDMAM.so",
+      "bytes": 767960,
+      "sha256": "074dac39104b1be316baa72204d32ce02fda91bd133c09bcecdc105f431ae88c"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libSLLC.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libSLLC.so",
+      "bytes": 296848,
+      "sha256": "32c4b7eb7c0f49b16bdb10699f326af444fb00e895453736f8840bf332abb5dd"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libSMMU.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libSMMU.so",
+      "bytes": 1685464,
+      "sha256": "82711d4841c7a620ee8f99efea1b13379423dd9e861d9431dfa6315246698c6c"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libSoC.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libSoC.so",
+      "bytes": 567256,
+      "sha256": "15b9b5d6d99df04a0e483ed876eaa35baac82a2023c387f4b278cbc5b82c807c"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libTaskSched.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libTaskSched.so",
+      "bytes": 808920,
+      "sha256": "b875ec69238c30d9ef19ec8509ee618c83447188e62fb3563d4ce591ed952801"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libTgWrapper.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libTgWrapper.so",
+      "bytes": 875496,
+      "sha256": "257ab78105e2c2381577e0c7ca446de2f18caeb5a34a92686681f59b7c9e8404"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libUB.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libUB.so",
+      "bytes": 5512320,
+      "sha256": "6fd5d4b6ee712af98ddb5ae5ffeea2487f44b4569c65ecdf13a099638526da19"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libUtility.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libUtility.so",
+      "bytes": 1165296,
+      "sha256": "516debf9cc2eddd4027c71d5518784270744e165052426f9908ffb5580b21800"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libaicpu.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libaicpu.so",
+      "bytes": 559128,
+      "sha256": "3ab317bb5b3ebf4cc61b84ed6520f051927f1eae004b3b3528010dd3b7effa92"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libaicpu_wrapper.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libaicpu_wrapper.so",
+      "bytes": 509976,
+      "sha256": "e331952177802fa76f40781dec9e1dd5f4838c2fcecf1d66b705839a67cb9437"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libbailusim.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libbailusim.so",
+      "bytes": 567256,
+      "sha256": "cdfebe6469499652d982ae1c75d3543eda792d5a76222262005526c93808f3d7"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libcommon.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libcommon.so",
+      "bytes": 5659624,
+      "sha256": "7abccd4a9b84ccc23d74d535bd18d13a9e6e0f63fc229aa9a9db80091f44d596"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libdramsim.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libdramsim.so",
+      "bytes": 350088,
+      "sha256": "f0a98de7302a04c1da725efec11bb7a88a9b700b87ad11201d159f4ba0937189"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/liblpddrsim.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/liblpddrsim.so",
+      "bytes": 1517568,
+      "sha256": "f480bee5038c7abb7bad4cef327b5707c5b05abca8e3fdc83d7d1a4770f602cc"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libmcu_loop.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libmcu_loop.so",
+      "bytes": 30440,
+      "sha256": "6410743620168de2d67982a22a65621789f577bb7581070ea6a64c3dbc42b654"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libmcu_wrapper.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libmcu_wrapper.so",
+      "bytes": 575456,
+      "sha256": "78c09371ced7df3c9ef5ac7ed97d8de7d6879c9cf96342b68cc8fe5cde2bbdfd"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libmemsys.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libmemsys.so",
+      "bytes": 620504,
+      "sha256": "e950ee6cb87172ecbda95a0e9ba8e0c3cb3640d8383f3f2e73a1f8c2e0ec7dda"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libmodel_api.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libmodel_api.so",
+      "bytes": 395232,
+      "sha256": "6f07a8e465edd6c211a568a5aa0bd97bb5558e7ba233902402677eda406ff91c"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libnpu_drv.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libnpu_drv.so",
+      "bytes": 67440,
+      "sha256": "06151b01871b6b981fe8fd9e16b4c69854c840a4a19b1933705d34676d61398b"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libnpu_drv_camodel.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libnpu_drv_camodel.so",
+      "bytes": 14144,
+      "sha256": "1d1e36d6a225cd96b4eeee0f488b01d56df75c5594e48270ae32d97ae00a772f"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libpem_davinci.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libpem_davinci.so",
+      "bytes": 28659688,
+      "sha256": "78468c242a3ecd9fd07fd018d6c0329af02a7f6e159a755ca10d01f159f20e68"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libqtest_api.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libqtest_api.so",
+      "bytes": 481160,
+      "sha256": "62c0942a5fc533df3b543bbe84f2fcd5bbfd55060e81d37da0853e4895257c3d"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libruntime.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libruntime_camodel.so",
+      "bytes": 15716376,
+      "sha256": "52e8ccf15af16abd7e442a1e3bfefd2e12466263635d7c105f6d8435382ed44b"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libruntime_camodel.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libruntime_camodel.so",
+      "bytes": 15716376,
+      "sha256": "52e8ccf15af16abd7e442a1e3bfefd2e12466263635d7c105f6d8435382ed44b"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libruntime_cmodel.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libruntime_cmodel.so",
+      "bytes": 15716376,
+      "sha256": "3b903db10e716c22ed90786b84883088329cff6a9287de52a3764cb9ae06e471"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libstars.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libstars.so",
+      "bytes": 2140216,
+      "sha256": "aeb30d4e8d51920ca556f3cda07818b797e15b04f66a8447a16d4807aab2fbd4"
+    },
+    {
+      "path": "/workspace/Ascend/cann-9.2.0-beta.2/tools/simulator/Ascend950PR_9589/camodel/libstars_wrapper.so",
+      "resolved": "/workspace/setup/cann/components-9.2/simulator/x86_64-linux/simulator/dav_3510/camodel/libstars_wrapper.so",
+      "bytes": 919608,
+      "sha256": "e76a029e4ca6734e85f84d02956c5cac086b9b0c6e5dbc64526b4809c8be2f9a"
+    }
+  ]
+}

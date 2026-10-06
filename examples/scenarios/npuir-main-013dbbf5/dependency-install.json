@@ -1,0 +1,7 @@
+{
+  "install_prefix": "/workspace/setup/backends/npuir-main/bishengir-install",
+  "static_library_count": 545,
+  "version": "bishengir-compile 1.0.0 (https://gitcode.com/Ascend/AscendNPU-IR.git 77f5b0617813 2026-10-06) \nllvm 19.1.7 98ef2bc767ed\nRelease build with assertions.\n\n",
+  "binary_sha256": "c9e143ce1c790ef578f2546898c2e0393a8db06d342298907aef4b6625961466",
+  "build_and_install_exit_code": 0
+}

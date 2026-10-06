@@ -1,0 +1,38 @@
+[
+  {
+    "name": "tir.BindTarget",
+    "file": "000_tir.BindTarget.tir"
+  },
+  {
+    "name": "tir.Simplify",
+    "file": "001_tir.Simplify.tir"
+  },
+  {
+    "name": "tir.RemoveNoOp",
+    "file": "002_tir.RemoveNoOp.tir"
+  },
+  {
+    "name": "tl.NpuLoopVectorize",
+    "file": "003_tl.NpuLoopVectorize.tir"
+  },
+  {
+    "name": "tl.LegalizeNpuirBF16",
+    "file": "004_tl.LegalizeNpuirBF16.tir"
+  },
+  {
+    "name": "tl.PlanAndUpdateBufferAllocationLocation",
+    "file": "005_tl.PlanAndUpdateBufferAllocationLocation.tir"
+  },
+  {
+    "name": "tir.LowerOpaqueBlock",
+    "file": "006_tir.LowerOpaqueBlock.tir"
+  },
+  {
+    "name": "tl.LowerNpuirBlock",
+    "file": "007_tl.LowerNpuirBlock.tir"
+  },
+  {
+    "name": "tir.RemoveNoOp",
+    "file": "008_tir.RemoveNoOp.tir"
+  }
+]

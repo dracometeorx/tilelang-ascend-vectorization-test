@@ -2,10 +2,13 @@
 import argparse
 import ast
 import difflib
+from datetime import datetime, timezone
+import hashlib
 import importlib.util
 import json
 import os
 import re
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -16,6 +19,38 @@ from cases import CASES, source, fixture
 def run(cmd, log):
     with log.open('w') as f:
         subprocess.run(cmd, stdout=f, stderr=subprocess.STDOUT, check=True, timeout=180)
+
+
+def npuir_provenance(tilelang, tvm, expected_root=None):
+    root=Path(tilelang.__file__).resolve().parent.parent
+    library=Path(tilelang._LIB_PATH).resolve()
+    tvm_library=Path(tvm._ffi.base._LIB._name).resolve()
+    data=dict(frontend_import_path=str(Path(tilelang.__file__).resolve()),
+        frontend_library_path=str(library),
+        frontend_library_sha256=hashlib.sha256(library.read_bytes()).hexdigest(),
+        tvm_import_path=str(Path(tvm.__file__).resolve()),
+        tvm_library_path=str(tvm_library),
+        tvm_library_sha256=hashlib.sha256(tvm_library.read_bytes()).hexdigest(),
+        tilelang_enable_simt=os.environ.get('TILELANG_ENABLE_SIMT'))
+    if expected_root is not None:
+        expected_root=expected_root.resolve()
+        assert root==expected_root, f'Unexpected frontend source: {root}'
+        assert library.is_relative_to(root/'build'), f'Unexpected compiler library: {library}'
+        assert tvm_library.is_relative_to(root/'build'), f'Unexpected TVM library: {tvm_library}'
+        assert Path(tvm.__file__).resolve().is_relative_to(root/'3rdparty/tvm/python'), 'Unexpected TVM Python source'
+        assert os.environ.get('TILELANG_ENABLE_SIMT')=='0', 'New comparison requires explicit SIMD selection'
+        data['source_commit']=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
+        assert data['source_commit']=='013dbbf5824c3ac29e975d78c0b38e60b2410be7'
+        data['tvm_source_commit']=subprocess.check_output(['git','-C',str(root/'3rdparty/tvm'),'rev-parse','HEAD'],text=True).strip()
+        assert data['tvm_source_commit']=='c2921fdaf795b1103d21abc962e83a209c7258d7'
+        data['source_changes']=subprocess.check_output(['git','-C',str(root),'diff','--name-only','--ignore-submodules=all','HEAD'],text=True).splitlines()
+        assert not data['source_changes'], 'Pinned frontend has tracked source changes'
+        adapter=importlib.import_module('tilelang.tladapter')
+        data['native_adapter_loaded']=getattr(adapter,'_native',None) is not None
+        helper=root/'build/libtilelangir.so'
+        data['native_adapter_library_path']=str(helper)
+        data['native_adapter_library_sha256']=hashlib.sha256(helper.read_bytes()).hexdigest()
+    return data
 
 
 def compile_device(backend, p, metadata):
@@ -47,13 +82,46 @@ def compile_device(backend, p, metadata):
         mlir=(p/'kernel.mlir').read_text()
         signature=next(line for line in mlir.splitlines() if 'func.func @main(' in line)
         assert signature.count('memref<?xf32>')==3 and signature.count('memref<?xi8>')==2
-        assert len(re.findall(r'%arg1\b',mlir))==1 and len(re.findall(r'%arg2\b',mlir))==1, 'Workspace/lock use requires a different runner'
-        run(['bishengir-compile',str(p/'kernel.mlir'),'--enable-hivm-compile','--enable-simd-simt-mix-compile','--target=Ascend950PR_9589','--enable-tuning-mode',f'--save-temps={p}/temps','-o',str(p/'kernel.o')],p/'device-compile.log')
+        new_a5=metadata['abi']=='npuir_a5'
+        indices=(0,1) if new_a5 else (1,2)
+        for i in indices:
+            assert len(re.findall(r'%arg'+str(i)+r'\b',mlir))==1, 'Workspace/lock use requires a different runner'
+        if new_a5:
+            assert signature.count(': i32')==6 and 'ffts_base_address' not in signature
+            flags=['--target=Ascend950PR_9589','--enable-auto-multi-buffer=true',
+                   '--disable-ffts','--enable-triton-kernel-compile=true',
+                   '--enable-hivm-compile=true','--enable-vf-merge-level=1',
+                   '--enable-hfusion-compile=true','--enable-auto-bind-sub-block=true']
+        else:
+            flags=['--enable-hivm-compile','--enable-simd-simt-mix-compile',
+                   '--target=Ascend950PR_9589','--enable-tuning-mode']
+        compiler=Path(shutil.which('bishengir-compile')).resolve()
+        command=[str(compiler),str(p/'kernel.mlir')]+flags+[f'--save-temps={p}/temps','-o',str(p/'kernel.o')]
+        metadata['device_compiler']=dict(path=str(compiler),sha256=hashlib.sha256(compiler.read_bytes()).hexdigest(),
+            version=subprocess.check_output([str(compiler),'--version'],text=True).strip(),command=command)
+        (p/'device-command.json').write_text(json.dumps(metadata['device_compiler'],indent=2)+'\n')
+        run(command,p/'device-compile.log')
+        if new_a5:
+            optimized=(p/'temps/module.hivm.opt.mlir').read_text()
+            entry=optimized[optimized.index('  func.func @main('):].split('\n  }',1)[0]
+            entry_signature=entry.splitlines()[0]
+            assert entry_signature.count('memref<?xf32,')==3
+            assert entry_signature.count('memref<?xi8,')==2
+            assert entry_signature.count(': i32')==3 and 'hacc.entry' in entry_signature
+            assert 'memref.memref_as_ptr' in optimized and 'func_dyn_memref_args' in entry_signature
+            for i in (0,1):
+                assert len(re.findall(r'%arg'+str(i)+r'\b',entry))==1, 'Optimized kernel uses workspace/lock'
+            metadata['launch']=dict(api='rtKernelLaunchWithFlagV2',local_memory_bytes=221184,
+                grid=[1,1,1],sync_lock=None,workspace=None,
+                layout=['lock:pointer','workspace:pointer','A:pointer','B:pointer','O:pointer',
+                        'grid_x:i32','grid_y:i32','grid_z:i32','padding:i32'])
+            (p/'abi-signatures.txt').write_text(signature+'\n'+entry_signature+'\n')
         (p/'kernel.aibin').write_bytes((p/'kernel.o').read_bytes())
     assert (p/'kernel.aibin').read_bytes()[:4]==b'\x7fELF'
     run(['llvm-objcopy','--dump-section',f'__CCE_KernelArgSize={p}/argsize.bin',str(p/'kernel.aibin')],p/'abi.log')
     size=int.from_bytes((p/'argsize.bin').read_bytes(),'little')
-    assert size == (232 if backend=='npuir' else 8*len(metadata['arguments'])), f'Unsupported kernel argument size {size}'
+    assert size == ((56 if metadata['abi']=='npuir_a5' else 232) if backend=='npuir' else 8*len(metadata['arguments'])), f'Unsupported kernel argument size {size}'
+    run(['readelf','-SW','-sW',str(p/'kernel.aibin')],p/'elf.txt')
     metadata['kernel_arg_bytes']=size
 
 
@@ -64,15 +132,23 @@ def main():
     parser.add_argument('--mode',default='auto_simd')
     parser.add_argument('--out',type=Path,required=True)
     parser.add_argument('--compile-only',action='store_true')
+    parser.add_argument('--expected-npuir-root',type=Path,
+                        help='Verify fixed new source and freshly built frontend/TVM library locations')
+    parser.add_argument('--npuir-cross-compile-a5',action='store_true',
+                        help='Select Ascend950PR_9589 in the pinned frontend architecture cache without a hardware query')
     args=parser.parse_args()
+    if args.npuir_cross_compile_a5 and (args.backend!='npuir' or not args.expected_npuir_root):
+        parser.error('--npuir-cross-compile-a5 requires npuir and --expected-npuir-root')
     p=args.out.resolve(); p.mkdir(parents=True,exist_ok=True)
     case=next(c for c in CASES if c['name']==args.case)
-    result=dict(case=case,backend=args.backend,mode=args.mode,status='failed',stage='frontend_import')
+    result=dict(case=case,backend=args.backend,mode=args.mode,status='failed',stage='frontend_import',
+                started_at_utc=datetime.now(timezone.utc).isoformat())
     try:
         if args.compile_only:
             result=json.loads((p/'result.json').read_text())
             result.pop('error',None)
             result.update(status='failed',stage='device_compile')
+            result['device_compile_at_utc']=datetime.now(timezone.utc).isoformat()
             compile_device(args.backend,p,result)
             result.update(status='compiled',stage='device_compile')
             return
@@ -85,6 +161,15 @@ def main():
             import tilelang
             import tilelang.language as T
             import tvm
+            result['provenance']=npuir_provenance(tilelang,tvm,args.expected_npuir_root)
+            if args.npuir_cross_compile_a5:
+                jit_npu=importlib.import_module('tilelang.jit.jit_npu')
+                assert jit_npu._ARCH_CACHE in (None,'Ascend950PR_9589')
+                jit_npu._ARCH_CACHE='Ascend950PR_9589'
+                assert jit_npu._is_a5_device()
+                result['provenance']['target_selection']=dict(
+                    mode='explicit_cpu_cross_compile',arch=jit_npu._ARCH_CACHE,
+                    mechanism='tilelang.jit.jit_npu._ARCH_CACHE',hardware_query=False)
         else:
             import torch
             import tilelang
@@ -117,17 +202,22 @@ def main():
                 (p/name).write_text(mod.script()); self.passes.append(dict(name=info.name,file=name))
         capture=Capture()
         target='npuir' if args.backend=='npuir' else tvm.target.Target(dict(kind='ascend',arch='dav-3510',**({'keys':['pto','ascend']} if args.backend=='pto' else {})))
-        with tilelang.transform.PassContext(instruments=[capture]):
-            if args.backend=='npuir': artifact=tilelang.lower(func,target=target)
-            else:
-                with target:
-                    artifact=tilelang.lower(func,target=target,enable_host_codegen=False,enable_device_compile=False)
-        (p/'passes.json').write_text(json.dumps(capture.passes,indent=2))
+        try:
+            with tilelang.transform.PassContext(instruments=[capture]):
+                if args.backend=='npuir': artifact=tilelang.lower(func,target=target)
+                else:
+                    with target:
+                        artifact=tilelang.lower(func,target=target,enable_host_codegen=False,enable_device_compile=False)
+        finally:
+            (p/'passes.json').write_text(json.dumps(capture.passes,indent=2))
         if args.backend=='npuir':
             assert isinstance(artifact,str)
+            if args.expected_npuir_root:
+                assert any('NpuLoopVectorize' in entry['name'] for entry in capture.passes)
+                assert not any('NpuSimtIndirectLoad' in entry['name'] for entry in capture.passes)
             (p/'kernel.mlir').write_text(artifact)
             assert 'torch_npu._C' not in sys.modules
-            result.update(status='lowered',symbol='main',abi='npuir')
+            result.update(status='lowered',symbol='main',abi='npuir_a5' if args.expected_npuir_root else 'npuir')
         else:
             (p/('kernel.asc' if args.backend=='ascendc' else 'kernel.ptodsl.py')).write_text(artifact.kernel_source)
             (p/'device.tir').write_text(artifact.device_mod.script())

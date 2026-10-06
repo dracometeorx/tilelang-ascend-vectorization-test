@@ -1,0 +1,20 @@
+{
+  "path": "/workspace/setup/cann/components-9.2/npu-ir/bishengir/bin/bishengir-compile",
+  "sha256": "465c8533e07736ea0351b49ff8b4625912af11c8b75c89ca2f92212761104bb3",
+  "version": "bishengir-compile 1.2.0 (/usr1/npuir-a3/bishengir 01ceb3ba84cb 2026-08-31) \nllvm 19.1.7 3254a1b1c59d\nRelease build",
+  "command": [
+    "/workspace/setup/cann/components-9.2/npu-ir/bishengir/bin/bishengir-compile",
+    "/workspace/setup/tilelang/results/scenarios-npuir-main-013dbbf5/broadcast_row/npuir_auto_simd/kernel.mlir",
+    "--target=Ascend950PR_9589",
+    "--enable-auto-multi-buffer=true",
+    "--disable-ffts",
+    "--enable-triton-kernel-compile=true",
+    "--enable-hivm-compile=true",
+    "--enable-vf-merge-level=1",
+    "--enable-hfusion-compile=true",
+    "--enable-auto-bind-sub-block=true",
+    "--save-temps=/workspace/setup/tilelang/results/scenarios-npuir-main-013dbbf5/broadcast_row/npuir_auto_simd/temps",
+    "-o",
+    "/workspace/setup/tilelang/results/scenarios-npuir-main-013dbbf5/broadcast_row/npuir_auto_simd/kernel.o"
+  ]
+}

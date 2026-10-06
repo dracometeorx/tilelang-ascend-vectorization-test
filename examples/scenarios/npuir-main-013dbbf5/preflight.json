@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-06T15:13:48.707637+00:00",
+  "status": "completed",
+  "stage": "simulation_and_evidence_verified",
+  "test_repository_baseline": "06d764afcb801d228f2a387d196d58673ac5a5ed",
+  "snapshot_test_repository_commit": "840972e1a2fc4c682564fea21f0ae1c85f58fe01",
+  "source_repository": "https://github.com/tile-ai/tilelang-mlir-ascend",
+  "source_commit": "013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+  "source_tracked_changes": "",
+  "tvm_commit": "c2921fdaf795b1103d21abc962e83a209c7258d7",
+  "tvm_nested_submodules_at_pinned_commits": true,
+  "required_a5_dependency": {
+    "repository": "https://gitcode.com/Ascend/AscendNPU-IR-Dev.git",
+    "commit": "77f5b0617813c9974b56e4090bccf57d2612a301",
+    "checked_out": true,
+    "fetch_repository": "https://gitcode.com/Ascend/AscendNPU-IR.git",
+    "actual_commit": "77f5b0617813c9974b56e4090bccf57d2612a301",
+    "nested_commits": {
+      "llvm-project": "98ef2bc767edafb97a99d50cd99009573c47ecee",
+      "triton": "c3c476f357f1e9768ea4e45aa5c17528449ab9ef"
+    }
+  },
+  "restoration": {
+    "scenario_scripts": "restored from remote baseline",
+    "historical_full_scenario_results": "absent from snapshot, not restored",
+    "new_results_directory": "newly created and completed; same verified inputs; 14 independent formal simulations",
+    "new_virtual_environment": "newly created, not inherited",
+    "historical_exported_evidence_files_hash_checked": 658
+  },
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.12.0+cpu",
+    "torch_npu_distribution": "2.12.0.post2",
+    "torch_import_verified": true,
+    "tilelang_distribution_installed": false,
+    "cmake": "4.4.4",
+    "ninja": "1.13.2.git.kitware.jobserver-pipe-1",
+    "host_c_compiler": "GNU 14.2.0",
+    "cgroup_memory_bytes": 17179869184,
+    "cgroup_cpu_quota": "4 cores",
+    "device_sysroot": "restored Debian 12 / GCC 12; existing CANN device tools retained",
+    "host_distribution": "Debian GNU/Linux 13.6 (trixie)"
+  },
+  "cmake_preflight": {
+    "exit_code": 1,
+    "flags": {
+      "USE_NPUIR": "ON",
+      "TILELANG_NPUIR_TARGET": "A5",
+      "BISHENGIR_ROOT_PATH": "/workspace/setup/cann/components-9.2/npu-ir/bishengir"
+    },
+    "error": "MLIRConfig.cmake not found",
+    "build_directory": "/workspace/setup/backends/npuir-main/build-preflight",
+    "log": "cmake-preflight.log"
+  },
+  "automatic_simd": {
+    "required_environment": {
+      "TILELANG_ENABLE_SIMT": "0"
+    },
+    "set_during_cmake_preflight": true,
+    "lowering_executed": true,
+    "required_pass": "tl.NpuLoopVectorize",
+    "forbidden_pass": "tl.NpuSimtIndirectLoad"
+  },
+  "frontend_import_path": "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/__init__.py",
+  "frontend_compiled_library_sha256": "4a25b79da13228fd814357d73a3198904ece1ab8e70ae2906684a8a58742fc9e",
+  "abi": {
+    "status": "verified_in_all_14_generated_elfs_and_independent_simulations",
+    "actual_bytes": 56,
+    "generated_elf_verified": true,
+    "runner_modified": true,
+    "launch_api": "rtKernelLaunchWithFlagV2",
+    "local_memory_bytes": 221184,
+    "layout": "5 pointers + 3 i32 + 4 tail-padding bytes",
+    "grid": [
+      1,
+      1,
+      1
+    ],
+    "workspace": null,
+    "sync_lock": null,
+    "workspace_and_lock_unused_checked_in_input_and_optimized_main": true,
+    "discarded_source_only_candidate_bytes": 224
+  },
+  "existing_backend": {
+    "version": "bishengir-compile 1.2.0 / LLVM 19.1.7",
+    "binary_sha256": "465c8533e07736ea0351b49ff8b4625912af11c8b75c89ca2f92212761104bb3",
+    "ptoas": "VMI 0.1.9",
+    "used_for_new_device_compilation": true,
+    "flags": "Fixed new frontend A5 JIT options, with --save-temps; see per-case device-command.json"
+  },
+  "source_evidence_sha256": {
+    "CMakeLists.txt": "1c886e49c342631d276c320c30ccd041eb25a3de0ed1eb7b069267551aa76a66",
+    "install_npuir.sh": "66e499f926f7d5225b33a8132c3efbeacb93d60c9712a7ae1f21f372c3ab7e6d",
+    "src/target/codegen_npuir_dev_a5.cc": "8d9a234b2b0b094b705a9eb5d8b5fb014a6bbb0bd14e1024f4fd8ce6a5520a2a",
+    "tilelang/jit/jit_npu.py": "5b5035ffe1d87cbb627518e8e0d2ab56f41d85945f13897e362b218380092340",
+    "docs/developer/EnvironmentVariables.md": "92973e12b1855879d875dc747f5bc00f115816acd02adf3f83825b5d3260ee7b"
+  },
+  "counts": {
+    "prepared_inputs": 14,
+    "lowered": 14,
+    "compiled": 14,
+    "simulated": 14,
+    "numerically_verified": 14,
+    "independent_simulations": 14,
+    "reused_simulations": 0,
+    "failed": 0,
+    "not_run": 0
+  },
+  "cases": [
+    {
+      "name": "scalar_const_256",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2213,
+      "instructions": 101,
+      "evidence": "results/ir/scalar_const_256/npuir_auto_simd"
+    },
+    {
+      "name": "scalar_const_4x64",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2186,
+      "instructions": 101,
+      "evidence": "results/ir/scalar_const_4x64/npuir_auto_simd"
+    },
+    {
+      "name": "scalar_buffer_256",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2774,
+      "instructions": 146,
+      "evidence": "results/ir/scalar_buffer_256/npuir_auto_simd"
+    },
+    {
+      "name": "scalar_buffer_4x64",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2774,
+      "instructions": 146,
+      "evidence": "results/ir/scalar_buffer_4x64/npuir_auto_simd"
+    },
+    {
+      "name": "copy_256",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2117,
+      "instructions": 65,
+      "evidence": "results/ir/copy_256/npuir_auto_simd"
+    },
+    {
+      "name": "copy_4x64",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2143,
+      "instructions": 65,
+      "evidence": "results/ir/copy_4x64/npuir_auto_simd"
+    },
+    {
+      "name": "fill_256",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 1483,
+      "instructions": 75,
+      "evidence": "results/ir/fill_256/npuir_auto_simd"
+    },
+    {
+      "name": "fill_4x64",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 1471,
+      "instructions": 75,
+      "evidence": "results/ir/fill_4x64/npuir_auto_simd"
+    },
+    {
+      "name": "broadcast_row",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2722,
+      "instructions": 146,
+      "evidence": "results/ir/broadcast_row/npuir_auto_simd"
+    },
+    {
+      "name": "broadcast_column",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 2739,
+      "instructions": 148,
+      "evidence": "results/ir/broadcast_column/npuir_auto_simd"
+    },
+    {
+      "name": "flatten",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 7280,
+      "instructions": 1870,
+      "evidence": "results/ir/flatten/npuir_auto_simd"
+    },
+    {
+      "name": "reduce_all_256",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 7216,
+      "instructions": 2126,
+      "evidence": "results/ir/reduce_all_256/npuir_auto_simd"
+    },
+    {
+      "name": "reduce_rows",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 7208,
+      "instructions": 2140,
+      "evidence": "results/ir/reduce_rows/npuir_auto_simd"
+    },
+    {
+      "name": "reduce_columns",
+      "status": "passed",
+      "stage": "simulation",
+      "cycles": 6945,
+      "instructions": 1554,
+      "evidence": "results/ir/reduce_columns/npuir_auto_simd"
+    }
+  ],
+  "limits": [
+    "No physical NPU",
+    "No clean-machine installation validation",
+    "Historical multi-backend matrix was not rerun in this task",
+    "Frontend, compiler flags, ABI and launch changed; device backend and CAModel retained",
+    "Single block FP32 cases; not general workspace/synchronization validation"
+  ],
+  "access_resolution": "Identical pinned commit fetched from official public repository; original Dev repository remains unreadable.",
+  "dependency_configuration": {
+    "result": "passed",
+    "build_type": "Release",
+    "host_compiler": "GCC 14.2.0",
+    "llvm_rtti": true,
+    "llvm_assertions": true,
+    "python_bindings": true,
+    "triton": true,
+    "parallel_compile_jobs": 4,
+    "parallel_link_jobs": 2,
+    "vendor_triton_patches_applied": 7,
+    "vendor_patch_diff_sha256": "6d486331bfb68c6b5dd6d8683267829a7cccb1303de1d5bb6af3a2987373b75f",
+    "vendor_patch_manifest": "triton-vendor-patches.json",
+    "disabled_extra_targets": [
+      "LLVM_INCLUDE_TESTS",
+      "MLIR_INCLUDE_TESTS",
+      "LLVM_INCLUDE_EXAMPLES",
+      "LLVM_INCLUDE_BENCHMARKS"
+    ],
+    "incremental_reconfigure_reason": "Disable unused upstream test/example/benchmark targets while preserving required development libraries and tools",
+    "host_compatibility": {
+      "host_cxx_compilers": {
+        "LLVM/Triton": "GCC 14.2.0",
+        "BiShengIR": "SDK Bisheng/Clang 15.0.5"
+      },
+      "source_modified": false,
+      "superseded_attempt": "GCC -fpermissive for Matmul.cpp; insufficient for class-scope specializations in NormalizeTypeConversion.cpp",
+      "clang_normalize_probe_exit": 0,
+      "launcher_sha256": "c09b528aa8fc940e30755d05bfe694580e580c1fb65bec5fd906333e524cee87",
+      "cmake_sha256": "37e4031d15fb85ec3ae1e48b40e1665f46e907409dbda0831020d4d9d2bb45bb"
+    },
+    "initial_compile_jobs_with_concurrent_tvm_build": 3,
+    "initial_parallel_link_jobs": 1,
+    "link_parallelism_note": "Increased to 2 after C++ compilation completed; first large CAPI library linked successfully under the original limit."
+  },
+  "tvm_configuration": {
+    "build_type": "Release",
+    "llvm": false,
+    "rtti": true,
+    "parallel_compile_jobs": 1,
+    "build_directory": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current",
+    "status": "built",
+    "libraries_sha256": {
+      "libtvm.so": "bef1bc382a9bffbb8ed9bde3fce8a0643fe147fbe92e01dc23bcbd7aa809e5c0",
+      "libtvm_runtime.so": "b7cb7553b5e21b13a68fe3acbec26f51c6dafe355d2d3d27be0accd670ff2d24"
+    },
+    "import_verified": true
+  },
+  "current_old_frontend_smoke": {
+    "case": "copy_256",
+    "status": "passed",
+    "cycles": 2172,
+    "instructions": 70,
+    "independent_execution": true,
+    "counts_toward_new_frontend": false,
+    "evidence": "recovery-smoke-old-frontend/result.json"
+  },
+  "current_old_elf_launch_probe": {
+    "status": "passed",
+    "launch_api": "rtKernelLaunchWithFlagV2",
+    "local_memory_size": 221184,
+    "kernel_arg_bytes": 232,
+    "cycles": 2154,
+    "instructions": 70,
+    "counts_toward_new_frontend": false,
+    "evidence": "launch-v2-probe-old-elf/result.json"
+  },
+  "dependency_installation": {
+    "install_prefix": "/workspace/setup/backends/npuir-main/bishengir-install",
+    "static_library_count": 545,
+    "version": "bishengir-compile 1.0.0 (https://gitcode.com/Ascend/AscendNPU-IR.git 77f5b0617813 2026-10-06) \nllvm 19.1.7 98ef2bc767ed\nRelease build with assertions.\n\n",
+    "binary_sha256": "c9e143ce1c790ef578f2546898c2e0393a8db06d342298907aef4b6625961466",
+    "build_and_install_exit_code": 0
+  },
+  "frontend_build": {
+    "checked_at_utc": "2026-10-06T15:00:32.608923+00:00",
+    "source_commit": "013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+    "libraries": {
+      "libtilelang_module.so": {
+        "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelang_module.so",
+        "sha256": "4a25b79da13228fd814357d73a3198904ece1ab8e70ae2906684a8a58742fc9e",
+        "bytes": 122106408
+      },
+      "libtilelangir.so": {
+        "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelangir.so",
+        "sha256": "2887b7a435422044f1f3127df342d041540454170e752fe440f2b49792378cc3",
+        "bytes": 247829488
+      },
+      "tvm-current/libtvm.so": {
+        "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm.so",
+        "sha256": "bef1bc382a9bffbb8ed9bde3fce8a0643fe147fbe92e01dc23bcbd7aa809e5c0",
+        "bytes": 77718528
+      },
+      "tvm-current/libtvm_runtime.so": {
+        "path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm_runtime.so",
+        "sha256": "b7cb7553b5e21b13a68fe3acbec26f51c6dafe355d2d3d27be0accd670ff2d24",
+        "bytes": 4520064
+      }
+    },
+    "native_import_verified": true,
+    "native_adapter_loaded": true,
+    "native_source_unmodified": true,
+    "module_linker_flags": "-Wl,--exclude-libs,ALL",
+    "reason": "Hide statically linked LLVM symbols in the helper module to prevent duplicate command-line option registration when loading both native libraries. LLVM assertions remain enabled."
+  }
+}

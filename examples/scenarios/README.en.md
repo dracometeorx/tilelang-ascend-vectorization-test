@@ -2,6 +2,61 @@
 
 [中文](README.md)
 
+## New A5 measurements (2026-10-06)
+
+**All 14/14 scenarios with fixed `tile-ai/tilelang-mlir-ascend@013dbbf5` completed lowering, device compilation, and real vendor CAModel execution. Exact elementwise checks after NaN initialization, output canaries, and Profiling all passed: 14 independent simulations, no reuse, and no failed formal cases.** Only the new column contains current executions. Old NPU-IR and AscendC/PTO columns are historical evidence from 2026-10-04, not reruns in this task.
+
+The full frontend commit is `013dbbf5824c3ac29e975d78c0b38e60b2410be7`; TVM is `c2921fdaf795b1103d21abc962e83a209c7258d7`. All workloads are byte-identical to historical sources and all fixture SHA256 values match. Reductions retain outer `T.Parallel` and inner `T.serial`, without switching to `T.reduce_sum`. `TILELANG_ENABLE_SIMT=0` is explicit; every case actually executes `tl.NpuLoopVectorize` and none executes the SIMT indirect-load pass.
+
+Numbers are **CAModel cycles / executed instructions**, not physical A5 performance. Historical reuse relationships remain marked † in the full historical matrix below. All 14 new entries have separate simulation archives.
+
+| Scenario | New NPU-IR (current) | Old NPU-IR (historical) | AscendC SIMD (historical) | PTO SIMD (historical) |
+|---|---:|---:|---:|---:|
+| scalar_const_256 | 2213/101 | 2229/106 | 2137/98 | 2111/93 |
+| scalar_const_4x64 | 2186/101 | 2238/106 | 2128/98 | 2111/93 |
+| scalar_buffer_256 | 2774/146 | 2767/153 | 2119/103 | 2135/100 |
+| scalar_buffer_4x64 | 2774/146 | 2767/153 | 2131/103 | 2135/100 |
+| copy_256 | 2117/65 | 2149/70 | 2138/91 | 2135/83 |
+| copy_4x64 | 2143/65 | 2149/70 | 2143/91 | 2135/83 |
+| fill_256 | 1483/75 | 1871/80 | 1430/83 | 1432/76 |
+| fill_4x64 | 1471/75 | 1871/80 | 1420/83 | 1432/76 |
+| broadcast_row | 2722/146 | 2781/153 | 2152/103 | 2146/100 |
+| broadcast_column | 2739/148 | 2879/199 | 2145/107 | 2164/101 |
+| flatten | 7280/1870 | 14012/11851 | 2149/91 | 2135/83 |
+| reduce_all_256 | 7216/2126 | 7217/2131 | device_compile failed | device_compile failed |
+| reduce_rows | 7208/2140 | 7518/2145 | device_compile failed | device_compile failed |
+| reduce_columns | 6945/1554 | 6966/1559 | device_compile failed | device_compile failed |
+
+### Build, backend, and ABI
+
+The official public [Ascend/AscendNPU-IR](https://gitcode.com/Ascend/AscendNPU-IR) repository supplies the exact required commit `77f5b0617813c9974b56e4090bccf57d2612a301`, resolving the original Dev repository's access problem. Only the local submodule URL was overridden; gitlinks were unchanged. Pinned LLVM/Triton, seven official Triton patches, 545 development static libraries, MLIR headers/config, and new TVM/TileLang libraries were built. The isolated Python 3.11.16 environment contains no old TileLang wheel. Each result records source commits, actual import paths, and main/helper/TVM library hashes. See the [build instructions](../../setup/backends/NPUIR_MAIN.md) and [build receipt](npuir-main-013dbbf5/frontend-build.json) for GCC/Clang compatibility and LLVM symbol isolation.
+
+Device compilation retains **CANN 9.2.0-beta.2, BishengIR 1.2.0 / LLVM 19.1.7**; simulation retains `Ascend950PR_9589` / `dav-3510`. The newly built development toolchain supplies frontend dependencies, not a replacement device backend. However, compilation flags now follow the fixed new JIT's A5 configuration, including HFusion, Triton kernel adaptation, VF merge, and `--disable-ffts`; see each `device-command.json`. This compares the frontend together with its accompanying compilation flow. Differences cannot all be attributed to frontend IR alone.
+
+New `tilelang.lower` returns tensor/linalg MLIR, while the old frontend returned lower-level HIVM MLIR. Initial outputs are at different stages, so comparisons also inspect `temps/module.hivm.opt.mlir` and actual device Profiling. Old flags returned exit 0 but produced an ELF without the kernel argument section; that diagnostic artifact was rejected for launch.
+
+**The measured ABI is 56 bytes, versus 232 previously. The source-only 224-byte estimate was disproved.** Five dynamic memrefs and six i32 inputs become five bare pointers and three grid i32 values plus tail padding. Each ELF argument section, optimized signature, and symbol is checked. The runner uses `rtKernelLaunchWithFlagV2`, `localMemorySize=221184`, and one block; null sync/workspace pointers are allowed only after confirming they are unused in both input and optimized main. On the CPU host, the harness explicitly selects the fixed A5 architecture cache, without substituting computation, modifying pinned frontend source, or skipping lowering passes.
+
+### Lowering and executed instructions
+
+- **Column broadcast improves materially.** The [new optimized IR](npuir-main-013dbbf5/results/ir/broadcast_column/npuir_auto_simd/temps/module.hivm.opt.mlir) combines two vector functions into one and removes the full broadcast temporary, loading each row's scalar for register broadcast and addition. Total instructions fall `199→148`; Profiling vector execute/load/store categories fall `7/13/12→5/8/5`. Cycles fall `2879→2739`, still above historical AscendC/PTO SIMD `2145/2164`.
+- **Flatten improves substantially but remains a scalar loop.** The [new IR](npuir-main-013dbbf5/results/ir/flatten/npuir_auto_simd/temps/module.hivm.opt.mlir) retains 256 iterations, replacing the old per-element `copy_ubuf_to_ubuf_1d_float` helper with direct `memref.load/store`. Instructions fall `11851→1870`, cycles `14012→7280`; the old helper's vector loads/stores `512/1024` become `0/0`, while new scalar loads/stores are `258/256`, including outer loads. IR and execution counts support the reduced overhead, but the result remains far slower than historical AscendC/PTO contiguous copies at roughly 2140 cycles.
+- **The three reductions are still not vector reductions.** New kernels retain scalar accumulation loops, with all three vector execute/load/store categories zero. Correctness does not establish SIMD reduction, and this conclusion applies only to these Parallel/serial workloads. Historical AscendC SIMD/PTO SIMD device-compilation failures and PTO SIMT's required missing helpers remain historical failures; they were not rerun or removed here.
+- **Memory-scalar addition and row broadcast were already fused previously.** New kernels retain register broadcast/addition, with vector categories unchanged at `5/5/5` and total instructions `153→146`. They are not newly eliminated full broadcast temporaries. Copy continues to connect GM→UB→GM directly with zero vector instructions and total instructions `70→65`.
+- **Lower fill cycles do not prove new vectorization.** Cycles change `1871→1483/1471`, instructions `80→75`, but vector categories remain `2/0/5`; the `fill_256` vector body is identical after excluding function headers and indentation. Constant addition also retains categories `5/4/5`. ABI/FFTS, outer scalar instructions, compilation flags, and launch API changed together. Without controlled experiments and the old complete timeline, the entire fill cycle reduction cannot be assigned to one cause.
+
+[comparison.json](npuir-main-013dbbf5/comparison.json) contains old/new per-case Profiling, static IR features, and deltas. New `instruction-events.json` files summarize actual CAModel PC instruction events (X/i phases, excluding dependency arrows and counters). All 14 counts match Profiling and contain no duplicate instruction IDs. These are executed device instructions, not IR lines; category counts do not form a complete partition of the total.
+
+### Evidence and limits
+
+[Compact current evidence](npuir-main-013dbbf5/results/) includes workloads, input/vectorized TIR, pass lists, initial/optimized MLIR, ELFs, ABI signatures/argument sections, compiler commands, correctness/canary markers, Profiling, and SHA256 values. [preflight.json](npuir-main-013dbbf5/preflight.json) records recovery/build/final status; `not_run` in immutable `inputs.json` describes input preparation, not the final execution status. Full pass dumps, SDKs, virtual environments, and large traces remain local.
+
+The snapshot was not a complete migration: remote baseline was `06d764af`, local snapshot only `840972e`, and full historical traces were absent. Scripts/environments were restored, 658 historical compact evidence hashes checked, and identical inputs prepared. Separate diagnostics include old-frontend copy recovery `2172/70`, old-ELF V2 launch `2154/70`, and new-copy ABI smoke `2155/65`. **None counts toward the 14 formal entries**; see [probes](npuir-main-013dbbf5/probes/). The same old ELF shows small cycle variation, so differences of a few dozen cycles do not justify backend rankings.
+
+No physical NPU was available. Actual A5 driver/runtime/launch behavior and a full installation on a blank machine remain unverified. The runner covers only these verified single-block FP32 kernels, not general multi-block, workspace, or cross-core synchronization cases.
+
+## Historical baseline (2026-10-04)
+
 Single block, FP32. A has a logical size of 256 elements (fill does not read A); the output contains 256, 1, 4, or 64 elements depending on the scenario. Numbers are CAModel **cycles / executed instruction count**, not physical NPU performance.
 † denotes reuse across combinations of a validated simulation with identical ELF, ABI, symbol, fixture, and runner hashes. It does not denote another independent execution.
 

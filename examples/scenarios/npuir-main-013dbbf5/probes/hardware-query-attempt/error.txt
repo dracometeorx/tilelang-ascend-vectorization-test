@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/workspace/setup/scenarios/worker.py", line 156, in main
+    if args.backend=='npuir': artifact=tilelang.lower(func,target=target)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/engine/lower.py", line 267, in lower
+    mod = OptimizeForTarget(mod, target)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/engine/phase.py", line 142, in OptimizeForTarget
+    if _is_a5_device() and enable_npuir_simt():
+       ^^^^^^^^^^^^^^^
+  File "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/jit/jit_npu.py", line 36, in _is_a5_device
+    _ARCH_CACHE = NPUUtils().get_arch()
+                  ^^^^^^^^^^
+  File "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/utils/npu_utils.py", line 65, in __init__
+    so = build_npu_ext(
+         ^^^^^^^^^^^^^^
+  File "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/utils/npu_utils.py", line 495, in build_npu_ext
+    asc_path = get_ascend_path()
+               ^^^^^^^^^^^^^^^^^
+  File "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/utils/npu_utils.py", line 320, in get_ascend_path
+    raise EnvironmentError(
+OSError: ASCEND_HOME_PATH is not set, source <ascend-toolkit>/set_env.sh first

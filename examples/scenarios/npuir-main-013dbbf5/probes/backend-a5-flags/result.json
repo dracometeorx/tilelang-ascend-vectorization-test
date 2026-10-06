@@ -1,0 +1,53 @@
+{
+  "case": {
+    "name": "copy_256",
+    "op": "copy",
+    "a": [
+      256
+    ],
+    "b": [
+      1
+    ],
+    "out": [
+      256
+    ]
+  },
+  "backend": "npuir",
+  "mode": "auto_simd",
+  "status": "passed",
+  "stage": "simulation",
+  "started_at_utc": "2026-10-06T14:51:42.098304+00:00",
+  "provenance": {
+    "frontend_import_path": "/workspace/setup/backends/tilelang-mlir-ascend/tilelang/__init__.py",
+    "frontend_library_path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelang_module.so",
+    "frontend_library_sha256": "4a25b79da13228fd814357d73a3198904ece1ab8e70ae2906684a8a58742fc9e",
+    "tvm_import_path": "/workspace/setup/backends/tilelang-mlir-ascend/3rdparty/tvm/python/tvm/__init__.py",
+    "tvm_library_path": "/workspace/setup/backends/tilelang-mlir-ascend/build/tvm-current/libtvm.so",
+    "tvm_library_sha256": "bef1bc382a9bffbb8ed9bde3fce8a0643fe147fbe92e01dc23bcbd7aa809e5c0",
+    "tilelang_enable_simt": "0",
+    "source_commit": "013dbbf5824c3ac29e975d78c0b38e60b2410be7",
+    "tvm_source_commit": "c2921fdaf795b1103d21abc962e83a209c7258d7",
+    "source_changes": [],
+    "native_adapter_loaded": true,
+    "native_adapter_library_path": "/workspace/setup/backends/tilelang-mlir-ascend/build/libtilelangir.so",
+    "native_adapter_library_sha256": "2887b7a435422044f1f3127df342d041540454170e752fe440f2b49792378cc3",
+    "target_selection": {
+      "mode": "explicit_cpu_cross_compile",
+      "arch": "Ascend950PR_9589",
+      "mechanism": "tilelang.jit.jit_npu._ARCH_CACHE",
+      "hardware_query": false
+    }
+  },
+  "frontend_version": "0.1.2+06d764afcb801d228f2a387d196d58673ac5a5ed",
+  "symbol": "main",
+  "abi": "npuir_a5",
+  "kernel_arg_bytes": 56,
+  "correct": true,
+  "output_guard_correct": true,
+  "binary_sha256": "a7d7bafe8e7229f7966ff0e6ad103d061705d24ca865b49ad949182e8c62aaba",
+  "runner_sha256": "c8b0b7176f46db4d122e8d6b5dfc5e183dbddb40dbe1106af5a8a362a6d57c6f",
+  "fixture_sha256": "f0f12964b7597c75012a83b7db734c403e743c2b17c57378fc4742f02d99a767",
+  "cycles": 2155,
+  "instructions": 65,
+  "archive": "/workspace/setup/tilelang/results/scenarios-npuir-main-probe-013dbbf5/copy_256/backend-a5-flags/simulation/attempt_3wz83k9o/npusim_20261006145816_sim_runner"
+}

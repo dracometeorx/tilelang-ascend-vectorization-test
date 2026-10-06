@@ -22,6 +22,7 @@
 
 新增 vector + scalar、行/列广播、copy/fill、flatten 和 reduction 共 14 个场景，分别对照 CPU、AscendC SIMT/SIMD、PTO SIMT/SIMD 和 NPU-IR 自动向量化路径。
 测试语义与运行方式见 [场景说明](setup/scenarios/README.md)，实测状态、模拟周期/指令数和 IR 证据见 [扩展矩阵](examples/scenarios/README.md)，机制差异见 [lowering 解读](examples/scenarios/ANALYSIS.md)。
+2026-10-06 固定新版 `tilelang-mlir-ascend@013dbbf5` 与 A5 开发依赖已从源码构建，14/14 同输入场景独立通过真实 CAModel。列广播融合、flatten 降低逐元素开销，三种 reduction 仍为标量循环；实际 ABI 为 56 字节。旧后端数据明确标为历史，详见[双语对比与证据](examples/scenarios/README.md)。
 归约采用输出轴 Parallel、归约轴 serial；不能将其失败外推到显式 `T.reduce_sum`。NPU-IR 路径名称也不保证所有程序成功向量化。
 
 ## 安装
