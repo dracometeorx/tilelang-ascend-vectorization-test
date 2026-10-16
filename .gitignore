@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+# 运行产物（IR dump、matrix.md/json）默认不入库，按需单独提交
+artifacts/
+results/
