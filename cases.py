@@ -33,7 +33,9 @@ def binary_add():
     @T.prim_func
     def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((N,), F32) for _ in range(3))
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i in T.Parallel(N):
@@ -49,7 +51,9 @@ def binary_all_ops():
     @T.prim_func
     def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((N,), F32) for _ in range(3))
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i in T.Parallel(N):
@@ -225,7 +229,9 @@ def if_then_else_select():
     @T.prim_func
     def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((N,), F32) for _ in range(3))
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i in T.Parallel(N):
@@ -239,7 +245,9 @@ def compound_expr():
     @T.prim_func
     def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((N,), F32) for _ in range(3))
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i in T.Parallel(N):
@@ -268,7 +276,9 @@ def elementwise_2d():
     @T.prim_func
     def f(A: T.Tensor((M, K), F32), B: T.Tensor((M, K), F32), C: T.Tensor((M, K), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((M, K), F32) for _ in range(3))
+            a = T.alloc_ub((M, K), F32)
+            b = T.alloc_ub((M, K), F32)
+            c = T.alloc_ub((M, K), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i, j in T.Parallel(M, K):
@@ -306,8 +316,6 @@ def indirect_row_copy():
 
 def dynamic_outer_static_inner():
     """外层 extent 动态、内层静态：预期只向量化内层。"""
-    n_sym = T.symbolic("nSym")
-
     @T.prim_func
     def f(A: T.Tensor((M, K), F32), C: T.Tensor((M, K), F32), n: T.int32):
         with T.Kernel(1, is_npu=True) as (cid, _):
@@ -348,7 +356,9 @@ def multi_statement_body():
     @T.prim_func
     def f(A: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, t, c = (T.alloc_ub((N,), F32) for _ in range(3))
+            a = T.alloc_ub((N,), F32)
+            t = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
             T.copy(A, a)
             for i in T.Parallel(N):
                 t[i] = a[i] + T.float32(1.0)
@@ -438,7 +448,9 @@ def nondivisible_1d():
     @T.prim_func
     def f(A: T.Tensor((NU,), F32), B: T.Tensor((NU,), F32), C: T.Tensor((NU,), F32)):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((NU,), F32) for _ in range(3))
+            a = T.alloc_ub((NU,), F32)
+            b = T.alloc_ub((NU,), F32)
+            c = T.alloc_ub((NU,), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i in T.Parallel(NU):
@@ -473,7 +485,9 @@ def tiny_inner_dim():
         C: T.Tensor((M, TINY), F32),
     ):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((M, TINY), F32) for _ in range(3))
+            a = T.alloc_ub((M, TINY), F32)
+            b = T.alloc_ub((M, TINY), F32)
+            c = T.alloc_ub((M, TINY), F32)
             T.copy(A, a)
             T.copy(B, b)
             for i, j in T.Parallel(M, TINY):
@@ -567,7 +581,9 @@ def full_block_partial_copy():
         shape: T.int32,
     ):
         with T.Kernel(1, is_npu=True) as (cid, _):
-            a, b, c = (T.alloc_ub((N,), F32) for _ in range(3))
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
             start = cid * N
             tail = T.min(N, shape - start)
             T.copy(A[start : start + tail], a[:tail])
