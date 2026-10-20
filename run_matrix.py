@@ -100,17 +100,67 @@ def classify(mod):
     for gv, func in mod.functions.items():
         tir.stmt_functor.post_order_visit(func.body, visit)
 
-    n_par = len(facts["parallel_loops"])
-    n_vec = len(facts["npuir_calls"])
-    if n_vec == 0:
+    # 判定不能只数全函数里的 tl.* 调用：用例自己写的 T.copy(A, a) 这类搬运语句
+    # 也是 tl.copy，会被误当成向量化证据。真正的信号是**残留的 parallel 循环
+    # 里还有没有标量 BufferStore**——有就说明那条语句没被向量化。
+    parallel_fors = []
+    for gv, func in mod.functions.items():
+
+        def collect(node):
+            if isinstance(node, tir.For) and node.kind == tir.ForKind.PARALLEL:
+                parallel_fors.append(node)
+
+        tir.stmt_functor.post_order_visit(func.body, collect)
+
+    def scan_subtree(stmt):
+        """统计某个子树里的标量 store 与向量算子（含 region 最大长度）。"""
+        acc = {"stores": 0, "vec_ops": 0, "max_size": 0}
+
+        def v(node):
+            if isinstance(node, tir.BufferStore):
+                acc["stores"] += 1
+            elif isinstance(node, tir.Call):
+                name = getattr(node.op, "name", "")
+                if name.startswith("tl.") and name != "tl.region":
+                    acc["vec_ops"] += 1
+                    for arg in node.args:
+                        if (
+                            isinstance(arg, tir.Call)
+                            and getattr(arg.op, "name", "") == "tl.region"
+                        ):
+                            for s in arg.args[2:]:
+                                try:
+                                    acc["max_size"] = max(acc["max_size"], int(s))
+                                except (TypeError, ValueError):
+                                    pass
+
+        tir.stmt_functor.post_order_visit(stmt, v)
+        return acc
+
+    inside = {"stores": 0, "vec_ops": 0, "max_size": 0}
+    for f in parallel_fors:
+        a = scan_subtree(f.body)
+        inside["stores"] += a["stores"]
+        inside["vec_ops"] += a["vec_ops"]
+        inside["max_size"] = max(inside["max_size"], a["max_size"])
+    facts["inside_parallel"] = inside
+
+    n_vec_total = len(facts["npuir_calls"])
+    if not parallel_fors:
+        # parallel 循环全部消去
+        verdict = "full" if n_vec_total else "scalar"
+    elif inside["stores"] and inside["vec_ops"]:
+        verdict = "mixed"
+    elif inside["stores"]:
+        # 循环里还是标量读写：这条语句没被向量化
         verdict = "scalar"
-    elif facts["region_max_size"] <= 1:
-        # 产生了向量算子但 region 仍是单元素：Q3 §4 / Q6 §4 的危险形态
+    elif inside["vec_ops"] and inside["max_size"] <= 1:
+        # 拆解成功但合并失败，残留单元素 region：Q3 §4 / Q6 §4 的危险形态
         verdict = "unmerged"
-    elif n_par == 0:
-        verdict = "full"
-    else:
+    elif inside["vec_ops"]:
         verdict = "partial"
+    else:
+        verdict = "scalar"
     facts["verdict"] = verdict
     return facts
 
@@ -271,8 +321,12 @@ def write_report(out_dir, rows, mode):
         "判定规则见 README.md。`unmerged` 表示生成了向量算子但 region 长度仍为 1，",
         "属于需要追查的形态。",
         "",
-        "| 用例 | 类别 | 预期 | 实际 | 一致 | 保留的 parallel 轴 | 向量算子 | 参考 |",
-        "|---|---|---|---|---|---|---|---|",
+        "注意：\"全部算子\"列把用例自己写的 `T.copy` 搬运语句也算进来了，不能据此判断",
+        "是否向量化。判定看的是\"parallel 内\"两列——残留循环里还有标量 store 就说明",
+        "那条语句没被向量化。",
+        "",
+        "| 用例 | 类别 | 预期 | 实际 | 一致 | 保留的 parallel 轴 | parallel 内标量 store | parallel 内向量算子 | 全部算子 | 参考 |",
+        "|---|---|---|---|---|---|---:|---:|---|---|",
     ]
     for r in rows:
         ops = ", ".join(
@@ -280,9 +334,11 @@ def write_report(out_dir, rows, mode):
         )
         par = ", ".join(r.get("parallel_loops", [])) or "—"
         mark = "✓" if r.get("match") else "**✗**"
+        ip = r.get("inside_parallel", {})
         lines.append(
             f"| `{r['case']}` | {r.get('category','')} | {r['expected']} | "
-            f"{r['verdict']} | {mark} | {par} | {ops or '—'} | {r.get('reference','')} |"
+            f"{r['verdict']} | {mark} | {par} | {ip.get('stores','—')} | "
+            f"{ip.get('vec_ops','—')} | {ops or '—'} | {r.get('reference','')} |"
         )
     lines += ["", "## 与预期不符的用例", ""]
     bad = [r for r in rows if not r.get("match")]

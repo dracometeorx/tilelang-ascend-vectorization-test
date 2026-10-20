@@ -10,7 +10,8 @@ output/analysis/tilelang-mlir-ascend-main-SIMD向量化问答.md 的 Q3 静态�
   partial  外层循环保留，内层成为区域级操作
   scalar   回退为标量循环，不产生向量操作
   unmerged 产生了向量操作但 region 长度仍为 1（危险：Q3 §4 / Q6 §4）
-  error    预期在编译期失败
+  mixed    同一残留循环里既有标量 store 又有向量算子
+  error    预期在编译期失败（本阶段只跑 NpuLoopVectorize，codegen 错误需 --mlir）
 
 用例只用 alloc_ub（scope=shared=UB），避免 Q4/Q5 里 alloc_shared 的
 scope 歧义干扰判定。
@@ -670,7 +671,7 @@ CASES = [
         "full",
         "Q2 §5",
     ),
-    ("reduction_plus_equal", "D.预期失败", reduction_plus_equal, "error", "Q3 §4"),
+    ("reduction_plus_equal", "D.静默接受", reduction_plus_equal, "full", "Q3 §4"),
 ]
 
 BY_NAME = {name: (cat, fn, exp, ref) for name, cat, fn, exp, ref in CASES}
@@ -690,6 +691,8 @@ NOTES = {
         "结构上预期 full。真正的问题是语义：未拷入的尾部元素未初始化却参与计算，"
         "需要运行时传 shape < 256 并检查输出有效段。"
     ),
-    "reduction_plus_equal": "若没有失败，立刻检查数值——归约可能被静默当作逐元素运算。",
+    "reduction_plus_equal": (
+        "**已实测（2026-10-20）**：TIR 阶段静默通过，生成 [M] + [M,N] -> [M] 的\n        逐元素加法，不是归约。codegen 是否会在 getBroadcastDim 的同 rank 检查处\n        拦住，需加 --mlir 复跑确认。"
+    ),
     "dynamic_extent_1d": "若居然向量化了，说明 Q3 §1 对动态 extent 的判断有误。",
 }

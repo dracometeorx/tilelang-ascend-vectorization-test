@@ -4,7 +4,55 @@
 
 对象：`tile-ai/tilelang-mlir-ascend`，分析所依据的提交为 `417dae9908ad2ea5ffb74294a7075b6cb64b4f2b`。
 
-> **当前状态：代码只做过语法检查、用例表自洽性检查，以及报告生成的冒烟测试，没有在装有 TileLang 的机器上执行过。**所有"预期结果"都来自静态源码阅读的推导。第一次真跑出来如果和预期不符，可能是推导错了，也可能是实现有问题——两种都要记录下来，不要默认哪一边对。
+## 实测结论（2026-10-20，Developer 模式，仅 NpuLoopVectorize 阶段）
+
+32 个用例已在真机跑过一轮，**31 条静态预期得到确认**。
+
+### 复现了一个真实缺陷：offset + broadcast 丢常数项
+
+`offset_plus_broadcast` 写的是 `c[i,j] = a[i,j] + w[j + 1]`，`w` 缺 `i` 轴因此走广播路径。实测生成的源 region 是：
+
+```
+| offset_plus_broadcast | copy | w | r | offset 0 | 长度 64 |   ← 应为 offset 1
+```
+
+**`+1` 被丢掉了**，读的是 `w[0:64]` 而不是 `w[1:65]`。没有任何报错。
+
+同一轮里 `unaligned_offset`（`c[i] = a[i+3]`，直接访问路径）的 offset 是 **3，正确保留**。两者构成干净的对照：**offset 单独用没问题，与 broadcast 组合即丢失。**
+
+根因在 `src/transform/npu_loop_vectorize.cc:585-590`——`EmitReshapeAndBroadcast` 对映射到循环变量的那一维直接把源 offset 置 0。
+
+### 归约被静默接受
+
+`reduction_plus_equal`（`c[i] += b[i,j]`）在 TIR 阶段**静默通过**，生成的是
+
+```
+npuir_add( region(reshape_view_buf[0], r, 32),
+           region(b[0,0],              r, 32, 64),
+           region(c[0],                w, 32) )
+```
+
+即 `[32] + [32,64] -> [32]` 的逐元素加法，**不是归约语义**。codegen 是否会在 `getBroadcastDim` 的同 rank 检查处拦住，需加 `--mlir` 复跑确认。
+
+### 其它确认项
+
+| 结论 | 证据 |
+|---|---|
+| 不引入任何 padding | region 长度就是逻辑长度：250、`[32,3]`、264，均未补到对齐边界 |
+| 广播物化完整张量 | `a[i]+b[j]` 生成**两个** `[32,64]` 的 `brc_buf` |
+| 满块计算 vs 尾块搬运 | `full_block_partial_copy` 搬运长度为动态 tail，`add` 却是满块 256 |
+| 多语句体被切成独立循环 | `multi_statement_body` 残留两个 extent 256 的 parallel 循环（不做依赖检查的 loop fission） |
+| 比较算子被规范化 | `a[i] > b[i]` 生成的 cmp 操作数顺序是 `b, a`，印证 `a > b` → `b < a` 的改写 |
+| 间接行读取部分向量化 | `tab` 源 region 为 `offset [idx[i_split], 0]`、长度 `[1, 64]`，外层循环保留 |
+| `T.pad` 可与向量化组合 | `T.float32(0)` 作 pad_value 编译通过，后续 Parallel 正常向量化为长度 264 |
+
+### 这一轮暴露的判定器缺陷（已修）
+
+首轮有 6 个"预期回退"用例被判成 `partial`，是**判定器的 bug**：它统计全函数的 `tl.*` 调用，把用例自己写的 `T.copy(A, a)` 搬运语句当成了向量化证据。现已改为看**残留 parallel 循环内有没有标量 `BufferStore`**，并在报告中单列"parallel 内"两列。按 regions 复核，那 6 条实际都是 `scalar`，原预期无误。
+
+> **代码本身只做过语法检查与报告生成冒烟测试；上述结论来自用户在真机执行的一轮输出。`--mlir`（codegen 阶段）尚未跑过。**
+
+> **原始状态说明：**所有"预期结果"都来自静态源码阅读的推导。第一次真跑出来如果和预期不符，可能是推导错了，也可能是实现有问题——两种都要记录下来，不要默认哪一边对。
 
 ## 为什么需要这个
 
@@ -82,14 +130,19 @@ A–D 组的形状全是 8 的倍数（FP32 下 32 字节对齐），**刻意回
 
 ## 判定规则
 
+判定**只看残留 parallel 循环的内部**，不看全函数的 `tl.*` 调用总数——用例自己写的 `T.copy(A, a)` 搬运语句也是 `tl.copy`，数进去会误判（首轮就踩了这个坑）。
+
 | 判定 | 条件 |
 |---|---|
-| `full` | 无 parallel 循环残留，且有向量算子 |
-| `partial` | 有 parallel 循环残留，且有 region 长度 > 1 的向量算子 |
-| `unmerged` | 有向量算子但所有 region 长度 ≤ 1 |
-| `scalar` | 没有任何向量算子 |
+| `full` | 无 parallel 循环残留 |
+| `partial` | 有残留循环，循环内只有向量算子，且 region 长度 > 1 |
+| `unmerged` | 有残留循环，循环内有向量算子但 region 长度全为 1 |
+| `scalar` | 有残留循环，循环内还是标量 `BufferStore` |
+| `mixed` | 同一残留循环内既有标量 store 又有向量算子 |
 | `error` | 子进程非零退出（含 ICHECK abort） |
 | `timeout` | 超时，默认 600s |
+
+报告里"parallel 内标量 store"和"parallel 内向量算子"两列就是判定依据；"全部算子"列仅供参考，**不能用它判断是否向量化**。
 
 `unmerged` 是专门设的一类：拆解成功但合并失败，残留单元素区域调用套在循环里。这种形态在 codegen 里可能被误降低，`src/transform/npu_loop_vectorize.cc:1110-1117` 的注释本身就在描述这个风险。**凡是判成 `unmerged` 的都要追查。**
 
