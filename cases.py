@@ -429,6 +429,100 @@ def var_fill():
 
 
 # --------------------------------------------------------------------------
+# F. 控制流：T.if_then_else 与 Python if 的区别
+#
+# NpuLoopVectorize 只匹配表达式级的 tir.if_then_else（-> tl.npuir_select）。
+# npuir 路径没有 IfStmtBinding（phase.py 的 124/157 行在其它分支），所以
+# Python 的 if 语句不会被改写成 select。
+# --------------------------------------------------------------------------
+
+
+def python_if_in_body():
+    """Parallel 体内用 Python if（无 else）：循环体不是单条 BufferStore。"""
+
+    @T.prim_func
+    def f(A: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
+        with T.Kernel(1, is_npu=True) as (cid, _):
+            a = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
+            T.copy(A, a)
+            for i in T.Parallel(N):
+                if a[i] > T.float32(0):
+                    c[i] = a[i]
+            T.copy(c, C)
+
+    return f
+
+
+def python_if_else_in_body():
+    """同上但带 else。对照 if_then_else_select 的语义差别。"""
+
+    @T.prim_func
+    def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
+        with T.Kernel(1, is_npu=True) as (cid, _):
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
+            T.copy(A, a)
+            T.copy(B, b)
+            for i in T.Parallel(N):
+                if a[i] > b[i]:
+                    c[i] = a[i]
+                else:
+                    c[i] = b[i]
+            T.copy(c, C)
+
+    return f
+
+
+def python_if_around_loop():
+    """Python if 包住整个 Parallel 循环：条件对循环是 uniform 的。
+
+    这是仓库里的常见写法（test_brc_dev.py、test_arange.py）。预期循环内部
+    照常向量化，if 在 codegen 变成 scf.if。条件用运行时标量，避免被
+    Simplify 折掉。
+    """
+
+    @T.prim_func
+    def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32), n: T.int32):
+        with T.Kernel(1, is_npu=True) as (cid, _):
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
+            T.copy(A, a)
+            T.copy(B, b)
+            if n > 0:
+                for i in T.Parallel(N):
+                    c[i] = a[i] + b[i]
+            T.copy(c, C)
+
+    return f
+
+
+def ternary_in_body():
+    """Python 三元表达式 `x if cond else y`。
+
+    TVMScript 的求值器不特判 IfExp，会交给 Python 的三元运算，于是对
+    PrimExpr 调用 bool()。固定版 TVM 的 ExprOp.__nonzero__（tir/expr.py:179）
+    会抛 ValueError，**预期解析期就报错**，而不是静默丢掉条件。
+    """
+
+    @T.prim_func
+    def f(A: T.Tensor((N,), F32), B: T.Tensor((N,), F32), C: T.Tensor((N,), F32)):
+        with T.Kernel(1, is_npu=True) as (cid, _):
+            a = T.alloc_ub((N,), F32)
+            b = T.alloc_ub((N,), F32)
+            c = T.alloc_ub((N,), F32)
+            T.copy(A, a)
+            T.copy(B, b)
+            for i in T.Parallel(N):
+                c[i] = a[i] if a[i] > b[i] else b[i]
+            T.copy(c, C)
+
+    return f
+
+
+# --------------------------------------------------------------------------
 # E. 对齐、尾部与 padding
 #
 # 注意：前面的用例形状全部是 8 的倍数（f32 下 32 字节对齐），刻意回避了
@@ -671,6 +765,10 @@ CASES = [
         "full",
         "Q2 §5",
     ),
+    ("python_if_in_body", "F.控制流", python_if_in_body, "scalar", "Q3 §3"),
+    ("python_if_else_in_body", "F.控制流", python_if_else_in_body, "scalar", "Q3 §3"),
+    ("python_if_around_loop", "F.控制流", python_if_around_loop, "full", "Q3 §1"),
+    ("ternary_in_body", "F.控制流", ternary_in_body, "error", "TVM expr.py:179"),
     ("reduction_plus_equal", "D.静默接受", reduction_plus_equal, "full", "Q3 §4"),
 ]
 
@@ -697,4 +795,10 @@ NOTES = {
         "需加 --mlir 复跑确认。"
     ),
     "dynamic_extent_1d": "若居然向量化了，说明 Q3 §1 对动态 extent 的判断有误。",
+    "python_if_in_body": "对照 if_then_else_select：同样的条件语义，写法不同则不向量化。",
+    "python_if_around_loop": "确认 if 被保留为 scf.if 的同时，循环内部仍整体向量化。",
+    "ternary_in_body": (
+        "预期在解析期抛 ValueError（Cannot use and / or / not operator to Expr）。"
+        "若竟然编过了，务必检查条件是否被静默丢弃——那会是严重问题。"
+    ),
 }

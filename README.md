@@ -103,7 +103,8 @@ python3 run_matrix.py --out-dir ./artifacts/expert --mode Expert
 | A. 预期整体向量化 | 16 | 逐元素（6 种二元）、一元数学（6 种）、cast、向量+标量、单轴/双轴广播、拷贝、填充、循环变量参与、条件选择、复合表达式、偏移读取、二维 |
 | B. 预期部分向量化 | 2 | 间接行读取、动态外层 + 静态内层 |
 | C. 预期回退标量 | 6 | 动态 extent、多语句体、变换写入下标、转置读、flatten、变量填充 |
-| D. 预期编译失败 | 1 | 归约 `a[i] += b[i,j]` |
+| D. 静默接受 | 1 | 归约 `a[i] += b[i,j]`（TIR 阶段不报错） |
+| **F. 控制流** | **4** | Parallel 体内的 Python `if` / `if-else`、包住循环的 Python `if`、Python 三元表达式 |
 | E. 对齐、尾部与 padding | 7 | 非整除长度、非对齐 offset、极小尾轴、广播+非对齐内轴、**offset+broadcast**、`T.pad` 组合、满块计算+尾块拷贝 |
 
 A–D 组的形状全是 8 的倍数（FP32 下 32 字节对齐），**刻意回避了对齐问题**；E 组专门不对齐。
@@ -162,6 +163,28 @@ for i in T.Parallel(256):
 ```
 
 `T.region(buf[offset...], access, size...)` 里 `access` 是 1（读）/ 2（写），**后面的才是各维长度**，不是结束下标。
+
+## 关于控制流：`T.if_then_else` 是必须的
+
+`NpuLoopVectorize` **只匹配表达式级的 `tir.if_then_else`**（映射到 `tl.npuir_select`）。npuir 路径上没有 `IfStmtBinding`——那个 pass 只出现在 `phase.py` 的 124 和 157 行，属于其它分支——所以 **Python 的 `if` 语句不会被改写成 select**。
+
+| 写法 | 结果 | 原因 |
+|---|---|---|
+| `T.if_then_else(c, x, y)` 在 Parallel 体内 | **向量化** → `npuir_select` | 唯一被匹配的三元形式 |
+| Python `if` 语句在 Parallel 体内 | **回退标量** | 循环体不是单条 `BufferStore`，`LoopDecompose` 只会往里找更深的 Parallel |
+| Python `if` 包住整个 Parallel 循环 | **可以**，循环内照常向量化 | 条件对循环 uniform，codegen 生成 `scf.if` |
+| Python 三元 `x if c else y` | **解析期报错** | 求值器不特判 `IfExp`，对 PrimExpr 调 `bool()`，`ExprOp.__nonzero__`（TVM `tir/expr.py:179`）抛 ValueError |
+
+A5 有一个例外：`NpuSimtIndirectLoad` 能匹配**无 else** 的 `if i < valid:`（`MatchTailMask`），把它转成有效 lane 数。仅 A5 且 `TILELANG_ENABLE_SIMT=1` 时生效。
+
+### 但 `T.if_then_else` 不是真 `if` 的语义替代
+
+两个分支都会被**完整求值**后再 select（`npu_loop_vectorize.cc:1013-1021`），写回也是整块 region 写、不带 mask。所以：
+
+- 如果条件是用来**防止越界读**的，select 救不了——读取已经发生了
+- 如果只是在两个都合法的值之间选，那它是对的
+
+这就是问题清单里"只有条件结果选择、没有条件访存"的含义。需要真正保护访存时，当前只能靠 Python `if`，代价是那条语句不向量化。
 
 ## 关于 padding 和对齐
 
