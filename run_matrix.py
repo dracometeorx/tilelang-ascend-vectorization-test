@@ -137,8 +137,23 @@ def classify(mod):
         tir.stmt_functor.post_order_visit(stmt, v)
         return acc
 
-    inside = {"stores": 0, "vec_ops": 0, "max_size": 0}
+    # 只统计最外层的 parallel 循环：2D Parallel 是嵌套结构，内外层都扫一遍会把
+    # 同一条 store 数两次。
+    nested = set()
     for f in parallel_fors:
+
+        def mark(node, _self=f):
+            if (
+                isinstance(node, tir.For)
+                and node.kind == tir.ForKind.PARALLEL
+                and node is not _self
+            ):
+                nested.add(node)
+
+        tir.stmt_functor.post_order_visit(f.body, mark)
+
+    inside = {"stores": 0, "vec_ops": 0, "max_size": 0}
+    for f in [x for x in parallel_fors if x not in nested]:
         a = scan_subtree(f.body)
         inside["stores"] += a["stores"]
         inside["vec_ops"] += a["vec_ops"]

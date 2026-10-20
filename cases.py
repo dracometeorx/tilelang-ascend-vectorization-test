@@ -692,7 +692,9 @@ NOTES = {
         "需要运行时传 shape < 256 并检查输出有效段。"
     ),
     "reduction_plus_equal": (
-        "**已实测（2026-10-20）**：TIR 阶段静默通过，生成 [M] + [M,N] -> [M] 的\n        逐元素加法，不是归约。codegen 是否会在 getBroadcastDim 的同 rank 检查处\n        拦住，需加 --mlir 复跑确认。"
+        "**已实测（2026-10-20）**：TIR 阶段静默通过，生成 [M] + [M,N] -> [M] 的逐元素"
+        "加法，不是归约。codegen 是否会在 getBroadcastDim 的同 rank 检查处拦住，"
+        "需加 --mlir 复跑确认。"
     ),
     "dynamic_extent_1d": "若居然向量化了，说明 Q3 §1 对动态 extent 的判断有误。",
 }
